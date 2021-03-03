@@ -9,25 +9,18 @@
 <div class="bg">
   <div class="container" id="container">
   <div class="form-container sign-up-container">
-  <form action="signUp.php" method="get">
+  <form action="">
   	<h2>Sign Up Credentials</h2>
-  	<input  type="email" name="username" placeholder="Username" required>
-	  <input type="text" name="password" placeholder="Password" required>
-		<input  list="options" name="roleOptions" placeholder="Sign Up as" required>
-
-		<datalist id="options">
-  		<option value="CRS Manager">
-  		<option value="CRS Staff">
-  		<option value="Volunteer">
-	  </datalist>
+  	<input type="username" name="username" placeholder="Username">
+	  <input type="password" name="password" placeholder="Password">
 	  <button>SignUp</button>
 </form>
 </div>
 <div class="form-container sign-in-container">
-	<form action="signIn.php" method="post">
+	<form action="#">
 		<h2>Sign In Here</h2>
-	<input  type="email" name="username" placeholder="Username" required>
-	<input  type="text" name="password" placeholder="Password" >
+	<input type="username" name="username" placeholder="Username">
+	<input type="password" name="password" placeholder="Password">
 	<button>Sign In</button>
 	</form>
 </div>
@@ -40,7 +33,7 @@
 		</div>
 		<div class="overlay-panel overlay-right">
 			<h1>Hello, Welcome to HELP Bomba</h1>
-			<p> Enter your details and start journey with us</p>
+			<p>    Enter your details and start journey with us</p>
 			<button class="ghost" id="signUp">Sign Up</button>
 		</div>
 	</div>
@@ -48,10 +41,8 @@
 </div>
 </div>
 
-<footer class="text-center text-white" style="background-color: black; ">
- <p class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.7); font-size:26px; padding:auto;">
-		© 2021 Copyright: Crisis Relief Services Organization
-	</p>
+<footer>
+  <p>Disclaimer: </p>
 </footer>
 
 <script type="text/javascript">
@@ -64,17 +55,7 @@
 	});
 	signInButton.addEventListener('click', () => {
 		container.classList.remove("right-panel-active");
-	});c
-
-	// const form = document.querySelector('#signInForm');
-	// let username = form.elements.namedItem("username");
-	// let password = form.elements.namedItem("password");
-	//
-	// form.addEventListener('submit', function(e){
-	// 	e.preventDefault();
-	// 	alert('SUBMITTED')
-	// });
-
+	});
 </script>
 
 
