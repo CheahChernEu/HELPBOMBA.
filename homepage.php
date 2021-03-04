@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-        <link rel="stylesheet" type="text/css" href="/Users/ericlee/Downloads/WPA1/homepage.css">
+        <link rel="stylesheet" type="text/css" href="homepage.css">
     </head>
     <body>
         <header>
@@ -30,7 +30,7 @@
                         <a class="nav-link ml-5" href="#staff">Staff</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="login.html">SignUp/LogIn</a>
+                        <a class="nav-link ml-5" href="login.php">SignUp/LogIn</a>
                     </li>
                   </ul>
                 </div>
@@ -40,7 +40,7 @@
 
         <section id = "home">
             <video controls="" autoplay="" muted="" loop="">
-                <source src="/Users/ericlee/Downloads/WPA1/naturaldisastervideo.mov" type="video/mp4">
+                <source src="naturaldisastervideo.mov" type="video/mp4">
             </video>
 
             <div class = "container">
@@ -73,8 +73,8 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="picture-item">
-                            <a href="/Users/ericlee/Downloads/WPA1/image1.jpg">
-                                <img src="/Users/ericlee/Downloads/WPA1/image1.jpg" alt="Image1" class="img-fluid">
+                            <a href="image1.jpg">
+                                <img src="image1.jpg" alt="Image1" class="img-fluid">
                                 <div class="picture-overlay">
                                   <div class="picture-info">
                                     <h1>Volunteers do not necessarily have the time,<br> they just have the heart</h1>
@@ -87,8 +87,8 @@
 
                     <div class="col-md-6 col-sm-6">
                         <div class="picture-item">
-                            <a href="/Users/ericlee/Downloads/WPA1/image2.jpg">
-                                <img src="/Users/ericlee/Downloads/WPA1/image2.jpg" alt="Image1" class="img-fluid">
+                            <a href="image2.jpg">
+                                <img src="image2.jpg" alt="Image1" class="img-fluid">
                                 <div class="picture-overlay">
                                   <div class="picture-info">
                                     <h1>"Only a life lived for others is worth living</h1>
@@ -101,8 +101,8 @@
 
                     <div class="col-md-6 col-sm-6">
                         <div class="picture-item">
-                            <a href="/Users/ericlee/Downloads/WPA1/image3.jpg">
-                                <img src="/Users/ericlee/Downloads/WPA1/image3.jpg" alt="Image1" class="img-fluid">
+                            <a href="image3.jpg">
+                                <img src="image3.jpg" alt="Image1" class="img-fluid">
                                 <div class="picture-overlay">
                                   <div class="picture-info">
                                     <h1>Volunteers are not paid, not because they are worthless, <br>but because they are priceless</h1>
@@ -115,8 +115,8 @@
 
                     <div class="col-md-6 col-sm-6">
                         <div class="picture-item">
-                            <a href="/Users/ericlee/Downloads/WPA1/image4.jpg">
-                                <img src="/Users/ericlee/Downloads/WPA1/image4.jpg" alt="Image1" class="img-fluid">
+                            <a href="image4.jpg">
+                                <img src="image4.jpg" alt="Image1" class="img-fluid">
                                 <div class="picture-overlay">
                                   <div class="picture-info">
                                     <h1>Volunteer, <br> Lend a hand and make a difference</h1>
@@ -137,19 +137,19 @@
                 <div class="swiper-container py-5">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-                            <img src="/Users/ericlee/Downloads/WPA1/avatar1.png" class="img-fluid">
+                            <img src="avatar1.png" class="img-fluid">
                             <div class="text pt-2">
                                 <h3>Johan Yu Han<br><span>CRS Manager</span></h3>
                             </div>
                         </div>
                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-                            <img src="/Users/ericlee/Downloads/WPA1/avatar2.png" class="img-fluid">
+                            <img src="avatar2.png" class="img-fluid">
                             <div class="text pt-2">
                                 <h3>Amelia Lee<br><span>CRS Manager</span></h3>
                             </div>
                         </div>
                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-                            <img src="/Users/ericlee/Downloads/WPA1/avatar3.png" class="img-fluid">
+                            <img src="avatar3.png" class="img-fluid">
                             <div class="text pt-2">
                                 <h3>Daniel Cheah Hao Ming<br><span>CRS Staff</span></h3>
                             </div>
@@ -161,31 +161,31 @@
                             </div>
                         </div>
                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-                            <img src="/Users/ericlee/Downloads/WPA1/avatar5.png" class="img-fluid">
+                            <img src="avatar5.png" class="img-fluid">
                             <div class="text pt-2">
                                 <h3>Ismail<br><span>CRS Staff</span></h3>
                             </div>
                         </div>
                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-                            <img src="/Users/ericlee/Downloads/WPA1/avatar6.png" class="img-fluid">
+                            <img src="avatar6.png" class="img-fluid">
                             <div class="text pt-2">
                                 <h3>Leonardo Oh Feng Heng<br><span>CRS Staff</span></h3>
                             </div>
                         </div>
                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-                            <img src="/Users/ericlee/Downloads/WPA1/avatar7.png" class="img-fluid">
+                            <img src="avatar7.png" class="img-fluid">
                             <div class="text pt-2">
                                 <h3>Michelle Yong Hui Wenn<br><span>CRS Staff</span></h3>
                             </div>
                         </div>
                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-                            <img src="/Users/ericlee/Downloads/WPA1/avatar8.png" class="img-fluid">
+                            <img src="avatar8.png" class="img-fluid">
                             <div class="text pt-2">
                                 <h3>Lim Hui Mei<br><span>CRS Staff</span></h3>
                             </div>
                         </div>
                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-                            <img src="/Users/ericlee/Downloads/WPA1/avatar9.png" class="img-fluid">
+                            <img src="avatar9.png" class="img-fluid">
                             <div class="text pt-2">
                                 <h3>Jonathan Lee Jiun Sheng<br><span>CRS Staff</span></h3>
                             </div>
@@ -199,38 +199,38 @@
         </section>
 
         <section id=contact>
-        <footer class="py-5">
-            <div class="container" py-5>
-                <div class="row">
-                    <div class="col-md-5 col-sm-6">
-                        <h2>CRS Sdn. Bhd.</h2>
-                        <p>Wisma Help, Jalan Dungun, Bukit Damansara,<br>50490 Kuala Lumpur,<br>Wilayah Persekutuan Kuala Lumpur</p>
-                    </div>
+          <footer class="py-5">
+              <div class="container" py-5>
+                  <div class="row">
+                      <div class="col-md-5 col-sm-6">
+                          <h2>CRS Sdn. Bhd.</h2>
+                          <p>Wisma Help, Jalan Dungun, Bukit Damansara,<br>50490 Kuala Lumpur,<br>Wilayah Persekutuan Kuala Lumpur</p>
+                      </div>
 
-                    <div class="col-md-4 col-sm-6">
-                        <div class="footer-info">
-                            <h2>Keep In Touch</h2>
-                            <p><a href="#">016-1234567</a></p>
-                            <p><a href="#">crs@gmail.com</a></p>
-                            <p><a href="#">Our Location</a></p>
-                        </div>
-                    </div>
+                      <div class="col-md-4 col-sm-6">
+                          <div class="footer-info">
+                              <h2>Keep In Touch</h2>
+                              <p><a href="#">016-1234567</a></p>
+                              <p><a href="#">crs@gmail.com</a></p>
+                              <p><a href="#">Our Location</a></p>
+                          </div>
+                      </div>
 
-                    <div class="col-md-3 col-sm-12">
-                        <div class="footer-info">
-                            <h2>About Us</h2>
-                            <p>Crisis Relief Services (CRS) is an NGO (Non-Government Organization) that aims to help people who are facing crises arising from natural disasters such as flood and earthquakes.</p>
-                        </div>
-                    </div>
+                      <div class="col-md-3 col-sm-12">
+                          <div class="footer-info">
+                              <h2>About Us</h2>
+                              <p>Crisis Relief Services (CRS) is an NGO (Non-Government Organization) that aims to help people who are facing crises arising from natural disasters such as flood and earthquakes.</p>
+                          </div>
+                      </div>
 
-                    <div class="col-md-12 col-12 text-center">
-                        <div class="copyright-text">
-                            <p>Copyright @ 2021 <a href="#">CRS Organization</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+                      <div class="col-md-12 col-12 text-center">
+                          <div class="copyright-text">
+                              <p>Copyright @ 2021 <a href="#">CRS Organization</a></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </footer>
         </section>
 
 
