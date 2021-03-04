@@ -155,7 +155,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-                            <img src="/Users/ericlee/Downloads/WPA1/avatar4.png" class="img-fluid">
+                            <img src="avatar4.png" class="img-fluid">
                             <div class="text pt-2">
                                 <h3>Kenin Tan Hui Ling<br><span>CRS Staff</span></h3>
                             </div>
