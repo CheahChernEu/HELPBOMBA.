@@ -11,13 +11,13 @@
   <div class="form-container sign-up-container">
   <form action="signUp.php" method="get">
   	<h2>Sign Up Credentials</h2>
-  	<input  type="email" name="username" placeholder="Username" required>
-	  <input type="text" name="password" placeholder="Password" required>
+  	<input  type="email" id="" name="signUpUsername" placeholder="Username" required>
+	  <input type="text" id="signUpPw" name="password" placeholder="Password" required>
 		<input  list="options" name="roleOptions" placeholder="Sign Up as" required>
 
 		<datalist id="options">
-  		<option value="CRS Manager">
-  		<option value="CRS Staff">
+  		<option value="Manager">
+  		<option value="Staff">
   		<option value="Volunteer">
 	  </datalist>
 	  <button>SignUp</button>
@@ -26,8 +26,8 @@
 <div class="form-container sign-in-container">
 	<form action="signIn.php" method="post">
 		<h2>Sign In Here</h2>
-	<input  type="email" name="username" placeholder="Username" required>
-	<input  type="text" name="password" placeholder="Password" >
+	<input  type="email" id="username" name="username" placeholder="Username" required>
+	<input  type="text" id="password" name="password" placeholder="Password" >
 	<button>Sign In</button>
 	</form>
 </div>
@@ -54,7 +54,11 @@
 	</p>
 </footer>
 
-<script type="text/javascript">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
 	const signUpButton = document.getElementById('signUp');
 	const signInButton = document.getElementById('signIn');
 	const container = document.getElementById('container');
@@ -66,14 +70,28 @@
 		container.classList.remove("right-panel-active");
 	});
 
-	// const form = document.querySelector('#signInForm');
-	// let username = form.elements.namedItem("username");
-	// let password = form.elements.namedItem("password");
-	//
-	// form.addEventListener('submit', function(e){
-	// 	e.preventDefault();
-	// 	alert('SUBMITTED')
-	// });
+	// Sign In Validation
+	function signInBlankValidation(){
+		if(document.getElementById('username').value ==''){
+			alert("Username input cannot be blank");
+			document.getElementById('username').focus();
+		}
+
+		if(document.getElementById('password').value == ''){
+			alert("Password input cannnot be blank");
+			document.getElementById('password').focus();
+		}
+	}
+
+// 	function ValidateEmail(){
+// 		var email = document.getElementById('username').value;
+//  		if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email))
+//   {
+//     return (true)
+//   }
+//     alert("You have entered an invalid email address!")
+//     return (false)
+// }
 
 </script>
 
