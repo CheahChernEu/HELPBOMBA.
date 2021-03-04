@@ -269,7 +269,7 @@ p{
 
 
 
-
+/* modal for record new staff */
 #btnRecord{
   font-size: 26px;
   color: purple;
@@ -309,21 +309,26 @@ p{
   border-color: black;
 }
 
-#features h2{
-  padding: 25px;
-  border-style:dotted ;
-  color:white;
-  background-color: black;
+/* modal for manage application */
+#btnManage{
+  font-size: 26px;
+  color: purple;
+  border-color: black;
+  border-width: thick;
+  margin-left: 40px;
+  background-color: white;
+}
+
+#manageModal {
+    max-width: 80%;
+    margin:auto;
+    align-items: center;
+    justify-content:center;
 
 }
 
-#contact{
-    background: url(contactus-background-right.jpg) 50% 0 repeat-y fixed;
-    background-size: cover;
-    background-position: center center;
-    position: relative;
 
-}
+/*feature section */
 #features{
     height:300px;
     background: url(contactus-background-right.jpg) 50% 0 repeat-y fixed;
@@ -333,5 +338,22 @@ p{
     border-top-style: solid;
     border-bottom-style: solid;
     border-color: black;
+
+}
+
+#features h2{
+  padding: 25px;
+  border-style:dotted ;
+  color:white;
+  background-color: black;
+
+}
+
+/* footer */
+#contact{
+    background: url(contactus-background-right.jpg) 50% 0 repeat-y fixed;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
 
 }

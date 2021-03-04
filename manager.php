@@ -201,7 +201,7 @@
 
 
         <div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="recordModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document" >
+          <div class="modal-dialog " role="document" >
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="recordModalLabel">Record New Staff</h5>
@@ -238,15 +238,16 @@
                 </form>
               </div>
               <div class="modal-footer">
+                <button name="submit"type="button" class="btn btn-primary">Submit</button>
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button name="submit"type="button" class="btn btn-primary">Send message</button>
               </div>
             </div>
           </div>
         </div>
 
+<!-- modal for manage application -->
         <div class="modal fade" id="manageModal" tabindex="-1" role="dialog" aria-labelledby="manageModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document" >
+          <div class="modal-dialog modal-xl" role="document" >
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="manageModalLabel">Manage Crisis Trip Application</h5>
@@ -255,8 +256,8 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form>
-                  <div class="table list">
+
+                  <div class="tableList">
                     <table>
                       <tr>
                         <th>Trip ID</th>
@@ -266,13 +267,18 @@
                         <th>Skill Requirement(s)</th>
                       </tr>
                     </table>
-
                   </div>
-                </form>
+                  <div class="">
+                    <p class="d-flex justify-content-center align-items-center">
+                      <span class="me-3" style="color: black; font-size: 12px;font-weight:bold;">Please fill in the Trip ID that you want! </span>
+                      <input type="integers" name="tripID">
+                    </p>
+                  </div>
+
               </div>
               <div class="modal-footer">
+                <button name="submit" type="button" class="btn btn-primary">Submit</button>
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button name="submit"type="button" class="btn btn-primary">Send message</button>
               </div>
             </div>
           </div>
@@ -289,7 +295,7 @@
             </p>
             <p class="d-flex justify-content-center align-items-center">
               <span class="me-3" style="color: black; font-size: 28px;font-weight:bold;">Manage Application : </span>
-              <button type="button" id="btnRecord" class="btn btn-outline-dark btn-rounded" data-toggle="modal" data-target="#">Manage Application Here!</button>
+              <button type="button" id="btnManage" class="btn btn-outline-dark btn-rounded" data-toggle="modal" data-target="#manageModal">Manage Application Here!</button>
             </p>
           </section>
       <!-- Section: CTA -->
