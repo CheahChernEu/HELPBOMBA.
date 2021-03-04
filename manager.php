@@ -1,354 +1,376 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css" integrity="sha512-shT5e46zNSD6lt4dlJHb+7LoUko9QZXTGlmWWx0qjI9UhQrElRb+Q5DM7SVte9G9ZNmovz2qIaV7IWv0xQkBkw==" crossorigin="anonymous" />
-  <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Emilys Candy' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Grenze' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Marmelad' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Sniglet' rel='stylesheet'>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+<html>
+    <head>
+        <title>ManagerHomepage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <link rel="stylesheet" type="text/css" href="managerstyling.css">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light py-3 fixed-top bg">
+                <div class="container">
+                <a class="navbar-brand" href="#">CRS.ORG</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars text-light" aria-hidden="true"></i>
+                </button>
 
-  <link rel="stylesheet" type="text/css" href="managerStyling.css">
-  <title>CRSManager</title>
-</head>
-<body>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto float-right text-right">
+                    <li class="nav-item">
+                        <a class="nav-link ml-5" href="#aboutus">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-5" href="#picture">Picture Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-5" href="#staff">Staff</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-5" href="login.php">SignUp/LogIn</a>
+                    </li>
+                  </ul>
+                </div>
+                </div>
+              </nav>
+        </header>
 
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light py-3 fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><h2>Crisis Relief Services.Org</h2></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fa fa-bars text-light" aria-hidden="true"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item ">
-          <a class="nav-link ms-5" href="#about-us">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link  ms-5" href="#picture">Picture Description</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link  ms-5" href="#staffInfo">Our Beloved Staff</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link ms-5" href="#footer">Record New Staff</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-</header>
+        <section id = "home">
+            <video controls="" autoplay="" muted="" loop="">
+                <source src="naturaldisastervideo.mov" type="video/mp4">
+            </video>
 
-<section id="Home">
-  <video class="Video" controls= "" autoplay ="" muted ="" loop=""
-  <source src="C:\Users\Lenovo\github\WebProgrammingA1\naturaldisastervideo.mp4" type="naturaldisastervideo\mp4">
-</video>
-
-<div class="container">
-  <div class="row pt-3">
-    <div class="home-text col-md-8 col-sm-12 mt-5">
-      <h2>We value life above everything</h2>
-      <p>Chance to be a citizen HERO</p>
-      <p>Together working for the greater good</p>
-      <p>Let us stay united!</p>
-    </div>
-  </div>
-</div>
-
-<div class="overlay"></div>
-
-</section>
-
-<section id="about-us">
-  <div class="container py-3">
-    <div class="row py-3 my-3">
-      <div class="about-info text-center py-5 col-md-10 col-sm-12 mx-auto">
-        <h1 class="pb-3">About Us</h1>
-        <h2>Crisis Relief Services (CRS) is an NGO (Non-Government Organization) that aims to help people who are facing crises arising from natural disasters such as flood and earthquakes.
-        </h2>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<section id="picture">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-sm-6">
-        <div class="zoom-item">
-          <a href="C:\Users\Lenovo\github\WPA1\image1.jpg">
-            <img src="C:\Users\Lenovo\github\WPA1\image1.jpg" alt="Image1" class="img-fluid">
-
-            <div class="zoom-overlay">
-              <div class="zoom-info">
-                <h1>"Volunteers do not necessarily have the time,<br> they just have the heart"</h1>
-                <h3> Click to pop!</h3>
-              </div>
-
+            <div class = "container">
+                <div class="row pt-5">
+                    <div class="home-text col-mid-8 col-sm-12 mt-5">
+                        <h1>We value life above everything</h1>
+                        <p>Chance to be a citizen HERO</p>
+                        <p>Together working for the greater good</p>
+                        <p>Let us stay united!</p>
+                    </div>
+                </div>
             </div>
-            </a>
-        </div>
-      </div>
 
-      <div class="col-md-6 col-sm-6">
-        <div class="zoom-item">
-          <a href="C:\Users\Lenovo\github\WPA1\image1.jpg">
-            <img src="C:\Users\Lenovo\github\WPA1\image2.jpg" alt="Image2" class="img-fluid">
+            <div class="overlay"></div>
+        </section>
 
-            <div class="zoom-overlay">
-              <div class="zoom-info">
-                <h1>"Only a life lived for others is worth living"</h1>
-                <h3> Click to pop!</h3>
-              </div>
-
+        <section id="aboutus">
+            <div class="container py-5">
+                <div class="row py-5 my-5">
+                    <div class="aboutus-text text-center py-5 col-md-10 col-sm-12 mx-auto">
+                        <h1 class="pb-3">About Us</h1>
+                        <h2>Crisis Relief Services (CRS) is an NGO (Non-Government Organization) that aims to help people who are facing crises arising from natural disasters such as flood and earthquakes.</h2>
+                    </div>
+                </div>
             </div>
-            </a>
-        </div>
-      </div>
+        </section>
 
+        <section id="picture" class="pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="picture-item">
+                            <a href="image1.jpg">
+                                <img src="image1.jpg" alt="Image1" class="img-fluid">
+                                <div class="picture-overlay">
+                                  <div class="picture-info">
+                                    <h1>Volunteers do not necessarily have the time,<br> they just have the heart</h1>
+                                    <h3> Click to pop!</h3>
+                                  </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
-      <div class="col-md-6 col-sm-6">
-        <div class="zoom-item">
-          <a href="C:\Users\Lenovo\github\WPA1\image1.jpg">
-            <img src="C:\Users\Lenovo\github\WPA1\image3.jpg" alt="Image3" class="img-fluid">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="picture-item">
+                            <a href="image2.jpg">
+                                <img src="image2.jpg" alt="Image1" class="img-fluid">
+                                <div class="picture-overlay">
+                                  <div class="picture-info">
+                                    <h1>"Only a life lived for others is worth living</h1>
+                                    <h3> Click to pop!</h3>
+                                  </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
-            <div class="zoom-overlay">
-              <div class="zoom-info">
-                <h1>"Volunteers are not paid -- not because they are worthless, <br>but because they are priceless"</h1>
-                <h3> Click to pop!</h3>
-              </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="picture-item">
+                            <a href="image3.jpg">
+                                <img src="image3.jpg" alt="Image1" class="img-fluid">
+                                <div class="picture-overlay">
+                                  <div class="picture-info">
+                                    <h1>Volunteers are not paid, not because they are worthless, <br>but because they are priceless</h1>
+                                    <h3> Click to pop!</h3>
+                                  </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
+                    <div class="col-md-6 col-sm-6">
+                        <div class="picture-item">
+                            <a href="image4.jpg">
+                                <img src="image4.jpg" alt="Image1" class="img-fluid">
+                                <div class="picture-overlay">
+                                  <div class="picture-info">
+                                    <h1>Volunteer, <br> Lend a hand and make a difference</h1>
+                                    <h3> Click to pop!</h3>
+                                  </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </a>
-        </div>
-      </div>
+        </section>
 
-      <div class="col-md-6 col-sm-6">
-        <div class="zoom-item">
-          <a href="C:\Users\Lenovo\github\WPA1\image1.jpg">
-            <img src="C:\Users\Lenovo\github\WPA1\image4.jpg" alt="Image4" class="img-fluid">
+        <section id="staff" class="h-100">
+            <div class="container py-5">
+                <h1 class="text-center">Meet Our Staff</h1>
+                <!-- Swiper -->
+                <div class="swiper-container py-5">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
+                            <img src="avatar1.png" class="img-fluid">
+                            <div class="text pt-2">
+                                <h3>Johan Yu Han<br><span>CRS Manager</span></h3>
+                            </div>
+                        </div>
+                        <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
+                            <img src="avatar2.png" class="img-fluid">
+                            <div class="text pt-2">
+                                <h3>Amelia Lee<br><span>CRS Manager</span></h3>
+                            </div>
+                        </div>
+                        <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
+                            <img src="avatar3.png" class="img-fluid">
+                            <div class="text pt-2">
+                                <h3>Daniel Cheah Hao Ming<br><span>CRS Staff</span></h3>
+                            </div>
+                        </div>
+                        <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
+                            <img src="avatar4.png" class="img-fluid">
+                            <div class="text pt-2">
+                                <h3>Kenin Tan Hui Ling<br><span>CRS Staff</span></h3>
+                            </div>
+                        </div>
+                        <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
+                            <img src="avatar5.png" class="img-fluid">
+                            <div class="text pt-2">
+                                <h3>Ismail<br><span>CRS Staff</span></h3>
+                            </div>
+                        </div>
+                        <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
+                            <img src="avatar6.png" class="img-fluid">
+                            <div class="text pt-2">
+                                <h3>Leonardo Oh Feng Heng<br><span>CRS Staff</span></h3>
+                            </div>
+                        </div>
+                        <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
+                            <img src="avatar7.png" class="img-fluid">
+                            <div class="text pt-2">
+                                <h3>Michelle Yong Hui Wenn<br><span>CRS Staff</span></h3>
+                            </div>
+                        </div>
+                        <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
+                            <img src="avatar8.png" class="img-fluid">
+                            <div class="text pt-2">
+                                <h3>Lim Hui Mei<br><span>CRS Staff</span></h3>
+                            </div>
+                        </div>
+                        <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
+                            <img src="avatar9.png" class="img-fluid">
+                            <div class="text pt-2">
+                                <h3>Jonathan Lee Jiun Sheng<br><span>CRS Staff</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
 
-            <div class="zoom-overlay">
-              <div class="zoom-info">
-                <h1>"Volunteer. <br> Lend a Hand. <br>Make a Difference"</h1>
-                <h3> Click to pop!</h3>
+
+
+        <div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="recordModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document" >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="recordModalLabel">Record New Staff</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="email" class="col-form-label">Username:</label>
+                    <input type="email" class="form-control" id="username" placeholder="username" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="col-form-label">Password:</label>
+                    <input type="passsword" class="form-control" id="password" placeholder="password" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="name" class="col-form-label">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="phoneNo" class="col-form-label">Phone Number:</label>
+                    <input type="tel" class="form-control" id="phoneNo" placeholder="phone number" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="position" class="col-form-label">Position:</label>
+                    <input type="text" class="form-control" id="position" placeholder="position" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="dateJoined" class="col-form-label">Date-Joined:</label>
+                    <input type="date" class="form-control" id="dateJoined" placeholder="date-joined" required>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button name="submit"type="button" class="btn btn-primary">Send message</button>
               </div>
             </div>
-            </a>
+          </div>
         </div>
-      </div>
 
+        <div class="modal fade" id="manageModal" tabindex="-1" role="dialog" aria-labelledby="manageModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document" >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="manageModalLabel">Manage Crisis Trip Application</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="table list">
+                    <table>
+                      <tr>
+                        <th>Trip ID</th>
+                        <th>Trip Type</th>
+                        <th>Trip Date</th>
+                        <th>Trip Location</th>
+                        <th>Skill Requirement(s)</th>
+                      </tr>
+                    </table>
 
-
-
-
-    </div>
-  </div>
-</section>
-
-<section id="staffInfo" class="h-100">
-<div class="container py-5">
-
-  <h1 class="staffTitle text-center" >Our Beloved Staffs</h1>
-  <!-- Swiper -->
- <div class="swiper-container py-3">
-   <div class="swiper-wrapper">
-     <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-       <img src="C:\Users\Lenovo\github\WPA1\avatar1.png" class="img-fluid">
-       <div class="TextName pt-2">
-          <h3>Johan Yu Han <br> <span>CRS Manager</span></h3>
-       </div>
-     </div>
-
-     <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-       <img src="C:\Users\Lenovo\github\WPA1\avatar2.png" class="img-fluid">
-       <div class="TextName pt-2">
-          <h3> Amelia Lee <br> <span>CRS Manager</span></h3>
-       </div>
-     </div>
-
-     <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-       <img src="C:\Users\Lenovo\github\WPA1\avatar3.png" class="img-fluid">
-       <div class="TextName pt-2">
-          <h3> Daniel Cheah Hao Ming <br> <span>CRS Staff</span></h3>
-       </div>
-     </div>
-
-     <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-       <img src="C:\Users\Lenovo\github\WPA1\avatar4.png" class="img-fluid">
-       <div class="TextName pt-2">
-          <h3> Kenin Tan Hui Ling <br> <span>CRS Staff</span></h3>
-       </div>
-     </div>
-
-     <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-       <img src="C:\Users\Lenovo\github\WPA1\avatar5.png" class="img-fluid">
-       <div class="TextName pt-2">
-          <h3> Ismail  <br> <span>CRS Staff</span></h3>
-       </div>
-     </div>
-
-     <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-       <img src="C:\Users\Lenovo\github\WPA1\avatar6.png" class="img-fluid">
-       <div class="TextName pt-2">
-          <h3> Leonardo Oh Feng Heng <br> <span>CRS Staff</span></h3>
-       </div>
-     </div>
-
-     <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-       <img src="C:\Users\Lenovo\github\WPA1\avatar7.png" class="img-fluid">
-       <div class="TextName pt-2">
-          <h3>Michelle Yong Hui Wen <br> <span>CRS Staff</span></h3>
-       </div>
-     </div>
-
-     <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-       <img src="C:\Users\Lenovo\github\WPA1\avatar8.png" class="img-fluid">
-       <div class="TextName pt-2">
-          <h3> <br> <span>CRS Staff</span></h3>
-       </div>
-     </div>
-
-     <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
-       <img src="C:\Users\Lenovo\github\WPA1\avatar9.png" class="img-fluid">
-       <div class="TextName pt-2">
-          <h3>Jonathan Lee Jiun Sheng <br> <span>CRS Staff</span></h3>
-       </div>
-     </div>
-
-
-   </div>
-   <!-- Add Arrows -->
-   <div class="swiper-button-next"></div>
-   <div class="swiper-button-prev"></div>
- </div>
-
-</div>
-</section>
-
-
-
-
-<div class="modal fade" id="recordModal" tabindex="-1" aria-labelledby="recordModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="recordModalLabel">Record New Staff</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="email" class="col-form-label">Username:</label>
-            <input type="text" class="form-control" id="username" placeholder="username" required>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button name="submit"type="button" class="btn btn-primary">Send message</button>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="password" class="col-form-label">Password:</label>
-            <input type="text" class="form-control" id="password" placeholder="password" required>
-          </div>
-          <div class="mb-3">
-            <label for="name" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="name" placeholder="name" required>
-          </div>
-          <div class="mb-3">
-            <label for="phoneNo" class="col-form-label">Phone Number:</label>
-            <input type="tel" class="form-control" id="phoneNo" placeholder="phone number" required>
-          </div>
-          <div class="mb-3">
-            <label for="position" class="col-form-label">Position:</label>
-            <input type="text" class="form-control" id="position" placeholder="position" required>
-          </div>
-          <div class="mb-3">
-            <label for="dateJoined" class="col-form-label">Date-Joined:</label>
-            <input type="date" class="form-control" id="dateJoined" placeholder="date-joined" required>
-          </div>
+        </div>
 
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="btnSubmit" class="btn btn-outline-light btn-rounded">
-        Submit
-        </button>
-        <button type="btnClose" class="btn btn-outline-light btn-rounded" data-bs-dismiss="modal" >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Footer -->
-  <footer id="footer" class="text-center text-white" style="background-color: black;">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
+        <section id="features" class="text-center text-white">
+          <div class="container p-4 pb-0">
+          <h2>Record New Staff / Manage Application</h2>
       <!-- Section: CTA -->
-      <section class="">
-        <p class="d-flex justify-content-center align-items-center">
-          <span class="me-3" style="color: pink; font-size: 25px;">Record New Staff : </span>
-          <button type="button" id="btnRecord" class="btn btn-outline-light btn-rounded" data-bs-toggle="modal" data-bs-target="#recordModal">
-            Record New Staff Here!
-          </button>
-        </p>
-      </section>
+          <section class="">
+            <p class="d-flex justify-content-center align-items-center">
+              <span class="me-3" style="color: black; font-size: 28px;font-weight:bold;">Record New Staff : </span>
+              <button type="button" id="btnRecord" class="btn btn-outline-light btn-rounded" data-toggle="modal" data-target="#recordModal">Record Staff Here!</button>
+            </p>
+            <p class="d-flex justify-content-center align-items-center">
+              <span class="me-3" style="color: black; font-size: 28px;font-weight:bold;">Manage Application : </span>
+              <button type="button" id="btnRecord" class="btn btn-outline-dark btn-rounded" data-toggle="modal" data-target="#">Manage Application Here!</button>
+            </p>
+          </section>
       <!-- Section: CTA -->
-    </div>
-    <!-- Grid container -->
-
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.7);">
-      © 2021 Copyright:
-      <a class="text-white" href="#">Crisis Relief Services Organization</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
-</section>
+          </div>
+        </section>
 
 
 
-<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<script>
-<!-- Initialize Swiper -->
-var swiper = new Swiper('.swiper-container', {
-  slidesPerView: 3,
-  spaceBetween: 30,
-  slidesPerGroup: 1,
-  loop: true,
-  loopFillGroupWithBlank: true,
-  centeredSlides: true,
-  autoplay: {
-     delay: 2000,
-     disableOnInteraction: false,
-   },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
-
-</script>
 
 
+        <section id=contact>
+          <footer class="py-5">
+              <div class="container" py-5>
+                  <div class="row">
+                      <div class="col-md-5 col-sm-6">
+                          <h2>CRS Sdn. Bhd.</h2>
+                          <p>Wisma Help, Jalan Dungun, Bukit Damansara,<br>50490 Kuala Lumpur,<br>Wilayah Persekutuan Kuala Lumpur</p>
+                      </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+                      <div class="col-md-4 col-sm-6">
+                          <div class="footer-info">
+                              <h2>Keep In Touch</h2>
+                              <p><a href="#">016-1234567</a></p>
+                              <p><a href="#">crs@gmail.com</a></p>
+                              <p><a href="#">Our Location</a></p>
+                          </div>
+                      </div>
 
-</body>
+                      <div class="col-md-3 col-sm-12">
+                          <div class="footer-info">
+                              <h2>About Us</h2>
+                              <p>Crisis Relief Services (CRS) is an NGO (Non-Government Organization) that aims to help people who are facing crises arising from natural disasters such as flood and earthquakes.</p>
+                          </div>
+                      </div>
+
+                      <div class="col-md-12 col-12 text-center">
+                          <div class="copyright-text">
+                              <p>Copyright @ 2021 <a href="#">CRS Organization</a></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </footer>
+        </section>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+        <script>
+            $(window).scroll(function(){
+                $('nav').toggleClass('scrolled',$(this).scrollTop()>50)
+            })
+        </script>
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            spaceBetween: 105,
+            slidesPerGroup: 1,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            });
+        </script>
+    </body>
 </html>
