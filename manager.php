@@ -239,7 +239,11 @@ fafasfasfasf
                 </form>
               </div>
               <div class="modal-footer">
+<<<<<<< HEAD
                 <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),validateEmail(),checkPasswordLen(),validatePhone()">Submit</button>
+=======
+                <button name="submit"type="button" class="btn btn-primary">Submit</button>
+>>>>>>> bd24dcba822ea4fd7dd9c49f8f3282c478fd6f35
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>

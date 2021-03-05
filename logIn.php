@@ -14,7 +14,11 @@ asfasdsad
   	<h2>Sign Up Credentials</h2>
   	<input  type="email" id="" name="signUpUsername" placeholder="Username" required>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	  <input type="password" id="signUpPw" name="password" minlength="8" placeholder="Password" required>
+=======
+	  <input type="text" id="signUpPw" name="password" placeholder="Password" required>
+>>>>>>> bd24dcba822ea4fd7dd9c49f8f3282c478fd6f35
 =======
 	  <input type="text" id="signUpPw" name="password" placeholder="Password" required>
 >>>>>>> bd24dcba822ea4fd7dd9c49f8f3282c478fd6f35
@@ -32,11 +36,14 @@ asfasdsad
 	 <form>
 		<h2>Sign In Here</h2>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<input  type="email" id="username" name="username" placeholder="Username"  required>
 	<input  type="password" id="password" name="password" placeholder="Password"  minlength="8" required>
 	<a href="managerLogin.php">Click Me: Manager Login Here!</a>
 	<button id="signInBtn">Sign In</button>
 =======
+=======
+>>>>>>> bd24dcba822ea4fd7dd9c49f8f3282c478fd6f35
 	<input  type="email" id="username" name="username" placeholder="Username" required>
 	<input  type="text" id="password" name="password" placeholder="Password" >
 	<button>Sign In</button>
@@ -84,8 +91,11 @@ asfasdsad
 	});
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> bd24dcba822ea4fd7dd9c49f8f3282c478fd6f35
 	// Sign In Validation
 	function signInBlankValidation(){
 		if(document.getElementById('username').value ==''){
@@ -108,6 +118,9 @@ asfasdsad
 //     alert("You have entered an invalid email address!")
 //     return (false)
 // }
+<<<<<<< HEAD
+>>>>>>> bd24dcba822ea4fd7dd9c49f8f3282c478fd6f35
+=======
 >>>>>>> bd24dcba822ea4fd7dd9c49f8f3282c478fd6f35
 
 </script>
