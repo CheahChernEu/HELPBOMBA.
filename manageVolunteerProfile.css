@@ -95,8 +95,9 @@ p{
 
 /*FORM*/
 .form {
-    margin-top: 220px;
-    position: absolute;
+    margin-top: 630px;
+    margin-bottom: -330px;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -111,8 +112,8 @@ p{
 }
 
 .form h2 {
-    margin: 0 0 30px;
-    padding: 0;
+    margin: 0 0 20px 0;
+    padding: 0 100px 0 140px;
     color: black;
     text-align: center;
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -183,4 +184,11 @@ p{
 
 .form input[type="radio"]{
     margin: 0 60px 0 0;
+}
+
+#contact{
+    background: url(/Users/ericlee/Downloads/WPA1/contactus-background-right.jpg) 50% 0 repeat-y fixed;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
 }
