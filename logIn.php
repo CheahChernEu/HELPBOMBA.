@@ -9,20 +9,20 @@
 <div class="bg">
   <div class="container" id="container">
   <div class="form-container sign-up-container">
-  <form action="signUp.php" method="get">
+  <form action="signUp.php" method="post">
   	<h2>Sign Up Credentials</h2>
-  	<input  type="email" id="" name="signUpUsername" placeholder="Username" required>
+  	<input  type="email" id="signUpUsername" name="signUpUsername" placeholder="Username" required>
 
-	  <input type="password" id="signUpPw" name="password" minlength="8" placeholder="Password" required>
+	  <input type="password" id="signUpPw" name="signUpPw" minlength="8" placeholder="Password" required>
 
-		<input  list="options" name="roleOptions" placeholder="Sign Up as" required>
+		<input list="options" name="roleOptions" placeholder="Sign Up as" required>
 
-		<datalist id="options">
-  		<option value="Manager">
-  		<option value="Staff">
-  		<option value="Volunteer">
-	  </datalist>
-	  <button id="signUpBtn">SignUp</button>
+		<datalist class="roleOptions">
+				<option value="manager"></option>
+				<option value="staff"></option>
+				<option value="volunteer"></option>
+		</datalist>
+		<button id="signUpBtn">Sign Up</button>
 </form>
 </div>
 <div class="form-container sign-in-container">
