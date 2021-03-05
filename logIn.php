@@ -12,7 +12,11 @@
   <form action="signUp.php" method="get">
   	<h2>Sign Up Credentials</h2>
   	<input  type="email" id="" name="signUpUsername" placeholder="Username" required>
+<<<<<<< HEAD
 	  <input type="password" id="signUpPw" name="password" minlength="8" placeholder="Password" required>
+=======
+	  <input type="text" id="signUpPw" name="password" placeholder="Password" required>
+>>>>>>> bd24dcba822ea4fd7dd9c49f8f3282c478fd6f35
 		<input  list="options" name="roleOptions" placeholder="Sign Up as" required>
 
 		<datalist id="options">
@@ -26,10 +30,16 @@
 <div class="form-container sign-in-container">
 	 <form>
 		<h2>Sign In Here</h2>
+<<<<<<< HEAD
 	<input  type="email" id="username" name="username" placeholder="Username"  required>
 	<input  type="password" id="password" name="password" placeholder="Password"  minlength="8" required>
 	<a href="managerLogin.php">Click Me: Manager Login Here!</a>
 	<button id="signInBtn">Sign In</button>
+=======
+	<input  type="email" id="username" name="username" placeholder="Username" required>
+	<input  type="text" id="password" name="password" placeholder="Password" >
+	<button>Sign In</button>
+>>>>>>> bd24dcba822ea4fd7dd9c49f8f3282c478fd6f35
 	</form>
 </div>
 <div class="overlay-container">
@@ -72,7 +82,32 @@
 		container.classList.remove("right-panel-active");
 	});
 
+<<<<<<< HEAD
 
+=======
+	// Sign In Validation
+	function signInBlankValidation(){
+		if(document.getElementById('username').value ==''){
+			alert("Username input cannot be blank");
+			document.getElementById('username').focus();
+		}
+
+		if(document.getElementById('password').value == ''){
+			alert("Password input cannnot be blank");
+			document.getElementById('password').focus();
+		}
+	}
+
+// 	function ValidateEmail(){
+// 		var email = document.getElementById('username').value;
+//  		if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email))
+//   {
+//     return (true)
+//   }
+//     alert("You have entered an invalid email address!")
+//     return (false)
+// }
+>>>>>>> bd24dcba822ea4fd7dd9c49f8f3282c478fd6f35
 
 </script>
 
