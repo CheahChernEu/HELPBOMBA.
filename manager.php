@@ -210,14 +210,14 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form>
+                <form name="staffForm" id="staffForm" action="manager.html">
                   <div class="form-group">
                     <label for="email" class="col-form-label">Username: @eg:123test@gmail.com</label>
                     <input type="email" class="form-control" id="username" placeholder="username" required>
                   </div>
                   <div class="form-group">
                     <label for="password" class="col-form-label">Password:</label>
-                    <input type="passsword" class="form-control" id="password" placeholder="password" required>
+                    <input type="password" id="password" class="form-control" minlength="8" placeholder="password" required>
                   </div>
                   <div class="form-group">
                     <label for="name" class="col-form-label">Name:</label>
@@ -238,7 +238,7 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button name="submit"type="button" class="btn btn-primary" onclick="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),emailValidation()">Submit</button>
+                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),validateEmail(),checkPasswordLen(),validatePhone()">Submit</button>
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -378,6 +378,12 @@
             },
             });
 
+            // Only allow today as the max date can be pick, and dsiable future date to be pick from.
+            var date = new Date().toISOString().slice(0,10);
+
+            //To restrict future date
+              $('#dateJoined').attr('max', date);
+
             function usernameBlankValidation(){
               if(document.getElementById('username').value == ''){
                 alert("Username input cannot be blank")
@@ -426,14 +432,53 @@
               }
             }
 
+            function checkPasswordLen()
+            {
+              var textLength = document.getElementById("password").value.length;
+
+              if( textLength<=8)
+              {
+                alert('Please enter correct password')
+                document.getElementById("password").focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+
+
+            function validateEmail(){
+
+              var email = document.getElementById("username").value;
+            var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if(email.match(pattern))
+            {
+              alert('Your Email address is valid')
+              document.getElementById("password").focus();
+              throw new Error("This is not an error. This is just to abort javascript.")
+            }
+            else
+            {
+              alert('Please enter correct address')
+              document.getElementById("username").focus();
+              throw new Error("This is not an error. This is just to abort javascript.")
+            }
+
+
+          }
+
+
+
             function phoneNumValidation(){
-                var words = /^[a-z]*$/i;
+                var words = /^[a-z]*$+/-i;
                 if(document.getElementById('phoneNo').value.match(words) ){
                     alert("Please fill in numbers input only in the phone number section @eg: 0189590899 without +,-")
                     document.getElementById('phoneNo').focus();
                     throw new Error("This is not an error. This is just to abort javascript.")
                 }
             }
+
+
 
 
             function positionValidation(){
@@ -444,18 +489,7 @@
               throw new Error("This is not an error. This is just to abort javascript.")
             }
 
-            function emailValidation()
-            {
-              var text = document.getElementById('Username').value;
 
-              var limits = /^([a-zA-z0-9\.-]+)@(a-zA-Z0-9-]+).([a-z]{2,8})(.[a-z]{2,8})?$/;
-              if(!limits.test(text))
-              {
-                alert('Invalid username, please reenter again!')
-                  document.getElementById('Username').focus();
-                  throw new Error("This is not an error. This is just to abort    javascript.")
-              }
-            }
 
             function validateDate(date)
             {
@@ -493,9 +527,8 @@
                     document.getElementById('dateJoined').focus();
                     throw new Error("This is not an error. This is just to abort javascript.")
                 }
-
-
             }
+
 
 
 
