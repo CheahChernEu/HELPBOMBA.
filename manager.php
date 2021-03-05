@@ -212,7 +212,7 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group">
-                    <label for="email" class="col-form-label">Username:</label>
+                    <label for="email" class="col-form-label">Username: @eg:123test@gmail.com</label>
                     <input type="email" class="form-control" id="username" placeholder="username" required>
                   </div>
                   <div class="form-group">
@@ -224,7 +224,7 @@
                     <input type="text" class="form-control" id="name" placeholder="name" required>
                   </div>
                   <div class="form-group">
-                    <label for="phoneNo" class="col-form-label">Phone Number:</label>
+                    <label for="phoneNo" class="col-form-label">Phone Number: @eg:0186657886</label>
                     <input type="tel" class="form-control" id="phoneNo" placeholder="phone number" required>
                   </div>
                   <div class="form-group">
@@ -233,12 +233,12 @@
                   </div>
                   <div class="form-group">
                     <label for="dateJoined" class="col-form-label">Date-Joined:</label>
-                    <input type="date" class="form-control" id="dateJoined" placeholder="date-joined" required>
+                    <input type="date" class="form-control" id="dateJoined" name="dateJoined" placeholder="date-joined" required>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button name="submit"type="button" class="btn btn-primary">Submit</button>
+                <button name="submit"type="button" class="btn btn-primary" onclick="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),emailValidation()">Submit</button>
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -377,6 +377,136 @@
                 prevEl: '.swiper-button-prev',
             },
             });
+
+            function usernameBlankValidation(){
+              if(document.getElementById('username').value == ''){
+                alert("Username input cannot be blank")
+                document.getElementById('username').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function passwordBlankValidation(){
+              if(document.getElementById('password').value == ''){
+                alert("Password input cannot be blank")
+                document.getElementById('password').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function nameBlankValidation(){
+              if(document.getElementById('name').value == ''){
+                alert("Name input cannot be blank")
+                document.getElementById('name').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function phoneNoBlankValidation(){
+              if(document.getElementById('phoneNo').value == ''){
+                alert("Phone Number input cannot be blank")
+                document.getElementById('phoneNo').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function positionBlankValidation(){
+              if(document.getElementById('position').value == ''){
+                alert("Position input cannot be blank")
+                document.getElementById('position').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function dateBlankValidation(){
+              if(document.getElementById('dateJoined').value == ''){
+                alert("Date Joined input cannot be blank")
+                document.getElementById('dateJoined').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function phoneNumValidation(){
+                var words = /^[a-z]*$/i;
+                if(document.getElementById('phoneNo').value.match(words) ){
+                    alert("Please fill in numbers input only in the phone number section @eg: 0189590899 without +,-")
+                    document.getElementById('phoneNo').focus();
+                    throw new Error("This is not an error. This is just to abort javascript.")
+                }
+            }
+
+
+            function positionValidation(){
+              var staff = 'staff'.toLowerCase();
+              if (!(document.getElementById('position').value.toLowerCase() === staff))
+              alert("Please just fill in position Staff only!")
+              document.getElementById('position').focus();
+              throw new Error("This is not an error. This is just to abort javascript.")
+            }
+
+            function emailValidation()
+            {
+              var text = document.getElementById('Username').value;
+
+              var limits = /^([a-zA-z0-9\.-]+)@(a-zA-Z0-9-]+).([a-z]{2,8})(.[a-z]{2,8})?$/;
+              if(!limits.test(text))
+              {
+                alert('Invalid username, please reenter again!')
+                  document.getElementById('Username').focus();
+                  throw new Error("This is not an error. This is just to abort    javascript.")
+              }
+            }
+
+            function validateDate(date)
+            {
+                // First check for the pattern
+                if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(date))
+                    return false;
+
+                // Parse the date parts to integers
+                var portions = date.split("/");
+                var day = parseInt(portions[0], 10);
+                var month = parseInt(portions[1], 10);
+                var year = parseInt(portions[2], 10);
+
+                // Check the ranges of month and year
+                if(year < 1000 || year > 3000 || month == 0 || month > 12)
+                    return false;
+
+                var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+                // Adjust for leap years
+                if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+                    monthLength[1] = 29;
+
+                // Check the range of the day
+                return day > 0 && day <= monthLength[month - 1];
+            };
+
+
+            function evalDate(){
+            // define date string to test
+              var JoinedDate = document.getElementById('dateJoined').value;
+            // check date and print message
+                if (!validateDate(JoinedDate)) {
+                    alert('Invalid date format');
+                    document.getElementById('dateJoined').focus();
+                    throw new Error("This is not an error. This is just to abort javascript.")
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
         </script>
     </body>
 </html>
