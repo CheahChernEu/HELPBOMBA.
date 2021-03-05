@@ -18,7 +18,7 @@ if($member != null )
           switch ($_SESSION['position']) {
             case 'manager':
             if($_SESSION['userID'] == 1){
-              echo "<script> window.location.assign('manager.php');</script>";
+              echo <script> window.location.assign('manager.php');</script>;
               break;
 
             case'staff':
@@ -34,15 +34,10 @@ if($member != null )
               echo <script> window.location.assign('homepage.php');</script>;
               break;
           }
-
-
-
-
-
-
-
-
-
+        }else{
+          header("Location:homepage.php?error=invalidlogin");
+          echo <script> window.location.assign('homepage.php');</script>;
+        }
 
 }
 

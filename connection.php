@@ -6,10 +6,10 @@
    $password = "";
    $dbname = "HELPBOMBA";
 
-   //Create fann_get_total_connections
+   //Create connection
    $conn = new mysqli($servername,$username,$password, $dbname);
 
-   //Check fann_get_total_connection
+   //Check connection
    if($conn->connect_error){
      die("Connection Failed:".$conn->connect_error);
    }
