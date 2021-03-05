@@ -15,13 +15,15 @@
 
 	  <input type="password" id="signUpPw" name="signUpPw" minlength="8" placeholder="Password" required>
 
+
 		<input list="options" name="roleOptions" placeholder="Sign Up as" required>
 
-		<datalist class="roleOptions">
+		<datalist id="options">
 				<option value="manager"></option>
 				<option value="staff"></option>
 				<option value="volunteer"></option>
 		</datalist>
+
 		<button id="signUpBtn">Sign Up</button>
 </form>
 </div>
