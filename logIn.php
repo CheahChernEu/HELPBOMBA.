@@ -26,14 +26,13 @@
 </form>
 </div>
 <div class="form-container sign-in-container">
-	 <form>
+	 <form action="signIn.php" method="post">
 	<h2>Sign In Here</h2>
 
 	<input  type="email" id="username" name="username" placeholder="Username"  required>
 	<input  type="password" id="password" name="password" placeholder="Password"  minlength="8" required>
 	<a href="managerLogin.php">Click Me: Manager Login Here!</a>
 	<button id="signInBtn">Sign In</button>
-
 
 	</form>
 </div>
