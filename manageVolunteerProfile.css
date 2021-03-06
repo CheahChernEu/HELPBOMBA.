@@ -104,7 +104,7 @@ p{
     width: 1000px;
     padding: 40px;
     padding-bottom: 100px;
-    background: lightgrey;
+    background: white;
     box-sizing: border-box;
     border-radius: 20px;
     border-style: solid;
@@ -130,7 +130,7 @@ p{
     font-size: 16px;
     color: #000000;
     margin-bottom: 30px;
-    border: 1px solid #ffffff;
+    border: 1px solid black;
     outline: none;
     background: transparent;
 }
@@ -183,6 +183,10 @@ p{
 
 .form input[type="radio"]{
     margin: 0 60px 0 0;
+}
+
+#Reset, #Submit{
+    border: 1px solid black;
 }
 
 #contact{
