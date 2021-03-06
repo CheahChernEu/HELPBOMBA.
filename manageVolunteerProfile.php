@@ -88,8 +88,8 @@
                 </div>
 
                 <div class="btn">
-                    <button type="reset" value="Reset">Reset</button>
-                    <button type="button" value="Submit" onclick="blankOldPwValidation(), blankNewPwValidation(), pwValidation(), nameValidation(), phoneValidation(), docTypeBlankValidation(), checkDate(), submitMessage()">Submit</button>
+                    <button type="reset" id="Reset" value="Reset">Reset</button>
+                    <button type="button" id="Submit" value="Submit" onclick="blankOldPwValidation(), blankNewPwValidation(), pwValidation(), nameValidation(), phoneValidation(), docTypeBlankValidation(), checkDate(), submitMessage()">Submit</button>
                 </div>
             </form>
             </div>
