@@ -19,13 +19,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto float-right text-right">
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="managevolunteerprofile.php">Manage Profile</a>
+                        <a class="nav-link ml-5" href="manageVolunteerProfile.php">Manage Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="applyfortrip.php">Apply For Trip</a>
+                        <a class="nav-link ml-5" href="applyForTrip.php">Apply For Trip</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="viewapplication.php">View Application</a>
+                        <a class="nav-link ml-5" href="viewApplicationStatus.php">View Application</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-5" href="homepage.php">Log Out</a>
