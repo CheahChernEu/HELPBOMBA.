@@ -6,15 +6,17 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
+<!-- sign up  -->
 <div class="bg">
   <div class="container" id="container">
   <div class="form-container sign-up-container">
   <form action="signUp.php" method="post">
   	<h2>Sign Up Credentials</h2>
-  	<input  type="email" id="signUpUsername" name="signUpUsername" placeholder="Username" required>
-
-	  <input type="password" id="signUpPw" name="signUpPw" minlength="8" placeholder="Password" required>
-
+  	<input  type="email" id="signUpUsername" name="signUpUsername" onkeyup="checkSignUpEmail(); return false;" placeholder="Username" required>
+		<div id="errorName"></div>
+	  <input type="password" id="signUpPw" name="signUpPw" minlength="8" onkeyup="checkPass(); return false;" placeholder="Password" required>
+		<div id="error"></div>
 
 		<input list="options" name="roleOptions" placeholder="Sign Up as" required>
 
@@ -27,17 +29,22 @@
 		<button id="signUpBtn">Sign Up</button>
 </form>
 </div>
+
+<!-- Sign In  -->
 <div class="form-container sign-in-container">
 	 <form action="signIn.php" method="post">
 	<h2>Sign In Here</h2>
-
-	<input  type="email" id="username" name="username" placeholder="Username"  required>
-	<input  type="password" id="password" name="password" placeholder="Password"  minlength="8" required>
+	<input  type="email" id="username" name="username" onkeyup="checkSignInEmail(); return false;" placeholder="Username"  required>
+	<div id="errorName"></div>
+	<input  type="password" id="password" name="password" placeholder="Password" onkeyup="checkPassword(); return false;" minlength="8" required>
+	<div id="error"></div>
 	<a href="managerLogin.php">Click Me: Manager Login Here!</a>
 	<button id="signInBtn">Sign In</button>
 
 	</form>
 </div>
+
+<!-- overlay-container -->
 <div class="overlay-container">
 	<div class="overlay">
 		<div class="overlay-panel overlay-left">
@@ -78,18 +85,96 @@
 		container.classList.remove("right-panel-active");
 	});
 
-	// Sign In Validation
-	function signInBlankValidation(){
-		if(document.getElementById('username').value ==''){
-			alert("Username input cannot be blank");
-			document.getElementById('username').focus();
-		}
+// validate sign up password
+	function checkPass()
+	{
+		var pass = document.getElementById('signUpPw');
+		var message = document.getElementById('error');
+		var goodColor = "#66cc66";
+		var badColor = "#ff6666";
 
-		if(document.getElementById('password').value == ''){
-			alert("Password input cannnot be blank");
-			document.getElementById('password').focus();
+		if(pass.value.length > 8)
+		{
+			pass.style.backgroundColor = goodColor;
+			message.style.color = goodColor;
+			message.innerHTML = "Good to proceed!"
+		}
+		else
+		{
+			pass.style.backgroundColor = badColor;
+			message.style.color = badColor;
+			message.innerHTML = " Please enter at least 8 characters!"
 		}
 	}
+
+// validate sign in password
+	function checkPassword()
+	{
+		var pass = document.getElementById('password');
+		var message = document.getElementById('error');
+		var goodColor = "#66cc66";
+		var badColor = "#ff6666";
+
+		if(pass.value.length > 8)
+		{
+			pass.style.backgroundColor = goodColor;
+			message.style.color = goodColor;
+			message.innerHTML = "Good to proceed!"
+		}
+		else
+		{
+			pass.style.backgroundColor = badColor;
+			message.style.color = badColor;
+			message.innerHTML = " Please enter at least 8 characters!"
+		}
+	}
+
+// validate sign in email
+	function checkSignInEmail()
+	{
+		var email = document.getElementById('username');
+		var message = document.getElementById('errorName');
+		var goodColor = "#66cc66";
+		var badColor = "#ff6666";
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+		if(email.value.match(filter))
+		{
+			email.style.backgroundColor = goodColor;
+
+			message.style.color = goodColor;
+			message.innerHTML = "Email is valid, please proceed!"
+		}
+		else
+		{
+			email.style.backgroundColor = badColor;
+			message.style.color = badColor;
+			message.innerHTML = " Please enter valid email address!"
+		}
+}
+
+// validate sign up email
+function checkSignUpEmail()
+{
+	var email = document.getElementById('signUpUsername');
+	var message = document.getElementById('errorName');
+	var goodColor = "#66cc66";
+	var badColor = "#ff6666";
+	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+	if(email.value.match(filter))
+	{
+		email.style.backgroundColor = goodColor;
+		message.style.color = goodColor;
+		message.innerHTML = "Email is valid, please proceed!"
+	}
+	else
+	{
+		email.style.backgroundColor = badColor;
+		message.style.color = badColor;
+		message.innerHTML = " Please enter valid email address!"
+	}
+}
 
 
 

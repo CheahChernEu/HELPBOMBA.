@@ -214,11 +214,13 @@
                 <form name="staffForm" id="staffForm" action="manager.html">
                   <div class="form-group">
                     <label for="email" class="col-form-label">Username: @eg:123test@gmail.com</label>
-                    <input type="email" class="form-control" id="username" placeholder="username" required>
+                    <input type="email" class="form-control" id="username" onkeyup="checkEmail(); return false;" placeholder="username" required>
+                    <div id="errorName"></div>
                   </div>
                   <div class="form-group">
                     <label for="password" class="col-form-label">Password:</label>
-                    <input type="password" id="password" class="form-control" minlength="8" placeholder="password" required>
+                    <input type="password" id="password" class="form-control" onkeyup="checkPass(); return false;"  minlength="8" placeholder="password" required>
+                    <div id="error"></div>
                   </div>
                   <div class="form-group">
                     <label for="name" class="col-form-label">Name:</label>
@@ -240,7 +242,7 @@
               </div>
               <div class="modal-footer">
 
-                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),validateEmail(),checkPasswordLen(),validatePhone(),checkEmail()">Submit</button>
+                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),,validatePhone(),checkEmail(),ValidateEmail()">Submit</button>
 
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
@@ -393,39 +395,47 @@
               }
             }
 
-            function checkPasswordLen()
+            function checkPass()
             {
-              var textLength = document.getElementById("password").value.length;
+              var pass = document.getElementById('password');
+              var message = document.getElementById('error');
+              var goodColor = "#66cc66";
+              var badColor = "#ff6666";
 
-              if( textLength<=8)
+              if(pass.value.length > 8)
               {
-                alert('Please enter correct password')
-                document.getElementById("password").focus();
-                throw new Error("This is not an error. This is just to abort javascript.")
+                pass.style.backgroundColor = goodColor;
+                message.style.color = goodColor;
+                message.innerHTML = "Good to proceed!"
+              }
+              else
+              {
+                pass.style.backgroundColor = badColor;
+                message.style.color = badColor;
+                message.innerHTML = " Please enter at least 8 characters!"
               }
             }
 
-
-
-            function validateEmail(){
-
-              var email = document.getElementById("username").value;
-            var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-            if(email.match(pattern))
+            function checkEmail()
             {
-              alert('Your Email address is valid')
-              document.getElementById("password").focus();
-              throw new Error("This is not an error. This is just to abort javascript.")
-            }
-            else
-            {
-              alert('Please enter correct address')
-              document.getElementById("username").focus();
-              throw new Error("This is not an error. This is just to abort javascript.")
-            }
+              var email = document.getElementById('username');
+              var message = document.getElementById('errorName');
+              var goodColor = "#66cc66";
+              var badColor = "#ff6666";
+              var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-
+              if(email.value.match(filter))
+              {
+                email.style.backgroundColor = goodColor;
+                message.style.color = goodColor;
+                message.innerHTML = "Email is valid, please proceed!"
+              }
+              else
+              {
+                email.style.backgroundColor = badColor;
+                message.style.color = badColor;
+                message.innerHTML = " Please enter valid email address!"
+              }
           }
 
 
@@ -440,8 +450,6 @@
             }
 
 
-
-
             function positionValidation(){
               var staff = 'staff'.toLowerCase();
               if (!(document.getElementById('position').value.toLowerCase() === staff))
@@ -449,17 +457,6 @@
               document.getElementById('position').focus();
               throw new Error("This is not an error. This is just to abort javascript.")
             }
-
-            function checkEmail() {
-                var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-                if (!filter.test( document.getElementById('username').value)) {
-                  alert('Please provide a valid email address')
-                  email.focus;
-                  throw new Error("This is not an error. This is just to abort javascript.")
-              }
-            }
-
 
             function validateDate(date)
             {
@@ -498,17 +495,6 @@
                     throw new Error("This is not an error. This is just to abort javascript.")
                 }
             }
-
-
-
-
-
-
-
-
-
-
-
 
         </script>
     </body>
