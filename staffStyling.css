@@ -357,3 +357,7 @@ p{
     position: relative;
 
 }
+
+.modal-dialog {
+          min-width: 900px;
+}

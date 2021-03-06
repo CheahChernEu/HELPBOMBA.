@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ManagerHomepage</title>
+        <title>Manager Homepage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-        <link rel="stylesheet" type="text/css" href="managerstyling.css">
+        <link rel="stylesheet" type="text/css" href="staffStyling.css">
     </head>
     <body>
         <header>
@@ -242,77 +242,30 @@
 
                 <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),validateEmail(),checkPasswordLen(),validatePhone()">Submit</button>
 
-                <button name="submit"type="button" class="btn btn-primary">Submit</button>
-
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
 
-<!-- modal for manage application -->
-        <div class="modal fade" id="manageModal" tabindex="-1" role="dialog" aria-labelledby="manageModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-xl" role="document" >
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="manageModalLabel">Manage Crisis Trip Application</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-
-                  <div class="tableList">
-                    <table>
-                      <tr>
-                        <th>Trip ID</th>
-                        <th>Trip Type</th>
-                        <th>Trip Date</th>
-                        <th>Trip Location</th>
-                        <th>Skill Requirement(s)</th>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <th>Tsunami</th>
-                        <th>2/4/2021</th>
-                        <th>Australia</th>
-                        <th>Bomba certifications</th>
-                      </tr>
-                    </table>
-                  </div>
-                  <div class="">
-                    <p class="d-flex justify-content-center align-items-center">
-                      <span class="me-3" style="color: black; font-size: 12px;font-weight:bold;">Please fill in the Trip ID that you want! </span>
-                      <input type="integers" name="tripID">
-                    </p>
-                  </div>
-
-              </div>
-              <div class="modal-footer">
-                <button name="submit" type="button" class="btn btn-primary">Submit</button>
-                <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <section id="features" class="text-center text-white">
           <div class="container p-4 pb-0">
-          <h2>Organize Trip / Manage Application</h2>
+          <h2>Record New Staff</h2>
       <!-- Section: CTA -->
           <section class="">
             <p class="d-flex justify-content-center align-items-center">
-              <span class="me-3" style="color: black; font-size: 28px;font-weight:bold;">Create Trip : </span>
-              <button type="button" id="btnOrganize" class="btn btn-outline-light btn-rounded" data-toggle="modal" data-target="#organizeModal">Create Trip Here!</button>
-            </p>
-            <p class="d-flex justify-content-center align-items-center">
-              <span class="me-3" style="color: black; font-size: 28px;font-weight:bold;">Manage Application : </span>
-              <button type="button" id="btnManage" class="btn btn-outline-dark btn-rounded" data-toggle="modal" data-target="#manageModal">Manage Application Here!</button>
+              <span class="me-3" style="color: black; font-size: 28px;font-weight:bold;">Record New Staff : </span>
+              <button type="button" id="btnRecord" class="btn btn-outline-light btn-rounded" data-toggle="modal" data-target="#recordModal">Record Staff Here!</button>
             </p>
           </section>
       <!-- Section: CTA -->
           </div>
         </section>
+
+
+
+
 
         <section id=contact>
           <footer class="py-5">
@@ -392,151 +345,151 @@
             //To restrict future date
               $('#dateJoined').attr('max', date);
 
-          //   function usernameBlankValidation(){
-          //     if(document.getElementById('username').value == ''){
-          //       alert("Username input cannot be blank")
-          //       document.getElementById('username').focus();
-          //       throw new Error("This is not an error. This is just to abort javascript.")
-          //     }
-          //   }
-          //
-          //   function passwordBlankValidation(){
-          //     if(document.getElementById('password').value == ''){
-          //       alert("Password input cannot be blank")
-          //       document.getElementById('password').focus();
-          //       throw new Error("This is not an error. This is just to abort javascript.")
-          //     }
-          //   }
-          //
-          //   function nameBlankValidation(){
-          //     if(document.getElementById('name').value == ''){
-          //       alert("Name input cannot be blank")
-          //       document.getElementById('name').focus();
-          //       throw new Error("This is not an error. This is just to abort javascript.")
-          //     }
-          //   }
-          //
-          //   function phoneNoBlankValidation(){
-          //     if(document.getElementById('phoneNo').value == ''){
-          //       alert("Phone Number input cannot be blank")
-          //       document.getElementById('phoneNo').focus();
-          //       throw new Error("This is not an error. This is just to abort javascript.")
-          //     }
-          //   }
-          //
-          //   function positionBlankValidation(){
-          //     if(document.getElementById('position').value == ''){
-          //       alert("Position input cannot be blank")
-          //       document.getElementById('position').focus();
-          //       throw new Error("This is not an error. This is just to abort javascript.")
-          //     }
-          //   }
-          //
-          //   function dateBlankValidation(){
-          //     if(document.getElementById('dateJoined').value == ''){
-          //       alert("Date Joined input cannot be blank")
-          //       document.getElementById('dateJoined').focus();
-          //       throw new Error("This is not an error. This is just to abort javascript.")
-          //     }
-          //   }
-          //
-          //   function checkPasswordLen()
-          //   {
-          //     var textLength = document.getElementById("password").value.length;
-          //
-          //     if( textLength<=8)
-          //     {
-          //       alert('Please enter correct password')
-          //       document.getElementById("password").focus();
-          //       throw new Error("This is not an error. This is just to abort javascript.")
-          //     }
-          //   }
-          //
-          //
-          //
-          //   function validateEmail(){
-          //
-          //     var email = document.getElementById("username").value;
-          //   var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-          //
-          //   if(email.match(pattern))
-          //   {
-          //     alert('Your Email address is valid')
-          //     document.getElementById("password").focus();
-          //     throw new Error("This is not an error. This is just to abort javascript.")
-          //   }
-          //   else
-          //   {
-          //     alert('Please enter correct address')
-          //     document.getElementById("username").focus();
-          //     throw new Error("This is not an error. This is just to abort javascript.")
-          //   }
-          //
-          //
-          // }
-          //
-          //
-          //
-          //   function phoneNumValidation(){
-          //       var words = /^[a-z]*$+/-i;
-          //       if(document.getElementById('phoneNo').value.match(words) ){
-          //           alert("Please fill in numbers input only in the phone number section @eg: 0189590899 without +,-")
-          //           document.getElementById('phoneNo').focus();
-          //           throw new Error("This is not an error. This is just to abort javascript.")
-          //       }
-          //   }
-          //
-          //
-          //
-          //
-          //   function positionValidation(){
-          //     var staff = 'staff'.toLowerCase();
-          //     if (!(document.getElementById('position').value.toLowerCase() === staff))
-          //     alert("Please just fill in position Staff only!")
-          //     document.getElementById('position').focus();
-          //     throw new Error("This is not an error. This is just to abort javascript.")
-          //   }
-          //
-          //
-          //
-          //   function validateDate(date)
-          //   {
-          //       // First check for the pattern
-          //       if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(date))
-          //           return false;
-          //
-          //       // Parse the date parts to integers
-          //       var portions = date.split("/");
-          //       var day = parseInt(portions[0], 10);
-          //       var month = parseInt(portions[1], 10);
-          //       var year = parseInt(portions[2], 10);
-          //
-          //       // Check the ranges of month and year
-          //       if(year < 1000 || year > 3000 || month == 0 || month > 12)
-          //           return false;
-          //
-          //       var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-          //
-          //       // Adjust for leap years
-          //       if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
-          //           monthLength[1] = 29;
-          //
-          //       // Check the range of the day
-          //       return day > 0 && day <= monthLength[month - 1];
-          //   };
-          //
-          //
-          //   function evalDate(){
-          //   // define date string to test
-          //     var JoinedDate = document.getElementById('dateJoined').value;
-          //   // check date and print message
-          //       if (!validateDate(JoinedDate)) {
-          //           alert('Invalid date format');
-          //           document.getElementById('dateJoined').focus();
-          //           throw new Error("This is not an error. This is just to abort javascript.")
-          //       }
-          //   }
-          //
+            function usernameBlankValidation(){
+              if(document.getElementById('username').value == ''){
+                alert("Username input cannot be blank")
+                document.getElementById('username').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function passwordBlankValidation(){
+              if(document.getElementById('password').value == ''){
+                alert("Password input cannot be blank")
+                document.getElementById('password').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function nameBlankValidation(){
+              if(document.getElementById('name').value == ''){
+                alert("Name input cannot be blank")
+                document.getElementById('name').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function phoneNoBlankValidation(){
+              if(document.getElementById('phoneNo').value == ''){
+                alert("Phone Number input cannot be blank")
+                document.getElementById('phoneNo').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function positionBlankValidation(){
+              if(document.getElementById('position').value == ''){
+                alert("Position input cannot be blank")
+                document.getElementById('position').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function dateBlankValidation(){
+              if(document.getElementById('dateJoined').value == ''){
+                alert("Date Joined input cannot be blank")
+                document.getElementById('dateJoined').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+            function checkPasswordLen()
+            {
+              var textLength = document.getElementById("password").value.length;
+
+              if( textLength<=8)
+              {
+                alert('Please enter correct password')
+                document.getElementById("password").focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
+
+
+
+            function validateEmail(){
+
+              var email = document.getElementById("username").value;
+            var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if(email.match(pattern))
+            {
+              alert('Your Email address is valid')
+              document.getElementById("password").focus();
+              throw new Error("This is not an error. This is just to abort javascript.")
+            }
+            else
+            {
+              alert('Please enter correct address')
+              document.getElementById("username").focus();
+              throw new Error("This is not an error. This is just to abort javascript.")
+            }
+
+
+          }
+
+
+
+            function phoneNumValidation(){
+                var words = /^[a-z]*$+/-i;
+                if(document.getElementById('phoneNo').value.match(words) ){
+                    alert("Please fill in numbers input only in the phone number section @eg: 0189590899 without +,-")
+                    document.getElementById('phoneNo').focus();
+                    throw new Error("This is not an error. This is just to abort javascript.")
+                }
+            }
+
+
+
+
+            function positionValidation(){
+              var staff = 'staff'.toLowerCase();
+              if (!(document.getElementById('position').value.toLowerCase() === staff))
+              alert("Please just fill in position Staff only!")
+              document.getElementById('position').focus();
+              throw new Error("This is not an error. This is just to abort javascript.")
+            }
+
+
+
+            function validateDate(date)
+            {
+                // First check for the pattern
+                if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(date))
+                    return false;
+
+                // Parse the date parts to integers
+                var portions = date.split("/");
+                var day = parseInt(portions[0], 10);
+                var month = parseInt(portions[1], 10);
+                var year = parseInt(portions[2], 10);
+
+                // Check the ranges of month and year
+                if(year < 1000 || year > 3000 || month == 0 || month > 12)
+                    return false;
+
+                var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+                // Adjust for leap years
+                if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+                    monthLength[1] = 29;
+
+                // Check the range of the day
+                return day > 0 && day <= monthLength[month - 1];
+            };
+
+
+            function evalDate(){
+            // define date string to test
+              var JoinedDate = document.getElementById('dateJoined').value;
+            // check date and print message
+                if (!validateDate(JoinedDate)) {
+                    alert('Invalid date format');
+                    document.getElementById('dateJoined').focus();
+                    throw new Error("This is not an error. This is just to abort javascript.")
+                }
+            }
+
 
 
 
