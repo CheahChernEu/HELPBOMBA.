@@ -11,7 +11,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light py-3 fixed-top bg">
                 <div class="container">
-                <a class="navbar-brand" href="homepage.html">CRS.ORG</a>
+                <a class="navbar-brand" href="homepage.php">CRS.ORG</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars text-light" aria-hidden="true"></i>
                 </button>
@@ -19,16 +19,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto float-right text-right">
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="managevolunteerprofile.html">Manage Profile</a>
+                        <a class="nav-link ml-5" href="managevolunteerprofile.php">Manage Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="applyForTrip.html">Apply For Trip</a>
+                        <a class="nav-link ml-5" href="applyForTrip.php">Apply For Trip</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="viewapplication.html">View Application</a>
+                        <a class="nav-link ml-5" href="viewapplication.php">View Application</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="homepage.html">Log Out</a>
+                        <a class="nav-link ml-5" href="homepage.php">Log Out</a>
                     </li>
                   </ul>
                 </div>
