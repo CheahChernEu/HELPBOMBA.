@@ -211,21 +211,97 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form name="staffForm" id="staffForm" action="manager.html">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th id="tripID" scope="col">Trip ID</th>
+                        <th scope="col">Trip Date</th>
+                        <th scope="col">Trip Type</th>
+                        <th scope="col">Skills <br> Requirements </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>5/8/2021</td>
+                        <td>Tsunami</td>
+                        <td>swimming</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>15/4/2021</td>
+                        <td>Landslide</td>
+                        <td>emergency rescue skills</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>29/6/2021</td>
+                        <td>wildfire</td>
+                        <td>Firefighter rescue skills</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p class="d-flex justify-content-center align-items-center">
+                    <span class="me-3" style="color: black; font-size: 20px;font-weight:bold;"> Please enter Trip ID : </span>
+                    <input type="number" name="tripInput" id="tripInput" min="1" required style="margin-left:20px;">
+                  </p>
+                </div>
+                <div class="modal-footer">
 
+                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit" data-toggle="modal" data-target="#updateModal"  data-dismiss="modal" onsubmit="inputTripBlankValidation()">Submit</button>
 
-
-                </form>
-              </div>
-              <div class="modal-footer">
-
-                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="">Submit</button>
-
-                <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button name="close" type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- update status and remakrs -->
+                <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+                  <div class="modal-dialog " role="document" >
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Update Status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Document ID</th>
+                                <th scope="col">Certificate Expiry Date</th>
+                                <th scope="col">Passport Expory Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Document Files </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>2/4/2021</td>
+                                <td>4/8/2021</td>
+                                <td>New</td>
+                                <td>files</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <p class="d-flex justify-content-center align-items-center">
+                            <span class="me-3" style="color: black; font-size: 20px;font-weight:bold;"> Update Status (rejected/accepted) : </span>
+                            <input type="text" name="updateStatus" id="updateStatus" style="margin-left:20px;">
+                          </p>
+                        </div>
+
+                        <div class="modal-footer">
+
+                        <button name="update" id="update" type="button" class="btn btn-primary" value="update" onclick="checkStatus()">Update</button>
+
+                        <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
 <!-- organize trip -->
         <div class="modal fade" id="organizeModal" tabindex="-1" role="dialog" aria-labelledby="organizeModalLabel" aria-hidden="true">
@@ -249,7 +325,7 @@
                   </div>
                   <div class="form-group">
                     <label for="description" class="col-form-label">Description :</label>
-                    <textarea type="text" class="form-control" id="name" placeholder="description" required rows="8" cols="80"></textarea>
+                    <textarea type="text" class="form-control" id="description" placeholder="description" required rows="8" cols="80"></textarea>
                   </div>
                   <div class="form-group">
                     <label for="cType" class="col-form-label">Crisis Type:</label>
@@ -257,13 +333,13 @@
                   </div>
                   <div class="form-group">
                     <label for="numVolunteers" class="col-form-label">Amount Volunteer Required :</label>
-                    <input type="text" class="form-control" id="numVolunteers" placeholder="numVolunteers" required>
+                    <input type="number" class="form-control" id="numVolunteers" placeholder="numVolunteers" min="1" required>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
 
-                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="">Submit</button>
+                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onclick=" tDateValidation(),locationBlankValidation(),descBlankValidation(),cTypeBlankValidation(),numVBlankValidation(), numVGreater1()">Submit</button>
 
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
@@ -371,161 +447,78 @@
             var date = new Date().toISOString().slice(0,10);
 
             //To restrict future date
-              $('#dateJoined').attr('max', date);
+              $('#tripDate').attr('min', date);
 
-            function usernameBlankValidation(){
-              if(document.getElementById('username').value == ''){
-                alert("Username input cannot be blank")
-                document.getElementById('username').focus();
+            function tDateValidation(){
+              if(document.getElementById('tripDate').value == ''){
+                alert("Trip Date input cannot be blank")
+                document.getElementById('tripDate').focus();
                 throw new Error("This is not an error. This is just to abort javascript.")
               }
             }
 
-            function passwordBlankValidation(){
-              if(document.getElementById('password').value == ''){
-                alert("Password input cannot be blank")
-                document.getElementById('password').focus();
+            function locationBlankValidation(){
+              if(document.getElementById('location').value == ''){
+                alert("Location input cannot be blank")
+                document.getElementById('location').focus();
                 throw new Error("This is not an error. This is just to abort javascript.")
               }
             }
 
-            function nameBlankValidation(){
-              if(document.getElementById('name').value == ''){
-                alert("Name input cannot be blank")
-                document.getElementById('name').focus();
+            function descBlankValidation(){
+              if(document.getElementById('description').value == ''){
+                alert("Description input cannot be blank")
+                document.getElementById('description').focus();
                 throw new Error("This is not an error. This is just to abort javascript.")
               }
             }
 
-            function phoneNoBlankValidation(){
-              if(document.getElementById('phoneNo').value == ''){
-                alert("Phone Number input cannot be blank")
-                document.getElementById('phoneNo').focus();
+            function cTypeBlankValidation(){
+              if(document.getElementById('cType').value == ''){
+                alert("Crisis Trip input cannot be blank")
+                document.getElementById('cType').focus();
                 throw new Error("This is not an error. This is just to abort javascript.")
               }
             }
 
-            function positionBlankValidation(){
-              if(document.getElementById('position').value == ''){
-                alert("Position input cannot be blank")
-                document.getElementById('position').focus();
+            function numVBlankValidation(){
+              if(document.getElementById('numVolunteers').value == ''){
+                alert("Number of volunteers required input cannot be blank")
+                document.getElementById('numVolunteers').focus();
                 throw new Error("This is not an error. This is just to abort javascript.")
               }
             }
 
-            function dateBlankValidation(){
-              if(document.getElementById('dateJoined').value == ''){
-                alert("Date Joined input cannot be blank")
-                document.getElementById('dateJoined').focus();
+            function numVGreater1(){
+              if(document.getElementById('numVolunteers').value < 1){
+                alert("Number of volunteers required cannot be less than 1")
+                document.getElementById('numVolunteers').focus();
                 throw new Error("This is not an error. This is just to abort javascript.")
               }
             }
 
-            function checkPasswordLen()
-            {
-              var textLength = document.getElementById("password").value.length;
-
-              if( textLength<=8)
-              {
-                alert('Please enter correct password')
-                document.getElementById("password").focus();
+            // trip input validation
+            function inputTripBlankValidation(){
+              if(document.getElementById('tripInput').value == ''){
+                alert("Please enter the trip ID otherwise Please click close to exit")
+                document.getElementById('tripInput').focus();
                 throw new Error("This is not an error. This is just to abort javascript.")
               }
             }
 
 
 
-            function validateEmail(){
+            function checkStatus(){
 
-              var email = document.getElementById("username").value;
-            var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-            if(email.match(pattern))
-            {
-              alert('Your Email address is valid')
-              document.getElementById("password").focus();
-              throw new Error("This is not an error. This is just to abort javascript.")
+              var result = document.getElementById('updateStatus').value.toLowerCase();
+              var reject = "rejected";
+              var accept = "accepted";
+              if(!(result === reject || result === accept)){
+                alert("Please enter the status correctly")
+                document.getElementById('updateStatus').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+              }
             }
-            else
-            {
-              alert('Please enter correct address')
-              document.getElementById("username").focus();
-              throw new Error("This is not an error. This is just to abort javascript.")
-            }
-
-
-          }
-
-
-
-            function phoneNumValidation(){
-                var words = /^[a-z]*$+/-i;
-                if(document.getElementById('phoneNo').value.match(words) ){
-                    alert("Please fill in numbers input only in the phone number section @eg: 0189590899 without +,-")
-                    document.getElementById('phoneNo').focus();
-                    throw new Error("This is not an error. This is just to abort javascript.")
-                }
-            }
-
-
-
-
-            function positionValidation(){
-              var staff = 'staff'.toLowerCase();
-              if (!(document.getElementById('position').value.toLowerCase() === staff))
-              alert("Please just fill in position Staff only!")
-              document.getElementById('position').focus();
-              throw new Error("This is not an error. This is just to abort javascript.")
-            }
-
-
-
-            function validateDate(date)
-            {
-                // First check for the pattern
-                if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(date))
-                    return false;
-
-                // Parse the date parts to integers
-                var portions = date.split("/");
-                var day = parseInt(portions[0], 10);
-                var month = parseInt(portions[1], 10);
-                var year = parseInt(portions[2], 10);
-
-                // Check the ranges of month and year
-                if(year < 1000 || year > 3000 || month == 0 || month > 12)
-                    return false;
-
-                var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-
-                // Adjust for leap years
-                if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
-                    monthLength[1] = 29;
-
-                // Check the range of the day
-                return day > 0 && day <= monthLength[month - 1];
-            };
-
-
-            function evalDate(){
-            // define date string to test
-              var JoinedDate = document.getElementById('dateJoined').value;
-            // check date and print message
-                if (!validateDate(JoinedDate)) {
-                    alert('Invalid date format');
-                    document.getElementById('dateJoined').focus();
-                    throw new Error("This is not an error. This is just to abort javascript.")
-                }
-            }
-
-
-
-
-
-
-
-
-
 
 
 

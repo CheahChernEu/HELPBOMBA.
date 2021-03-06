@@ -298,6 +298,10 @@ p{
   border-color: purple;
 }
 
+#organizeModal textarea{
+  border-color: purple;
+}
+
 #organizeModal button{
   color: purple;
   border-color: red;
@@ -317,6 +321,12 @@ p{
   border-width: thick;
   margin-left: 40px;
   background-color: white;
+}
+
+#btnManage:hover{
+  color: black;
+  background-color: pink;
+  border-color: red;
 }
 
 #manageModal {
@@ -360,5 +370,5 @@ p{
 
 /* adjust the modal width */
 .modal-dialog {
-          min-width: 600px;
+        min-width: 750px;
 }

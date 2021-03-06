@@ -240,7 +240,7 @@
               </div>
               <div class="modal-footer">
 
-                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),validateEmail(),checkPasswordLen(),validatePhone()">Submit</button>
+                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),validateEmail(),checkPasswordLen(),validatePhone(),checkEmail()">Submit</button>
 
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
@@ -450,6 +450,15 @@
               throw new Error("This is not an error. This is just to abort javascript.")
             }
 
+            function checkEmail() {
+                var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+                if (!filter.test( document.getElementById('username').value)) {
+                  alert('Please provide a valid email address')
+                  email.focus;
+                  throw new Error("This is not an error. This is just to abort javascript.")
+              }
+            }
 
 
             function validateDate(date)
@@ -484,7 +493,7 @@
               var JoinedDate = document.getElementById('dateJoined').value;
             // check date and print message
                 if (!validateDate(JoinedDate)) {
-                    alert('Invalid date format');
+                    alert('Invalid date format')
                     document.getElementById('dateJoined').focus();
                     throw new Error("This is not an error. This is just to abort javascript.")
                 }
