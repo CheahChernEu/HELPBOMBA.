@@ -212,11 +212,14 @@
               </div>
               <div class="modal-body">
                 <form name="staffForm" id="staffForm" action="manager.html">
+
+
+
                 </form>
               </div>
               <div class="modal-footer">
 
-                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),validateEmail(),checkPasswordLen(),validatePhone()">Submit</button>
+                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="">Submit</button>
 
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
@@ -260,7 +263,7 @@
               </div>
               <div class="modal-footer">
 
-                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),validateEmail(),checkPasswordLen(),validatePhone()">Submit</button>
+                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="">Submit</button>
 
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
@@ -280,7 +283,7 @@
               <button type="button" id="btnOrganize" class="btn btn-outline-light btn-rounded" data-toggle="modal" data-target="#organizeModal">Organize Trip Here!</button>
             </p>
             <p class="d-flex justify-content-center align-items-center">
-              <span class="me-3" style="color: black; font-size: 26px;font-weight:bold;">Manage Application :  </span>
+              <span class="me-3" style="color: black; font-size: 26px;font-weight:bold; padding-bottom:20px;">Manage Application :  </span>
               <button type="button" id="btnManage" class="btn btn-outline-light btn-rounded" data-toggle="modal" data-target="#manageModal">Manage Trip Application Here!</button>
             </p>
           </section>
