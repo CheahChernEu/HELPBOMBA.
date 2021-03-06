@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Manager Homepage</title>
+        <title>Staff Homepage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-        <link rel="stylesheet" type="text/css" href="staffStyling.css">
+        <link rel="stylesheet" type="text/css" href="staffCSS.css">
     </head>
     <body>
         <header>
@@ -200,41 +200,61 @@
         </section>
 
 
-
-        <div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="recordModalLabel" aria-hidden="true">
+<!-- manage trip application -->
+        <div class="modal fade" id="manageModal" tabindex="-1" role="dialog" aria-labelledby="manageModalLabel" aria-hidden="true">
           <div class="modal-dialog " role="document" >
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="recordModalLabel">Record New Staff</h5>
+                <h5 class="modal-title" id="manageModalLabel">Manage Trip Application </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 <form name="staffForm" id="staffForm" action="manager.html">
+                </form>
+              </div>
+              <div class="modal-footer">
+
+                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),validateEmail(),checkPasswordLen(),validatePhone()">Submit</button>
+
+                <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!-- organize trip -->
+        <div class="modal fade" id="organizeModal" tabindex="-1" role="dialog" aria-labelledby="organizeModalLabel" aria-hidden="true">
+          <div class="modal-dialog " role="document" >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="organizeModalLabel">Create New Crisis Trip</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form name="tripForm" id="tripForm" action="manager.html" method="POST">
                   <div class="form-group">
-                    <label for="email" class="col-form-label">Username: @eg:123test@gmail.com</label>
-                    <input type="email" class="form-control" id="username" placeholder="username" required>
+                    <label for="tripDate" class="col-form-label">Trip Date :</label>
+                    <input type="date" class="form-control" id="tripDate" placeholder="trip date" required>
                   </div>
                   <div class="form-group">
-                    <label for="password" class="col-form-label">Password:</label>
-                    <input type="password" id="password" class="form-control" minlength="8" placeholder="password" required>
+                    <label for="location" class="col-form-label">Location :</label>
+                    <input type="text" id="location" class="form-control" placeholder="location" required>
                   </div>
                   <div class="form-group">
-                    <label for="name" class="col-form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" placeholder="name" required>
+                    <label for="description" class="col-form-label">Description :</label>
+                    <textarea type="text" class="form-control" id="name" placeholder="description" required rows="8" cols="80"></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="phoneNo" class="col-form-label">Phone Number: @eg:0186657886</label>
-                    <input type="tel" class="form-control" id="phoneNo" placeholder="phone number" required>
+                    <label for="cType" class="col-form-label">Crisis Type:</label>
+                    <input type="text" class="form-control" id="cType" placeholder="crisis type" required>
                   </div>
                   <div class="form-group">
-                    <label for="position" class="col-form-label">Position:</label>
-                    <input type="text" class="form-control" id="position" placeholder="position" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="dateJoined" class="col-form-label">Date-Joined:</label>
-                    <input type="date" class="form-control" id="dateJoined" name="dateJoined" placeholder="date-joined" required>
+                    <label for="numVolunteers" class="col-form-label">Amount Volunteer Required :</label>
+                    <input type="text" class="form-control" id="numVolunteers" placeholder="numVolunteers" required>
                   </div>
                 </form>
               </div>
@@ -251,12 +271,17 @@
 
         <section id="features" class="text-center text-white">
           <div class="container p-4 pb-0">
-          <h2>Record New Staff</h2>
+          <h2>Create Trip / Manage Trip Application</h2>
       <!-- Section: CTA -->
           <section class="">
+
             <p class="d-flex justify-content-center align-items-center">
-              <span class="me-3" style="color: black; font-size: 28px;font-weight:bold;">Record New Staff : </span>
-              <button type="button" id="btnRecord" class="btn btn-outline-light btn-rounded" data-toggle="modal" data-target="#recordModal">Record Staff Here!</button>
+              <span class="me-3" style="color: black; font-size: 26px;font-weight:bold;">Organize Trip : </span>
+              <button type="button" id="btnOrganize" class="btn btn-outline-light btn-rounded" data-toggle="modal" data-target="#organizeModal">Organize Trip Here!</button>
+            </p>
+            <p class="d-flex justify-content-center align-items-center">
+              <span class="me-3" style="color: black; font-size: 26px;font-weight:bold;">Manage Application :  </span>
+              <button type="button" id="btnManage" class="btn btn-outline-light btn-rounded" data-toggle="modal" data-target="#manageModal">Manage Trip Application Here!</button>
             </p>
           </section>
       <!-- Section: CTA -->
