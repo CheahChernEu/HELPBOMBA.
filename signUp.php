@@ -11,6 +11,7 @@ $insert = mysqli_query($conn,$sql);
 if(!$insert){
   echo"ERROR";
 }else{
-  header("Location: E:\SEP\Xampp\htdocs\SEP assignment 2 - latest");
+  header("Location:homepage.php?error=invalidSignUp");
+  echo <script> window.location.assign('homepage.php');</script>;
 }
  ?>

@@ -8,7 +8,7 @@ function userLogin(){
 
 $member = db_search($sql);
 
-if($member != null )
+if($member != null ){
 
           $_SESSION['userID'] = $member->userID;
           $_SESSION['username'] = $member->username;
@@ -17,26 +17,27 @@ if($member != null )
 
           switch ($_SESSION['position']) {
             case 'manager':
-            if($_SESSION['userID'] == 1){
-              echo <script> window.location.assign('manager.php');</script>;
+            if($_SESSION['userID'] == $_POST['userID']){
+
+              echo "<script type='text/javascript'> window.location.assign('manager.php');</script>";
+              break;
+            }
+            case 'staff':
+              echo "<script type='text/javascript'> location.assign('staff.php')</script>";
               break;
 
-            case'staff':
-            echo <script> window.location.assign('staff.php');</script>;
-            break;
-
-            case'volunteer':
-            echo <script> window.location.assign('manageVolunteerProfile.php');</script>;
-            break;
+            case 'volunteer':
+              echo "<script type='text/javascript'> location.assign('manageVolunteerProfile.php')</script>";
+              break;
 
             default:
               header("Location:homepage.php?error=usernotfound");
-              echo <script> window.location.assign('homepage.php');</script>;
+              echo "<script type='text/javascript'> location.assign('homepage.php')</script>";
               break;
-          }
+            }
         }else{
           header("Location:homepage.php?error=invalidlogin");
-          echo <script> window.location.assign('homepage.php');</script>;
+          echo "<script type='text/javascript'> location.assign('homepage.php')</script>";
         }
 
 }

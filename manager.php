@@ -1,4 +1,4 @@
-fafasfasfasf
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,7 +8,7 @@ fafasfasfasf
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-        <link rel="stylesheet" type="text/css" href="managerstyling.css">
+        <link rel="stylesheet" type="text/css" href="managerStyling.css">
     </head>
     <body>
         <header>
@@ -132,10 +132,10 @@ fafasfasfasf
         </section>
 
         <section id="staff" class="h-100">
-            <div class="container py-5">
+            <div class="container py-3">
                 <h1 class="text-center">Meet Our Staff</h1>
                 <!-- Swiper -->
-                <div class="swiper-container py-5">
+                <div class="swiper-container py-3">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-12">
                             <img src="avatar1.png" class="img-fluid">
@@ -242,65 +242,21 @@ fafasfasfasf
 
                 <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkDateAfter(),validateEmail(),checkPasswordLen(),validatePhone()">Submit</button>
 
-                <button name="submit"type="button" class="btn btn-primary">Submit</button>
-
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
 
-<!-- modal for manage application -->
-        <div class="modal fade" id="manageModal" tabindex="-1" role="dialog" aria-labelledby="manageModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-xl" role="document" >
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="manageModalLabel">Manage Crisis Trip Application</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-
-                  <div class="tableList">
-                    <table>
-                      <tr>
-                        <th>Trip ID</th>
-                        <th>Trip Type</th>
-                        <th>Trip Date</th>
-                        <th>Trip Location</th>
-                        <th>Skill Requirement(s)</th>
-                      </tr>
-                    </table>
-                  </div>
-                  <div class="">
-                    <p class="d-flex justify-content-center align-items-center">
-                      <span class="me-3" style="color: black; font-size: 12px;font-weight:bold;">Please fill in the Trip ID that you want! </span>
-                      <input type="integers" name="tripID">
-                    </p>
-                  </div>
-
-              </div>
-              <div class="modal-footer">
-                <button name="submit" type="button" class="btn btn-primary">Submit</button>
-                <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <section id="features" class="text-center text-white">
           <div class="container p-4 pb-0">
-          <h2>Record New Staff / Manage Application</h2>
+          <h2>Record New Staff</h2>
       <!-- Section: CTA -->
           <section class="">
             <p class="d-flex justify-content-center align-items-center">
               <span class="me-3" style="color: black; font-size: 28px;font-weight:bold;">Record New Staff : </span>
               <button type="button" id="btnRecord" class="btn btn-outline-light btn-rounded" data-toggle="modal" data-target="#recordModal">Record Staff Here!</button>
-            </p>
-            <p class="d-flex justify-content-center align-items-center">
-              <span class="me-3" style="color: black; font-size: 28px;font-weight:bold;">Manage Application : </span>
-              <button type="button" id="btnManage" class="btn btn-outline-dark btn-rounded" data-toggle="modal" data-target="#manageModal">Manage Application Here!</button>
             </p>
           </section>
       <!-- Section: CTA -->

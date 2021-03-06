@@ -24,6 +24,7 @@ function db_result($sql){
 function registerStaff(){
 
                 $username = $_POST['username'];
+                $password = $_POST['']
 
 
 
