@@ -149,24 +149,28 @@ $sql = "SELECT * FROM hbmember where username = '" . $_POST['username'] . "' and
 
     switch ($_SESSION['position']) {
      case 'manager': // manager
+        header("Location:manager.php?position=manager");
          echo "<script> window.location.assign('manager.php'); </script>";
        break;
      case 'staff': // manager
+        header("Location:staff.php?position=staff");
          echo "<script> window.location.assign('staff.php'); </script>";
        break;
 
      case 'volunteer': // officer
+      header("Location:volunteerHomepage.php?position=volunteer");
        echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
        break;
 
-       default: // no well defined user
+      default: // no well defined user
          header("Location:homepage.php?error=usernotdefined");
-           echo "<script> window.location.assign('homepage.php'); </script>";
+         echo "<script> window.location.assign('homepage.php'); </script>";
          break;
-
-   }
-
-  }
+       }
+} else {
+        header("Location:homepage.php?error=invalidlogin");
+        echo "<script> window.location.assign('homepage.php'); </script>";
+}
 }
 
 
