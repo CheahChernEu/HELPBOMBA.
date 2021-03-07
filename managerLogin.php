@@ -28,7 +28,7 @@
 		<h2>Sign In Here</h2>
     <input  type="number" id="userID" name="userID" min="1" placeholder="Manager ID" required>
 	<input  type="email" id="username" name="username" placeholder="Username"  value="manager123@gmail.com" required>
-	<input  type="password" id="password" name="password" placeholder="Password"value = "1234567@managerID"  minlength="8" required>
+	<input  type="password" id="password" name="password" placeholder="Password" minlength="8" required>
 	<button id="signInBtn">Sign In</button>
 	</form>
 </div>
