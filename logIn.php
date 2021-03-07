@@ -98,6 +98,7 @@
 			message.style.color = goodColor;
 			message.innerHTML = "Good to proceed!"
 		}
+		
 		else
 		{
 			pass.style.backgroundColor = badColor;
