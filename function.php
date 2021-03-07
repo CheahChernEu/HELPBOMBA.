@@ -9,18 +9,21 @@ if(isset($_POST['action'])) {
 
   // determine which form
   switch ($_POST['action']) {
+
+    case 'record':
+      recordNewStaff();
+      break;
+
     // login function
     case 'login':
       userLogin();
       break;
 
-    case 'recordNewStaff':
-      recordNewStaff();
-      break;
+
 
     // others...
     default:
-      echo "<script> window.location.assign('homepage.php'); </script>";
+      #code:
       break;
   }
 }
@@ -90,7 +93,6 @@ function db_insert($sql){
 function userLogin(){
 $sql = "SELECT * FROM hbmember where username = '" . $_POST['username'] . "' and password = '" . $_POST['password'] . "'";
 
-  // $sql = "SELECT * FROM hbmember WHERE username = "'.$_POST['username'].'" and password = "'.$_POST['password'].'"";
   $member = db_search($sql);
 
   if($member != null){
@@ -122,8 +124,15 @@ $sql = "SELECT * FROM hbmember where username = '" . $_POST['username'] . "' and
        }
 } else {
         header("Location:homepage.php?error=invalidlogin");
-        echo "<script> window.location.assign('homepage.php'); </script>";
+  echo "<script> window.location.assign('homepage.php'); </script>";
 }
 }
+
+function recordNewStaff(){
+  echo "<script> window.location.assign('homepage.php'); </script>";
+}
+
+
+
 
 ?>

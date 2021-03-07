@@ -1,47 +1,24 @@
 <?php
 
-include("connection.php");
+$conn = mysqli_connect("localhost","root","","helpbomba");
 
-function db_result($sql){
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "HELPBOMBA";
-
-  //Create onnection
-  $conn = new mysqli($servername,$username,$password, $dbname);
-
-  //Check connection
-  if($conn->connect_error){
-    die("Connection Failed:".$conn->connect_error);
-  }
-
-  $resultObj = $conn->query($sql);
-
-  return $resultObj;
-}
-
-function registerStaff(){
-
-                $username = $_POST['username'];
-                $password = $_POST['']
+$username = $_POST['usernameStaff'];
+$password = $_POST['passwordStaff'];
+$name = $_POST['nameStaff'];
+$phoneNo = $_POST['phoneNoStaff'];
+$position = $_POST['positionStaff'];
+$dateJoined = $_POST['dateJoinedStaff'];
 
 
+   $sql2 = "INSERT INTO `hbmember`(`username`, `password`, `name`, `contactNo`, `position`, `dateJoined` ) VALUES ('$username', '$password', '$name', '$phoneNo', '$position', '$dateJoined' )";
 
-
-
-
-
-
-
-
-
-
-
-}
-
-
-
+   $insert = mysqli_query($conn,$sql2);
+   if(!$insert){
+     echo"ERROR";
+   }else{
+     echo '<script> alert("This staff has been added successfully")</script>';
+     echo "<script> window.location.assign('manager.php');</script>";
+   }
 
 
 

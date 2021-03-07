@@ -31,7 +31,7 @@
                         <a class="nav-link ml-5" href="#staff">Staff</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="login.php">SignUp/LogIn</a>
+                        <a class="nav-link ml-5" href="homepage.php">Log Out</a>
                     </li>
                   </ul>
                 </div>
@@ -200,7 +200,7 @@
         </section>
 
 
-
+        <form action="registerStaff.php" method="post">
         <div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="recordModalLabel" aria-hidden="true">
           <div class="modal-dialog " role="document" >
             <div class="modal-content">
@@ -211,45 +211,46 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form name="staffForm" id="staffForm" action="registerStaff.php" method="POST">
                   <div class="form-group">
                     <label for="email" class="col-form-label">Username: @eg:123test@gmail.com</label>
-                    <input type="email" class="form-control" id="username" name="username" onkeyup="checkEmail(); return false;" placeholder="username" required>
+                    <input type="email" class="form-control" id="username" name="usernameStaff" onkeyup="checkEmail(); return false;" placeholder="username" required>
                     <div id="errorName"></div>
                   </div>
                   <div class="form-group">
                     <label for="password" class="col-form-label">Password:</label>
-                    <input type="password" id="password" name="password" class="form-control" onkeyup="checkPass(); return false;"  minlength="8" placeholder="password" required>
+                    <input type="password" id="password" name="passwordStaff" class="form-control" onkeyup="checkPass(); return false;"  minlength="8" placeholder="password" required>
                     <div id="error"></div>
                   </div>
                   <div class="form-group">
                     <label for="name" class="col-form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="name" required>
+                    <input type="text" class="form-control" id="name" name="nameStaff" placeholder="name" required>
                   </div>
                   <div class="form-group">
                     <label for="phoneNo" class="col-form-label">Phone Number: @eg:0186657886</label>
-                    <input type="tel" class="form-control" id="phoneNo" name="phoneNo" onkeyup="checkphoneNo(); return false;" placeholder="phone number" required>
+                    <input type="tel" class="form-control" id="phoneNo" name="phoneNoStaff" onkeyup="checkphoneNo(); return false;" placeholder="phone number" required>
                     <div id="errorNo"></div>
                   </div>
                   <div class="form-group">
                     <label for="position" class="col-form-label">Position:</label>
-                    <input type="text" class="form-control" id="position" name="position" placeholder="position" required>
+                    <input type="text" class="form-control" id="position" name="positionStaff" placeholder="position" required>
                   </div>
                   <div class="form-group">
                     <label for="dateJoined" class="col-form-label">Date-Joined:</label>
-                    <input type="date" class="form-control" id="dateJoined" name="dateJoined" placeholder="date-joined" required>
+                    <input type="date" class="form-control" id="dateJoined" name="dateJoinedStaff" placeholder="date-joined" required>
                   </div>
-                </form>
               </div>
               <div class="modal-footer">
-
-                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(),checkEmail()">Submit</button>
-
+                <!-- <input name="action" value="record" hidden> -->
+                <input id="submit" type="submit" class="btn btn-primary"  name="insertData" value="Submit" onclick="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),
+                positionBlankValidation(),dateBlankValidation(),
+                phoneNumValidation(),positionValidation(),evalDate(),checkEmail()">
                 <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
+      </form>
+
 
 
         <section id="features" class="text-center text-white">
@@ -346,7 +347,7 @@
             var date = new Date().toISOString().slice(0,10);
 
             //To restrict future date
-              $('#dateJoined').attr('max', date);
+            $('#dateJoined').attr('max', date);
 
             function usernameBlankValidation(){
               if(document.getElementById('username').value == ''){
@@ -505,7 +506,7 @@
 
                 // Check the range of the day
                 return day > 0 && day <= monthLength[month - 1];
-            };
+            }
 
 
             function evalDate(){
