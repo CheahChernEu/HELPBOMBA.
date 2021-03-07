@@ -14,9 +14,9 @@
   <form action="signUp.php" method="post">
   	<h2>Sign Up Credentials</h2>
   	<input  type="email" id="signUpUsername" name="signUpUsername" onkeyup="checkSignUpEmail(); return false;" placeholder="Username" required>
-		<div id="errorName"></div>
+		<div id="errorName1"></div>
 	  <input type="password" id="signUpPw" name="signUpPw" minlength="8" onkeyup="checkPass(); return false;" placeholder="Password" required>
-		<div id="error"></div>
+		<div id="error1"></div>
 
 		<input list="options" name="roleOptions" placeholder="Sign Up as" required>
 
@@ -35,9 +35,9 @@
 	 <form action="function.php" method="post">
 	<h2>Sign In Here</h2>
 	<input  type="email" id="username" name="username" onkeyup="checkSignInEmail(); return false;" placeholder="Username"  required>
-	<div id="errorName"></div>
+	<div id="errorName2"></div>
 	<input  type="password" id="password" name="password" placeholder="Password" onkeyup="checkPassword(); return false;" minlength="8" required>
-	<div id="error"></div>
+	<div id="error2"></div>
 	<a href="managerLogin.php">Click Me: Manager Login Here!</a>
 	<input name="action" value="login" hidden>
 	<button id="signInBtn" name="login">Sign In</button>
@@ -89,7 +89,7 @@
 	function checkPass()
 	{
 		var pass = document.getElementById('signUpPw');
-		var message = document.getElementById('error');
+		var message = document.getElementById('error1');
 		var goodColor = "#66cc66";
 		var badColor = "#ff6666";
 
@@ -112,7 +112,7 @@
 	function checkPassword()
 	{
 		var pass = document.getElementById('password');
-		var message = document.getElementById('error');
+		var message = document.getElementById('error2');
 		var goodColor = "#66cc66";
 		var badColor = "#ff6666";
 
@@ -134,7 +134,7 @@
 	function checkSignInEmail()
 	{
 		var email = document.getElementById('username');
-		var message = document.getElementById('errorName');
+		var message = document.getElementById('errorName2');
 		var goodColor = "#66cc66";
 		var badColor = "#ff6666";
 		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -158,7 +158,7 @@
 function checkSignUpEmail()
 {
 	var email = document.getElementById('signUpUsername');
-	var message = document.getElementById('errorName');
+	var message = document.getElementById('errorName1');
 	var goodColor = "#66cc66";
 	var badColor = "#ff6666";
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;

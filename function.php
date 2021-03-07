@@ -1,52 +1,5 @@
 <?php
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ----------------------------------------------------------------------------------------------------------------------
-
 session_start();
-
-
 
 // To decide which function
 if(isset($_POST['action'])) {
@@ -172,15 +125,5 @@ $sql = "SELECT * FROM hbmember where username = '" . $_POST['username'] . "' and
         echo "<script> window.location.assign('homepage.php'); </script>";
 }
 }
-
-
-
-
-
-
-
-
-
-
 
 ?>
