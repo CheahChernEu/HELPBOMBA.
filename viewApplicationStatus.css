@@ -20,6 +20,7 @@ h1{
     font-size: 40px;
     font-weight: 200;
     line-height: 50px;
+    padding: 20px 0 20px 0;
 }
 
 h2{
@@ -93,100 +94,21 @@ p{
     color: #ffffff;
 }
 
-/*FORM*/
-.form {
-    margin-top: 630px;
-    margin-bottom: -330px;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1000px;
-    padding: 40px;
-    padding-bottom: 100px;
+.main .main-content{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    min-height: 795px;
+    width: 100%;
+}
+
+.list-group-item{
     background: white;
     box-sizing: border-box;
-    border-radius: 20px;
+    border-width: 3px;
     border-style: solid;
     border-color: orange;
-}
-
-.form h2 {
-    text-align: center;
-    margin: 0 0 20px 0;
-    padding: 0 16vw 0 16vw;
-    color: black;
-}
-
-.form .inputbox {
-    position: relative;
-    width: 46vw;
-}
-
-.form .inputbox input {
-    width: 100%;
-    padding: 10px 0;
-    padding-left: 10px;
-    font-size: 16px;
-    color: #000000;
-    margin-bottom: 30px;
-    border: 1px solid black;
-    outline: none;
-    background: transparent;
-}
-
-.form .inputbox label {
-    padding-bottom: 10px;
-    font-weight: bold;
-    font-family: Raleway, sans-serif;
-}
-
-.form .fileuploadinputbox label{
-    padding-bottom: 10px;
-    font-weight: bold;
-    font-family: Raleway, sans-serif;
-}
-
-.form .docinputbox label {
-    padding-bottom: 10px;
-    font-weight: bold;
-    font-family: Raleway, sans-serif;
-}
-
-.form .btn button[type="button"] {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: black;
-    background: white;
-    padding: 8px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    left: 50%;
-    margin: 45px 0 0 0;
-}
-
-.form .btn button[type="reset"] {
-    background: transparent;
-    border: none;
-    outline: none;
-    color:black;
-    background: white;
-    padding: 8px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    right: 50%;
-    margin: 45px 10px 0 0;
-}
-
-.form input[type="radio"]{
-    margin: 0 60px 0 0;
-}
-
-#Reset, #Submit{
-    border: 1px solid black;
+    text-align: left;
 }
 
 #contact{

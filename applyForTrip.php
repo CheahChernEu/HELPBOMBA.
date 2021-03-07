@@ -19,13 +19,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto float-right text-right">
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="managevolunteerprofile.php">Manage Profile</a>
+                        <a class="nav-link ml-5" href="manageVolunteerProfile.php">Manage Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="applyfortrip.php">Apply For Trip</a>
+                        <a class="nav-link ml-5" href="applyForTrip.php">Apply For Trip</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="viewapplication.php">View Application</a>
+                        <a class="nav-link ml-5" href="viewApplicationStatus.php">View Application</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-5" href="homepage.php">Log Out</a>
@@ -116,7 +116,7 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModal" data-backdrop="static" data-keyboard="false" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -130,7 +130,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary">Yes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="applyMessage()">Yes</button>
               </div>
             </div>
           </div>
@@ -171,8 +171,14 @@
           </footer>
         </section>
 
+        <script>
+          function applyMessage(){
+            alert("You have applied in the trip, please check your application status at manage profile section")
+          }
+        </script>
+
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>

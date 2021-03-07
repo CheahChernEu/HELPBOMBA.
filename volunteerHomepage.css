@@ -20,6 +20,7 @@ h1{
     font-size: 40px;
     font-weight: 200;
     line-height: 50px;
+    padding: 20px 0 20px 0;
 }
 
 h2{
@@ -93,100 +94,65 @@ p{
     color: #ffffff;
 }
 
-/*FORM*/
-.form {
-    margin-top: 630px;
-    margin-bottom: -330px;
+.main{
+    display: flex;
+    align-items: center;
+    height: 100vh;
     position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1000px;
-    padding: 40px;
-    padding-bottom: 100px;
     background: white;
-    box-sizing: border-box;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: orange;
 }
 
-.form h2 {
-    text-align: center;
-    margin: 0 0 20px 0;
-    padding: 0 16vw 0 16vw;
-    color: black;
+.main h1{
+    font-size: 7vw;
+    line-height: 1.2em;
+    font-family: 'Nosifer',sans-serif;
 }
 
-.form .inputbox {
+.section-btn{
+    margin: 32px 0 0 0;
+    padding: 0;
+}
+
+.section-btn a{
+    color: #ffffff;
+    font-weight: normal;
+    line-height: 45px;
+    perspective: 1000px;
+}
+
+.section-btn a span{
     position: relative;
-    width: 46vw;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    padding: 2px 27px;
+    background: #4dc47d;
+    border-radius: 1px;
+    transition: transform 0.3s;
+    transform-origin: 50% 0;
+    transform-style: preserve-3d;
 }
 
-.form .inputbox input {
+.section-btn a span::before{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 100%;
     width: 100%;
-    padding: 10px 0;
-    padding-left: 10px;
-    font-size: 16px;
-    color: #000000;
-    margin-bottom: 30px;
-    border: 1px solid black;
-    outline: none;
-    background: transparent;
+    color: white;
+    background: black;
+    border-radius: 1px;
+    padding: 2px 27px;
+    transition: background 0.3s;
+    transform: rotateX(-90deg);
+    content: attr(data-hover);
+    transform-origin: 50% 0;
 }
 
-.form .inputbox label {
-    padding-bottom: 10px;
-    font-weight: bold;
-    font-family: Raleway, sans-serif;
-}
-
-.form .fileuploadinputbox label{
-    padding-bottom: 10px;
-    font-weight: bold;
-    font-family: Raleway, sans-serif;
-}
-
-.form .docinputbox label {
-    padding-bottom: 10px;
-    font-weight: bold;
-    font-family: Raleway, sans-serif;
-}
-
-.form .btn button[type="button"] {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: black;
-    background: white;
-    padding: 8px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    left: 50%;
-    margin: 45px 0 0 0;
-}
-
-.form .btn button[type="reset"] {
-    background: transparent;
-    border: none;
-    outline: none;
-    color:black;
-    background: white;
-    padding: 8px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    right: 50%;
-    margin: 45px 10px 0 0;
-}
-
-.form input[type="radio"]{
-    margin: 0 60px 0 0;
-}
-
-#Reset, #Submit{
-    border: 1px solid black;
+.section-btn a:hover span,
+.section-btn a:focus span{
+    transform: rotateX(90deg) translateY(-22px);
 }
 
 #contact{
