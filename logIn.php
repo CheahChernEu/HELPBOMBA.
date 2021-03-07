@@ -32,14 +32,15 @@
 
 <!-- Sign In  -->
 <div class="form-container sign-in-container">
-	 <form action="signIn.php" method="post">
+	 <form action="function.php" method="post">
 	<h2>Sign In Here</h2>
 	<input  type="email" id="username" name="username" onkeyup="checkSignInEmail(); return false;" placeholder="Username"  required>
 	<div id="errorName"></div>
 	<input  type="password" id="password" name="password" placeholder="Password" onkeyup="checkPassword(); return false;" minlength="8" required>
 	<div id="error"></div>
 	<a href="managerLogin.php">Click Me: Manager Login Here!</a>
-	<button id="signInBtn" onsubmit="userLogin()">Sign In</button>
+	<input name="action" value="login" hidden>
+	<button id="signInBtn" name="login">Sign In</button>
 	</form>
 </div>
 
@@ -98,7 +99,7 @@
 			message.style.color = goodColor;
 			message.innerHTML = "Good to proceed!"
 		}
-		
+
 		else
 		{
 			pass.style.backgroundColor = badColor;
