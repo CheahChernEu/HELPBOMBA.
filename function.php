@@ -10,10 +10,6 @@ if(isset($_POST['action'])) {
   // determine which form
   switch ($_POST['action']) {
 
-    case 'record':
-      recordNewStaff();
-      break;
-
     // login function
     case 'login':
       userLogin();
@@ -128,9 +124,7 @@ $sql = "SELECT * FROM hbmember where username = '" . $_POST['username'] . "' and
 }
 }
 
-function recordNewStaff(){
-  echo "<script> window.location.assign('homepage.php'); </script>";
-}
+
 
 
 
