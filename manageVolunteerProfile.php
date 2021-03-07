@@ -41,7 +41,7 @@
             <div class="row">
             <h2>Manage Profile</h2>
             <p>*Required fields</p>
-            <form name="volunteerform" action="managevolunteerprofile.html" enctype="multipart/form-data">
+            <form action="function.php" method="post" name="volunteerform" enctype="multipart/form-data">
                 <div class="inputbox">
                     <label for="oldpassword">Old Password*</label>
                     <input type="password" placeholder="Old password" id="oldpassword" name="oldpassword" required autofocus>
@@ -77,7 +77,7 @@
 
                 <div class="inputbox">
                     <label>Date of Expiry*</label>
-                    <input type="date" name="dateofexpiry" id="dateofexpiry" placeholder="dd/mm/yyyy" required>
+                    <input type="date" name="dateofexpiry" id="dateofexpiry" placeholder="yyyy/mm/dd" required>
                 </div>
 
                 <div class="fileuploadinputbox">
@@ -89,7 +89,8 @@
 
                 <div class="btn">
                     <button type="reset" id="Reset" value="Reset">Reset</button>
-                    <button type="button" id="Submit" value="Submit" onclick="blankOldPwValidation(), blankNewPwValidation(), pwValidation(), nameValidation(), phoneValidation(), docTypeBlankValidation(), checkDate(), submitMessage()">Submit</button>
+                    <input name = "action" value="manageProfile" hidden>
+                    <button type="button" id="Submit" value="manageProfile" name="manageProfile" onclick="blankOldPwValidation(), blankNewPwValidation(), pwValidation(), nameValidation(), phoneValidation(), docTypeBlankValidation(), checkDate(), submitMessage()">Submit</button>
                 </div>
             </form>
             </div>
@@ -194,14 +195,14 @@
             function isValidDate(dateString)
             {
                 // First check for the pattern
-                if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+                if(!/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(dateString))
                     return false;
 
                 // Parse the date parts to integers
                 var parts = dateString.split("/");
-                var day = parseInt(parts[0], 10);
+                var year = parseInt(parts[0], 10);
                 var month = parseInt(parts[1], 10);
-                var year = parseInt(parts[2], 10);
+                var day = parseInt(parts[2], 10);
 
                 // Check the ranges of month and year
                 if(year < 1000 || year > 3000 || month == 0 || month > 12)
