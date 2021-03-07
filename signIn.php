@@ -19,7 +19,7 @@ if($member != null ){
             case 'manager':
             if($_SESSION['userID'] == $_POST['userID']){
 
-              echo "<script type='text/javascript'> window.location.assign('manager.php');</script>";
+              echo "<script> window.location.assign('manager.php');</script>";
               break;
             }
             case 'staff':
@@ -41,6 +41,8 @@ if($member != null ){
         }
 
 }
+
+
 
 
  ?>
