@@ -39,8 +39,7 @@
 	<input  type="password" id="password" name="password" placeholder="Password" onkeyup="checkPassword(); return false;" minlength="8" required>
 	<div id="error"></div>
 	<a href="managerLogin.php">Click Me: Manager Login Here!</a>
-	<button id="signInBtn">Sign In</button>
-
+	<button id="signInBtn" onsubmit="userLogin()">Sign In</button>
 	</form>
 </div>
 
