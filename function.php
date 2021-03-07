@@ -45,15 +45,7 @@
 // ----------------------------------------------------------------------------------------------------------------------
 
 session_start();
-// echo "Good Connection!<br>";
 
-// $k = "";
-// foreach ($_POST as $key => $value) {
-//    $k .= $key ." : ". $value. '\n';
-// }
-// if($k != ""){
-//  echo '<script> console.info("Session: \n' . $k . '") </script>';
-// }
 
 
 // To decide which function
