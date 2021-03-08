@@ -78,6 +78,7 @@
         </section>
 
         <!-- Pop Up Modal for record new staff -->
+      <form name="staffForm" id="staffForm" action="registerStaff.php" method="POST">
         <div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="recordModalLabel" aria-hidden="true">
         <div class="modal-dialog " role="document" >
           <div class="modal-content">
@@ -88,46 +89,42 @@
               </button>
             </div>
             <div class="modal-body">
-              <form name="staffForm" id="staffForm" action="registerStaff.php" method="POST">
+
                 <div class="form-group">
                   <label for="email" class="col-form-label">Username: @eg:123test@gmail.com</label>
-                  <input type="email" class="form-control" id="username" name="username" onkeyup="checkEmail(); return false;" placeholder="username" required>
+                  <input type="email" class="form-control" id="username" name="usernameStaff" onkeyup="checkEmail(); return false;" placeholder="username" required>
                   <div id="errorName"></div>
                 </div>
                 <div class="form-group">
                   <label for="password" class="col-form-label">Password:</label>
-                  <input type="password" id="password" name="password" class="form-control" onkeyup="checkPass(); return false;"  minlength="8" placeholder="password" required>
+                  <input type="password" id="password" name="passwordStaff" class="form-control" onkeyup="checkPass(); return false;"  minlength="8" placeholder="password" required>
                   <div id="error"></div>
                 </div>
                 <div class="form-group">
                   <label for="name" class="col-form-label">Name:</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="name" required>
+                  <input type="text" class="form-control" id="name" name="nameStaff" placeholder="name" required>
                 </div>
                 <div class="form-group">
                   <label for="phoneNo" class="col-form-label">Phone Number: @eg:0186657886</label>
-                  <input type="tel" class="form-control" id="phoneNo" name="phoneNo" onkeyup="checkphoneNo(); return false;" placeholder="phone number" required>
+                  <input type="tel" class="form-control" id="phoneNo" name="phoneNoStaff" onkeyup="checkphoneNo(); return false;" placeholder="phone number" required>
                   <div id="errorNo"></div>
                 </div>
                 <div class="form-group">
-                  <label for="position" class="col-form-label">Position:</label>
-                  <input type="text" class="form-control" id="position" name="position" placeholder="position" required>
-                </div>
-                <div class="form-group">
                   <label for="dateJoined" class="col-form-label">Date-Joined:</label>
-                  <input type="date" class="form-control" id="dateJoined" name="dateJoined" placeholder="date-joined" required>
+                  <input type="date" class="form-control" id="dateJoined" name="dateJoinedStaff" placeholder="date-joined" required>
                 </div>
-              </form>
+
             </div>
             <div class="modal-footer">
 
-              <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkEmail()">Submit</button>
+              <input name="submit" id="submit" type="submit" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkEmail()">
 
               <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
       </div>
-
+    </form>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -168,14 +165,6 @@
           if(document.getElementById('phoneNo').value == ''){
             alert("Phone Number input cannot be blank")
             document.getElementById('phoneNo').focus();
-            throw new Error("This is not an error. This is just to abort javascript.")
-          }
-        }
-
-        function positionBlankValidation(){
-          if(document.getElementById('position').value == ''){
-            alert("Position input cannot be blank")
-            document.getElementById('position').focus();
             throw new Error("This is not an error. This is just to abort javascript.")
           }
         }
@@ -262,15 +251,6 @@
                 document.getElementById('phoneNo').focus();
                 throw new Error("This is not an error. This is just to abort javascript.")
             }
-        }
-
-
-        function positionValidation(){
-          var staff = 'staff'.toLowerCase();
-          if (!(document.getElementById('position').value.toLowerCase() === staff))
-          alert("Please just fill in position Staff only!")
-          document.getElementById('position').focus();
-          throw new Error("This is not an error. This is just to abort javascript.")
         }
 
         function validateDate(date)

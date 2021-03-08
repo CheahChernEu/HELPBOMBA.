@@ -18,13 +18,6 @@
 	  <input type="password" id="signUpPw" name="signUpPw" minlength="8" onkeyup="checkPass(); return false;" placeholder="Password" required>
 		<div id="error1"></div>
 
-		<input list="options" name="roleOptions" placeholder="Sign Up as" required>
-
-		<datalist id="options">
-				<option value="manager"></option>
-				<option value="volunteer"></option>
-		</datalist>
-
 		<button id="signUpBtn">Sign Up</button>
 </form>
 </div>
