@@ -108,14 +108,13 @@ $sql = "SELECT * FROM hbmember where username = '" . $_POST['username'] . "' and
         echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
         break;
       default:
-        header("Location:homepage.php?error=usernotdefined");
+        header("Location:homepage.php?error=usernotfound");
         echo "<script> window.location.assign('homepage.php'); </script>";
         break;
        }
   }
   else {
-        header("Location:homepage.php?error=invalidlogin");
-        echo '<script type="text/javascript">alert("Invalid username or password")</script>';
+        echo '<script> alert("Invalid username or password! You will be redirect to HELP Bomba Homepage ")</script>';
         echo "<script> window.location.assign('homepage.php'); </script>";
   }
 }

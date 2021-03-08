@@ -9,8 +9,9 @@ $position = $_POST['roleOptions'];
 $sql = "INSERT INTO `hbmember`( `username`, `password`, `position` ) VALUES ('$username','$password','$position')";
 $insert = mysqli_query($conn,$sql);
 if(!$insert){
-  echo"ERROR";
+  echo"Sign Up Error";
 }else{
+  echo '<script> alert("Sign Up Succesfully!")</script>';
   echo "<script> window.location.assign('homepage.php');</script>";
 }
- ?>
+?>
