@@ -36,7 +36,7 @@ if($select!=null){
   echo "<script> window.location.assign('manager.php');</script>";
 }else{
 
-   $sql2 = "INSERT INTO `hbmember`(`username`, `password`, `name`, `contactNo`, `position`, `dateJoined` ) VALUES ('$username', '$password', '$name', '$phoneNo', 'position', '$dateJoined' )";
+   $sql2 = "INSERT INTO `hbmember`(`username`, `password`, `name`, `contactNo`, `position`, `dateJoined` ) VALUES ('$username', '$password', '$name', '$phoneNo', 'staff', '$dateJoined' )";
 
    $insert = mysqli_query($conn,$sql2);
    if(!$insert){
