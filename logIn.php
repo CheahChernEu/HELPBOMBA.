@@ -22,7 +22,6 @@
 
 		<datalist id="options">
 				<option value="manager"></option>
-				<option value="staff"></option>
 				<option value="volunteer"></option>
 		</datalist>
 
