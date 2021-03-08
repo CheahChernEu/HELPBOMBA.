@@ -34,7 +34,7 @@ $dateJoined = $_POST['dateJoinedStaff'];
   $select = db_search($sql1);
 if($select!=null){
   echo '<script> alert("This staff has been existed")</script>';
-  echo "<script> window.location.assign('login.php');</script>";
+  echo "<script> window.location.assign('manager.php');</script>";
 }else{
 
    $sql2 = "INSERT INTO `hbmember`(`username`, `password`, `name`, `contactNo`, `position`, `dateJoined` ) VALUES ('$username', '$password', '$name', '$phoneNo', '$position', '$dateJoined' )";
