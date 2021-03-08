@@ -175,7 +175,7 @@
 
             function phoneValidation(){
                 var letter = /^[a-z]*$/i;
-                if(document.getElementById('phoneno').value.match(letter) || document.getElementById('phoneno').value == ''){
+                if(document.getElementById('phoneno').value.match(letter) || document.getElementById('phoneno').value == '' || document.getElementById('phoneno').value.length > 13){
                     alert("Please fill in required field and input numbers only in the phone number section")
                     document.getElementById('phoneno').focus();
                     throw new Error("This is not an error. This is just to abort javascript.")
