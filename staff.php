@@ -11,7 +11,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light py-3 fixed-top bg">
                 <div class="container">
-                <a class="navbar-brand" href="manager.php">HELPBOMBA.ORG</a>
+                <a class="navbar-brand" href="staff.php">HELPBOMBA.ORG</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars text-light" aria-hidden="true"></i>
                 </button>
@@ -228,6 +228,7 @@
 
 
 <!-- organize trip -->
+  <form name="tripForm" id="tripForm" action="function.php" method="POST">
       <div class="modal fade" id="organizeModal" tabindex="-1" role="dialog" aria-labelledby="organizeModalLabel" aria-hidden="true">
         <div class="modal-dialog " role="document" >
           <div class="modal-content">
@@ -238,38 +239,45 @@
               </button>
             </div>
             <div class="modal-body">
-              <form name="tripForm" id="tripForm" action="manager.html" method="POST">
                 <div class="form-group">
                   <label for="tripDate" class="col-form-label">Trip Date :</label>
-                  <input type="date" class="form-control" id="tripDate" placeholder="trip date" required>
+                  <input type="date" class="form-control" id="tripDate" name="tripDate"  placeholder="trip date" required>
                 </div>
                 <div class="form-group">
                   <label for="location" class="col-form-label">Location :</label>
-                  <input type="text" id="location" class="form-control" placeholder="location" required>
+                  <input type="text" id="location" name="location" class="form-control" placeholder="location" required>
                 </div>
                 <div class="form-group">
                   <label for="description" class="col-form-label">Description :</label>
-                  <textarea type="text" class="form-control" id="description" placeholder="description" required rows="8" cols="80"></textarea>
+                  <textarea type="text" class="form-control" id="description" name="description" placeholder="description" required rows="8" cols="80"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="cType" class="col-form-label">Crisis Type:</label>
-                  <input type="text" class="form-control" id="cType" placeholder="crisis type" required>
+                  <input type="text" class="form-control" id="cType" name="cType" placeholder="crisis type" required>
+                </div>
+                <div class="form-group">
+                  <label for="minDuration" class="col-form-label">Mininum Duration:</label>
+                  <input type="number" class="form-control" id="minDuration" name="minDuration" placeholder="min duration" required>
+                </div>
+                <div class="form-group">
+                  <label for="skillReq" class="col-form-label">Skill Requirement(s):</label>
+                  <input type="text" class="form-control" id="skillReq" name="skillReq" placeholder="skill requirements" required>
                 </div>
                 <div class="form-group">
                   <label for="numVolunteers" class="col-form-label">Amount Volunteer Required :</label>
-                  <input type="number" class="form-control" id="numVolunteers" placeholder="numVolunteers" min="1" required>
+                  <input type="number" class="form-control" id="numVolunteers" name="numVolunteers" placeholder="num volunteers" min="1"  required>
                 </div>
-              </form>
             </div>
             <div class="modal-footer">
-
-              <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit"  onclick=" tDateValidation(),locationBlankValidation(),descBlankValidation(),cTypeBlankValidation(),numVBlankValidation(), numVGreater1()">Submit</button>
+              <input name="action" value="createTrip" hidden>
+              <input name="submit" id="submit" type="submit" class="btn btn-primary" value="Submit"  onsubmit="tDateValidation(),locationBlankValidation(),descBlankValidation(),cTypeBlankValidation(),numVBlankValidation(), numVGreater1(),minDBlankValidation(),skillReqBlankValidation(),numDGreater1(),descriptionValidation(),locationValidation(),cTypeValidation()">
 
               <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
       </div>
+    </form>
 
 
 
@@ -278,10 +286,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <!-- javascript -->
         <script type="text/javascript">
-        // Only allow today as the max date can be pick, and dsiable future date to be pick from.
+        // Only allow today as the min date can be pick, and dsiable past date to be pick from.
       var date = new Date().toISOString().slice(0,10);
 
-      //To restrict future date
+      //To restrict past date
         $('#tripDate').attr('min', date);
 
       function tDateValidation(){
@@ -316,6 +324,22 @@
         }
       }
 
+      function minDBlankValidation(){
+        if(document.getElementById('minDuration').value == ''){
+          alert("Minimum duration cannot be blank")
+          document.getElementById('minDuration').focus();
+          throw new Error("This is not an error. This is just to abort javascript.")
+        }
+      }
+
+      function skillReqBlankValidation(){
+        if(document.getElementById('skillReq').value == ''){
+          alert("Skill Requirement cannot be blank")
+          document.getElementById('skillReq').focus();
+          throw new Error("This is not an error. This is just to abort javascript.")
+        }
+      }
+
       function numVBlankValidation(){
         if(document.getElementById('numVolunteers').value == ''){
           alert("Number of volunteers required input cannot be blank")
@@ -324,12 +348,49 @@
         }
       }
 
+      // Check the amount to be greater than 1
       function numVGreater1(){
         if(document.getElementById('numVolunteers').value < 1){
           alert("Number of volunteers required cannot be less than 1")
           document.getElementById('numVolunteers').focus();
           throw new Error("This is not an error. This is just to abort javascript.")
         }
+      }
+
+      function numDGreater1(){
+        if(document.getElementById('numVolunteers').value < 1){
+          alert("Minimum duration of the trip cannot be less than 1")
+          document.getElementById('numVolunteers').focus();
+          throw new Error("This is not an error. This is just to abort javascript.")
+        }
+      }
+
+      // Validate the description, location and crisis trip type only consists of letters
+      function descriptionValidation(){
+          var letter = /^[a-z]*$/i;
+          if((!(document.getElementById('description').value).match(letter))){
+              alert("Please fill in input letters only in the Description section")
+              document.getElementById('description').focus();
+              throw new Error("This is not an error. This is just to abort javascript.")
+          }
+      }
+
+      function locationValidation(){
+          var letter = /^[a-z]*$/i;
+          if((!(document.getElementById('location').value).match(letter))){
+              alert("Please fill in input letters only in the Location section")
+              document.getElementById('location').focus();
+              throw new Error("This is not an error. This is just to abort javascript.")
+          }
+      }
+
+      function cTypeValidation(){
+          var letter = /^[a-z]*$/i;
+          if((!(document.getElementById('cType').value).match(letter))){
+              alert("Please fill in input letters only in the Crisis Type section")
+              document.getElementById('cType').focus();
+              throw new Error("This is not an error. This is just to abort javascript.")
+          }
       }
 
       // trip input validation
@@ -340,8 +401,6 @@
           throw new Error("This is not an error. This is just to abort javascript.")
         }
       }
-
-
 
       function checkStatus(){
 

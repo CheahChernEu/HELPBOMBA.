@@ -78,7 +78,7 @@
         </section>
 
         <!-- Pop Up Modal for record new staff -->
-      <form name="staffForm" id="staffForm" action="registerStaff.php" method="POST">
+    <form name="staffForm" id="staffForm" action="function.php" method="POST">
         <div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="recordModalLabel" aria-hidden="true">
         <div class="modal-dialog " role="document" >
           <div class="modal-content">
@@ -116,8 +116,8 @@
 
             </div>
             <div class="modal-footer">
-
-              <input name="submit" id="submit" type="submit" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkEmail()">
+              <input name="action" value="registerStaff" hidden>
+              <input name="submit" id="submit" type="submit" class="btn btn-primary" value="Submit"  onsubmit="usernameBlankValidation(),passwordBlankValidation(),nameBlankValidation(),phoneNoBlankValidation(),positionBlankValidation(),dateBlankValidation(),phoneNumValidation(),positionValidation(),evalDate(), checkEmail(),nameValidation()">
 
               <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
@@ -159,6 +159,15 @@
             document.getElementById('name').focus();
             throw new Error("This is not an error. This is just to abort javascript.")
           }
+        }
+
+        function nameValidation(){
+            var letter = /^[a-z]*$/i;
+            if((!(document.getElementById('name').value).match(letter))){
+                alert("Please fill in input letters only in the Name section")
+                document.getElementById('name').focus();
+                throw new Error("This is not an error. This is just to abort javascript.")
+            }
         }
 
         function phoneNoBlankValidation(){
