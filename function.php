@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 // To decide which function
 if(isset($_POST['action'])) {
   if (isset($_SESSION['error'])){
@@ -125,6 +126,8 @@ $sql = "SELECT * FROM hbmember where username = '" . $_POST['username'] . "' and
         echo '<script> alert("Invalid username or password! You will be redirect to HELP Bomba Homepage ")</script>';
         echo "<script> window.location.assign('homepage.php'); </script>";
   }
+
+
 }
 
 function manageVolunteerProfile(){
@@ -172,8 +175,6 @@ function registerStaff(){
   $phoneNo = $_POST['phoneNoStaff'];
   $dateJoined = $_POST['dateJoinedStaff'];
 
-
-
     $sql1="SELECT * FROM `hbmember` WHERE username = '$username'";
     $select = db_search($sql1);
   if($select!=null){
@@ -211,7 +212,7 @@ if($select!=null){
   echo "<script> window.location.assign('staff.php');</script>";
 }else{
 
-   $sql2 = "INSERT INTO `crisistrip`( `cType`, `description`, `cTDate`, `location`, `minDuration`, `numVolunteers`, `skillRequirement(s)`, `availableSlots`, `userID`) VALUES ('$cType', '$description', '$tripDate', '$location', '$minDuration', '$numVolunteers', '$skillReq', '$numVolunteers', '$userID')";
+   $sql2 = "INSERT INTO `crisistrip`( `cType`, `description`, `cTDate`, `location`, `minDuration`, `numVolunteers`, `skillRequirements`, `availableSlots`, `userID`) VALUES ('$cType', '$description', '$tripDate', '$location', '$minDuration', '$numVolunteers', '$skillReq', '$numVolunteers', '$userID')";
 
    $insert = mysqli_query($conn,$sql2);
    if(!$insert){
@@ -221,7 +222,13 @@ if($select!=null){
      echo "<script> window.location.assign('staff.php');</script>";
    }
 }
+}
 
+
+function selectTrip(){
+  $userid = $_SESSION['userID'];
+  $query = "SELECT * FROM crisistrip WHERE userID = $userid and availableSlots > 0";
+  return $query;
 }
 
 
