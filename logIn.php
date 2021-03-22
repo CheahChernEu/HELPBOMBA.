@@ -55,7 +55,7 @@
 
 <footer class="text-center text-white" style="background-color: black; ">
  <p class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.7); font-size:18px; padding:auto;">
-		© 2021 Copyright: Crisis Relief Services Organization
+		© 2021 Copyright: HELP Bomba Organization
 	</p>
 </footer>
 

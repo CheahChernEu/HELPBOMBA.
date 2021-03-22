@@ -1,3 +1,18 @@
+<?php
+	require_once("function.php");
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "helpbomba";
+
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  // Check connection
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,11 +33,29 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto float-right text-right">
+                    <li class="nav-item ml-4">
+
+                      <!-- User profile icon !-->
+                       <div class="dropdown" style="width:auto;height:auto;">
+                        <button type="button" class="navbar-brand btn btn-dark dropdown-toggle" data-toggle="dropdown"
+                        <i onclick="dropdown(this)" style="width:100px; height:auto; font-size:15px; color:white;"> Profile </i>
+                         </button>
+
+                         <!-- Dropdown options !-->
+                        <div class="dropdown-menu">
+													<a class="dropdown-item" href="#"> ID: <?php echo $_SESSION["userID"]; ?> </a>
+                          <a class="dropdown-item" href="#"> Username: <?php echo $_SESSION["username"]; ?> </a>
+                          <a class="dropdown-item" href="#"> Name: <?php echo $_SESSION["name"]; ?> </a>
+                          <a class="dropdown-item" href="#"> Position: <?php echo $_SESSION["position"]; ?> </a>
+                        </div>
+                      </div>
+                    </li>
                     <li class="nav-item">
+
                         <a class="nav-link ml-5" data-toggle="modal" data-target="#organizeModal">Organize Trip</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-5" data-toggle="modal" data-target="#manageModal">Manage Applications</a>
+                        <a class="nav-link ml-5" href="ManageApplications.php" >Manage Applications</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-5" href="homepage.php">Log Out</a>
@@ -95,31 +128,35 @@
                   <table class="table">
                     <thead>
                       <tr>
-                        <th id="tripID" scope="col">Trip ID</th>
+                        <th scope="col">Trip ID</th>
                         <th scope="col">Trip Date</th>
                         <th scope="col">Trip Type</th>
                         <th scope="col">Skills <br> Requirements </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>5/8/2021</td>
-                        <td>Tsunami</td>
-                        <td>swimming</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>15/4/2021</td>
-                        <td>Landslide</td>
-                        <td>emergency rescue skills</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>29/6/2021</td>
-                        <td>wildfire</td>
-                        <td>Firefighter rescue skills</td>
-                      </tr>
+
+                        <?php
+                            echo $_SESSION['userID'];
+                            $query = "SELECT * FROM `crisistrip`";
+                             // $tripData = db_search($query);
+                             // $totalTrip = mysqli_num_rows($tripData);
+                             // $today = date("Y-m-d");
+
+                             $result = mysqli_query($conn, $query);
+                             while($row = mysqli_fetch_assoc($result)){
+                               if ($row['availableSlots']>'0' ){
+                               echo "
+                               <tr>
+                                 <th>".$row['cTID']."</th>
+                                 <td>".$row['cTDate']."</td>
+                                 <td>".$row['cType']."</td>
+                                 <td>".$row['skillRequirements']."</td>
+                               </tr>
+                               ";
+                            }
+                          }
+                          ?>
                     </tbody>
                   </table>
                   <p class="d-flex justify-content-center align-items-center">
@@ -408,7 +445,7 @@
         var reject = "rejected";
         var accept = "accepted";
         if(!(result === reject || result === accept)){
-          alert("Please enter the status correctly OR pls evaluate the documents first")
+          alert("Please only enter 'rejected' or 'accepted'")
           document.getElementById('updateStatus').focus();
           throw new Error("This is not an error. This is just to abort javascript.")
         }

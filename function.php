@@ -26,6 +26,10 @@ if(isset($_POST['action'])) {
     case 'createTrip':
       createTrip();
       break;
+
+    case 'updateApp':
+      updateApp();
+      break;
   }
 }
 
@@ -226,9 +230,29 @@ if($select!=null){
 
 
 function selectTrip(){
-  $userid = $_SESSION['userID'];
-  $query = "SELECT * FROM crisistrip WHERE userID = $userid and availableSlots > 0";
+  $conn = mysqli_connect("localhost","root","","helpbomba");
+  $userid =  $_SESSION['userID'];
+  $query = "SELECT * FROM crisistrip c inner join hbmember m WHERE c.userID = $userid and m.userID = $userid";
   return $query;
+}
+
+function selectApplication(){
+  $conn = mysqli_connect("localhost","root","","helpbomba");
+  $tripID = 15;
+  $query = "SELECT * FROM application a inner join crisistrip c WHERE a.cTID = $tripID and c.cTID = $tripID" ;
+  return $query;
+}
+
+function selectDocument(){
+  $conn = mysqli_connect("localhost","root","","helpbomba");
+  $documentID = 3;
+  $query = "SELECT * FROM document d inner join application a  WHERE  d.documentID = $documentID and a.documentID = $documentID"  ;
+  return $query;
+}
+
+function updateApp(){
+  
+
 }
 
 

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Browse Homepage</title>
+        <title>ManageApplications Homepage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -32,6 +32,7 @@
 
                          <!-- Dropdown options !-->
                         <div class="dropdown-menu">
+													<a class="dropdown-item" href="#"> ID: <?php echo $_SESSION["userID"]; ?> </a>
                           <a class="dropdown-item" href="#"> Username: <?php echo $_SESSION["username"]; ?> </a>
                           <a class="dropdown-item" href="#"> Name: <?php echo $_SESSION["name"]; ?> </a>
                           <a class="dropdown-item" href="#"> Position: <?php echo $_SESSION["position"]; ?> </a>
@@ -58,10 +59,10 @@
         </header>
 
         <div class="main">
-            <div class = "container-fluid" style="overflow-x:auto;">
+            <div class = "container" style="overflow-x:auto;">
 
                 <div class="row pt-5">
-                    <div class="home-text col-mid-8 col-sm-12 mt-5">
+                    <div class="home-text col-md-8 col-sm-12 mt-5">
                       <?php
                       //connect to mysql
                         $conn = new mysqli("localhost","root","", "helpbomba");
@@ -83,12 +84,12 @@
                         <?php //if have crisis trip
                         } else {
                         ?>
+                        <h2>Manage Applications</h2>
                         <h3>Lists of Crisis Trips Table</h3>
 
                         <!-- All crisis trip that staff in-charge !-->
 
-                        <table class="table table-bordered table-secondary table table-dark" id="cTripTable" style="overflow-x:auto; border-radius: 5px;
-                        border-color: red;">
+                        <table class="table table-bordered table-secondary table table-dark" id="cTripTable">
                           <form action="DeleteTrip.php" method="POST" class="form-control">
                             <thead>
                             <tr class=" table-warning" style="color:black;" >
@@ -109,9 +110,12 @@
                             while($row = mysqli_fetch_assoc($resultArray)):
                             ?>
                             <tr>
+                              <form class="" action="" method="post">
+
+
                               <td align="middle">
                               <!-- to select trip that need to delete !-->
-                              <input type="checkbox" name="checkbox" value="<?php echo $row['cTID'];?>" required>
+                              <input type="checkbox" name="checkbox" onchange="isChecked(this, 'viewApp<?php echo $row['cTID'];?>', 'delete<?php echo $row['cTID'];?>')" value="<?php echo $row['cTID'];?>" required>
                               </td>
                               <td align="center"><?php echo $row['cTID'];?></td>
                               <td align="center"><?php echo $row['cTDate'];?></td>
@@ -123,21 +127,32 @@
                               <td align="middle">
 
                                 <!-- to view applications !-->
-                                <a href="homepage.php"><input type="submit" name="viewApp" value ="View Applications" class="btn btn-info"></a>
+                                <a href="Application.php"><button type="button" id="viewApp<?php echo $row['cTID'];?>" name="viewApp" disabled
+																	 class="btn btn-info" >View Application</button></a>
 
                               </td>
                               <td align="middle">
                                 <!-- to delete trip if neccessarily !-->
-                                <input type="submit" name="delete" value ="delete" class="btn btn-info">
+                                <input type="submit" id="delete<?php echo $row['cTID'];?>" name="delete" value ="Delete" disabled class="btn btn-info">
                               </td>
+
+															<script type="text/javascript">
+
+                              function isChecked(checkbox, viewApp, deleteApp) {
+                                document.getElementById(viewApp).disabled = !checkbox.checked;
+																document.getElementById(deleteApp).disabled = !checkbox.checked;
+                              }
+
+															// function isChecked(checkbox, deleted) {
+															//
+                              // }
+
+                            </script>
+
+                              </form>
                             </tr>
 
                            </form>
-
-                            <!-- Application Modal !-->
-                          <form action="common.php" method="POST">
-
-                          </form>
                           <?php endwhile;?>
                           </tbody>
                         </table>

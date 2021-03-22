@@ -16,11 +16,18 @@ if(isset($_POST['delete'])){
 
   $sql = "SELECT * FROM `crisistrip` WHERE cTID = $Checkbox";
   $check = mysqli_query($conn, $sql);
+
+
   if(mysqli_num_rows($check)>0){
     $sql1 = "DELETE FROM `crisistrip` WHERE cTID = $Checkbox";
     $queryDelete = mysqli_query($conn,  $sql1);
+    if($queryDelete==null){
+       echo '<script> alert("Error occur! Please retry again!")</script>';
+       echo "<script> window.location.assign('ManageApplications.php'); </script>";
+    }else{
      echo '<script> alert("Record deleted!")</script>';
     echo "<script> window.location.assign('ManageApplications.php'); </script>";
+    }
   }
   else{
       echo '<script> alert("Record does not exist!")</script>';

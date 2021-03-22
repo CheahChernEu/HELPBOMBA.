@@ -1,3 +1,7 @@
+<?php
+	require_once("function.php");
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +22,23 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto float-right text-right">
+                    <li class="nav-item ml-4">
+
+                      <!-- User profile icon !-->
+                       <div class="dropdown" style="width:auto;height:auto;">
+                        <button type="button" class="navbar-brand btn btn-dark dropdown-toggle" data-toggle="dropdown"
+                        <i onclick="dropdown(this)" style="width:100px; height:auto; font-size:15px; color:white;"> Profile </i>
+                         </button>
+
+                         <!-- Dropdown options !-->
+                        <div class="dropdown-menu">
+													<a class="dropdown-item" href="#"> ID: <?php echo $_SESSION["userID"]; ?> </a>
+                          <a class="dropdown-item" href="#"> Username: <?php echo $_SESSION["username"]; ?> </a>
+                          <a class="dropdown-item" href="#"> Name: <?php echo $_SESSION["name"]; ?> </a>
+                          <a class="dropdown-item" href="#"> Position: <?php echo $_SESSION["position"]; ?> </a>
+                        </div>
+                      </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link ml-5" data-toggle="modal" data-target="#recordModal">Record New Staff </a>
                     </li>

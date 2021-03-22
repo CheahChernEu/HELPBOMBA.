@@ -158,7 +158,7 @@ p{
 #contact{
     background: url(contactus-background-right.jpg) 50% 0 repeat-y fixed;
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     position: relative;
 }
 .modal-dialog {
@@ -231,4 +231,18 @@ p{
     align-items: center;
     justify-content:center;
 
+}
+
+/* tbody {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+} */
+.my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
 }
