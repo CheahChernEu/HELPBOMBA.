@@ -224,7 +224,7 @@ if($select!=null){
   echo "<script> window.location.assign('staff.php');</script>";
 }else{
 
-   $sql2 = "INSERT INTO `crisistrip`( `cType`, `description`, `cTDate`, `location`, `minDuration`, `numVolunteers`, `skillRequirements`, `availableSlots`, `userID`) VALUES ('$cType', '$description', '$tripDate', '$location', '$minDuration', '$numVolunteers', '$skillReq', '$numVolunteers', '$userID')";
+   $sql2 = "INSERT INTO `crisistrip`( `cType`, `description`, `cTDate`, `location`, `minDuration`, `numVolunteers`, `skillRequirement(s)`, `availableSlots`, `userID_fk`) VALUES ('$cType', '$description', '$tripDate', '$location', '$minDuration', '$numVolunteers', '$skillReq', '$numVolunteers', '$userID')";
 
    $insert = mysqli_query($conn,$sql2);
    if(!$insert){
@@ -320,13 +320,15 @@ function applyForTrip(){
       while ($row = $result -> fetch_assoc()){
         $documentID_fk = $row["documentID"];
       }
-
     }
     else{
       echo '<script type="text/javascript">alert("The volunteer does not have a document")</script>';
     }
+
     $date = date('Y-m-d H:i:s');
     $sql2 = "INSERT INTO `Application`(`applicationDate`, `applicationStatus`, `userID_fk`, `tripID_fk`, `documentID_fk`) VALUES ('$date', 'NEW', '".$_SESSION['userID']."', '$_POST[hidden]', '$documentID_fk')";
+
+
     $sql2_run = mysqli_query($conn, $sql2);
 
 
@@ -351,21 +353,21 @@ function applyForTrip(){
 function selectTrip(){
   $conn = mysqli_connect("localhost","root","","helpbomba");
   $userid =  $_SESSION['userID'];
-  $query = "SELECT * FROM crisistrip c inner join hbmember m WHERE c.userID = $userid and m.userID = $userid and c.availableSlots>0 and YEAR(c.cTDate)>=YEAR(CURDATE()) and MONTH(c.cTDate)>=MONTH(CURDATE()) and DAY(c.cTDate)>=DAY(CURDATE())";
+  $query = "SELECT * FROM crisistrip c inner join hbmember m WHERE c.userID_fk = $userid and m.userID = $userid and c.cTDate>=CURDATE()";
   return $query;
 }
 
 function selectApplication(){
   $conn = mysqli_connect("localhost","root","","helpbomba");
-  $tripID = $_SESSION['tripID'] ;
-  $query = "SELECT * FROM application a inner join crisistrip c WHERE a.cTID = $tripID and c.cTID = $tripID and YEAR(a.applicationDate)>=YEAR(c.cTDate) and MONTH(a.applicationDate)>=MONTH(c.cTDate) and DAY(a.applicationDate)>=DAY(c.cTDate)" ;
+  $tripID = $_POST['hidden'];
+  $query = "SELECT * FROM application a inner join crisistrip c WHERE a.cTID = $tripID and c.cTID = $tripID and a.applicationDate>=CURDATE()" ;
   return $query;
 }
 
 function selectDocument(){
   $conn = mysqli_connect("localhost","root","","helpbomba");
   $documentID = $_SESSION['documentID'];
-  $query = "SELECT * FROM document d inner join application a  WHERE  d.documentID = $documentID and a.documentID = $documentID"  ;
+  $query = "SELECT * FROM document d inner join application a  WHERE  d.documentID = $documentID and a.documentID_fk = $documentID"  ;
   return $query;
 }
 

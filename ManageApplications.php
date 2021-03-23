@@ -122,14 +122,13 @@
                               <td align="center"><?php echo $row['cType'];?></td>
                               <td align="center"><?php echo $row['location'];?></td>
                               <td align="center"><?php echo
-                              $row['skillRequirements'];?></td>
+                              $row['skillRequirement(s)'];?></td>
                               <td align="center"><?php echo $row['availableSlots'];?></td>
                               <td align="middle">
 
                                 <!-- to view applications !-->
                                 <a href="Application.php"><button type="button" id="viewApp<?php echo $row['cTID'];?>" name="viewApp" disabled
 																	 class="btn btn-info" >View Application</button></a>
-
                               </td>
                               <td align="middle">
                                 <!-- to delete trip if neccessarily !-->
@@ -142,10 +141,6 @@
                                 document.getElementById(viewApp).disabled = !checkbox.checked;
 																document.getElementById(deleteApp).disabled = !checkbox.checked;
                               }
-
-															// function isChecked(checkbox, deleted) {
-															//
-                              // }
 
                             </script>
 

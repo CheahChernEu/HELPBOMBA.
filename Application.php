@@ -142,6 +142,8 @@
                                 document.getElementById(viewDoc).disabled = !checkbox.checked;
                               }
 
+
+
                             </script>
 
                              </form>
@@ -204,7 +206,7 @@
                                          <div class="modal-footer">
 																					 <input name="action" value="updateSlots" hidden>
                                            <input name="action" value="updateApp" hidden>
-                                           <input type="submit" class="btn btn-primary" name="updateStatus" onclick="checkStatus(),remarksBlankValidation();" value="Update Here!">
+                                           <input type="submit" class="btn btn-primary" name="updateStatus" id="updateStatus" value="Update Here!">
                                          </div>
                                        </div>
                                      </div>
@@ -278,7 +280,7 @@
           var accept = "accepted";
           if(!(result === reject || result === accept)){
             alert("Please only enter 'rejected' or 'accepted (Required)'")
-            document.getElementById('updateStatus').focus();
+            document.getElementById('statusUpdate').focus();
             throw new Error("This is not an error. This is just to abort javascript.")
           }
         }
@@ -292,7 +294,5 @@
 	      }
 
         </script>
-
-
     </body>
 </html>
