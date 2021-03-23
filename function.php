@@ -30,6 +30,10 @@ if(isset($_POST['action'])) {
     case 'updateApp':
       updateApp();
       break;
+
+    case 'updateSlots':
+      updateSlots();
+        break;
   }
 }
 
@@ -225,26 +229,28 @@ if($select!=null){
      echo '<script> alert("This crisis trip has been created successfully")</script>';
      echo "<script> window.location.assign('staff.php');</script>";
    }
-}
+ }
 }
 
 
 function selectTrip(){
   $conn = mysqli_connect("localhost","root","","helpbomba");
   $userid =  $_SESSION['userID'];
-  $query = "SELECT * FROM crisistrip c inner join hbmember m WHERE c.userID = $userid and m.userID = $userid";
+  $query = "SELECT * FROM crisistrip c inner join hbmember m WHERE c.userID = $userid and m.userID = $userid and c.availableSlots>0 and YEAR(c.cTDate)>=YEAR(CURDATE()) and MONTH(c.cTDate)>=MONTH(CURDATE()) and DAY(c.cTDate)>=DAY(CURDATE())";
   return $query;
 }
 
 function selectApplication(){
   $conn = mysqli_connect("localhost","root","","helpbomba");
-  $tripID = 15;
-  $query = "SELECT * FROM application a inner join crisistrip c WHERE a.cTID = $tripID and c.cTID = $tripID" ;
+  $tripID = 14;
+  $query = "SELECT * FROM application a inner join crisistrip c WHERE a.cTID = $tripID and c.cTID = $tripID and YEAR(a.applicationDate)>=YEAR(c.cTDate) and MONTH(a.applicationDate)>=MONTH(c.cTDate) and DAY(a.applicationDate)>=DAY(c.cTDate)" ;
   return $query;
 }
 
 function selectDocument(){
   $conn = mysqli_connect("localhost","root","","helpbomba");
+  // Example:
+
   $documentID = 4;
   $query = "SELECT * FROM document d inner join application a  WHERE  d.documentID = $documentID and a.documentID = $documentID"  ;
   return $query;
@@ -288,6 +294,32 @@ function updateApp(){
         echo '<script> alert("This application does not exist!")</script>';
         echo "<script> window.location.assign('Application.php'); </script>";
     }
+}
+
+function updateSlots(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "helpbomba";
+
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  // Check connection
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+  $statusUpdate = $_POST['statusUpdate'];
+  if($statusUpdate == 'accepted'){
+    $sql = "UPDATE `crisistrip` SET `availableSlots`= 'availableSlots - 1' FROM crisistrip INNER JOIN application ON crisistrip.cTID = application.cTID";
+    mysqli_query($conn,  $sql);
+  } else {
+    echo '<script> alert("Available Slots are not updated!")</script>';
+    echo "<script> window.location.assign('Application.php'); </script>";
+  }
+
+
+
 }
 
 

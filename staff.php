@@ -113,156 +113,6 @@
             </footer>
         </section>
 
-        <!-- Pop Modal -->
-        <!-- manage trip application -->
-        <div class="modal fade" id="manageModal" tabindex="-1" role="dialog" aria-labelledby="manageModalLabel" aria-hidden="true">
-          <div class="modal-dialog " role="document" >
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="manageModalLabel">Manage Trip Application </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Trip ID</th>
-                        <th scope="col">Trip Date</th>
-                        <th scope="col">Trip Type</th>
-                        <th scope="col">Skills <br> Requirements </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                        <?php
-                            echo $_SESSION['userID'];
-                            $query = "SELECT * FROM `crisistrip`";
-                             // $tripData = db_search($query);
-                             // $totalTrip = mysqli_num_rows($tripData);
-                             // $today = date("Y-m-d");
-
-                             $result = mysqli_query($conn, $query);
-                             while($row = mysqli_fetch_assoc($result)){
-                               if ($row['availableSlots']>'0' ){
-                               echo "
-                               <tr>
-                                 <th>".$row['cTID']."</th>
-                                 <td>".$row['cTDate']."</td>
-                                 <td>".$row['cType']."</td>
-                                 <td>".$row['skillRequirements']."</td>
-                               </tr>
-                               ";
-                            }
-                          }
-                          ?>
-                    </tbody>
-                  </table>
-                  <p class="d-flex justify-content-center align-items-center">
-                    <span class="me-3" style="color: black; font-size: 20px;font-weight:bold;"> Please enter Trip ID : </span>
-                    <input type="number" name="tripInput" id="tripInput" min="1" required style="margin-left:20px;">
-                  </p>
-                </div>
-                <div class="modal-footer">
-
-                <button name="submit" id="submit" type="button" class="btn btn-primary" value="Submit" data-toggle="modal" data-target="#appModal"  data-dismiss="modal" onsubmit="inputTripBlankValidation()">Submit</button>
-
-                <button name="close" type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- select application -->
-              <div class="modal fade" id="appModal" tabindex="-1" role="dialog" aria-labelledby="appModalLabel" aria-hidden="true">
-                <div class="modal-dialog " role="document" >
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="appModalLabel">Select Application</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th scope="col">Application ID</th>
-                              <th scope="col">Application Date</th>
-                              <th scope="col">Status</th>
-                              <th scope="col">remarks</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>4/8/2021</td>
-                              <td>New</td>
-                              <td>-</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <p class="d-flex justify-content-center align-items-center">
-                          <span class="me-3" style="color: black; font-size: 20px;font-weight:bold;"> Input application ID : </span>
-                          <input type="number" name="inputID" id="inputID" style="margin-left:20px;">
-                        </p>
-                        <p class="d-flex justify-content-center align-items-center">
-                          <span class="me-3" style="color: black; font-size: 20px;font-weight:bold;"> Update Status (rejected/accepted) :
-                          </span>
-                          <input type="text" name="updateStatus" id="updateStatus" placeholder="View documents first" style="margin-left:20px;">
-                        </p>
-                      </div>
-
-                      <div class="modal-footer">
-
-                      <button name="update" id="update" type="button" class="btn btn-primary" value="update" data-toggle="modal" data-target="#updateModal"  data-dismiss="modal" onclick="checkStatus()">Submit</button>
-
-                      <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-      <!-- update status and remakrs -->
-              <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-                <div class="modal-dialog " role="document" >
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="updateModalLabel">Document Information: </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th scope="col">Document ID</th>
-                              <th scope="col">Certificate Expiry Date</th>
-                              <th scope="col">Passport Expory Date</th>
-                              <th scope="col">Document Files </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>2/4/2021</td>
-                              <td>4/8/2021</td>
-                              <td>files</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      <div class="modal-footer">
-                      <button name="close" type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#appModal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
 
 <!-- organize trip -->
   <form name="tripForm" id="tripForm" action="function.php" method="POST">
@@ -322,7 +172,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <!-- javascript -->
-        <script type="text/javascript">
+      <script type="text/javascript">
         // Only allow today as the min date can be pick, and dsiable past date to be pick from.
       var date = new Date().toISOString().slice(0,10);
 
@@ -430,26 +280,7 @@
           }
       }
 
-      // trip input validation
-      function inputTripBlankValidation(){
-        if(document.getElementById('tripInput').value == ''){
-          alert("Please enter the trip ID otherwise Please click close to exit")
-          document.getElementById('tripInput').focus();
-          throw new Error("This is not an error. This is just to abort javascript.")
-        }
-      }
 
-      function checkStatus(){
-
-        var result = document.getElementById('updateStatus').value.toLowerCase();
-        var reject = "rejected";
-        var accept = "accepted";
-        if(!(result === reject || result === accept)){
-          alert("Please only enter 'rejected' or 'accepted'")
-          document.getElementById('updateStatus').focus();
-          throw new Error("This is not an error. This is just to abort javascript.")
-        }
-      }
 
         </script>
     </body>

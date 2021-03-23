@@ -202,6 +202,7 @@
 
                                          <!-- Add button !-->
                                          <div class="modal-footer">
+																					 <input name="action" value="updateSlots" hidden>
                                            <input name="action" value="updateApp" hidden>
                                            <input type="submit" class="btn btn-primary" name="updateStatus" onclick="checkStatus(),remarksBlankValidation();" value="Update Here!">
                                          </div>
