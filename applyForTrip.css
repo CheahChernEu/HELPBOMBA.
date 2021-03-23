@@ -97,19 +97,24 @@ p{
 .main .main-content{
     text-align: center;
     margin-top: 100px;
-    margin-bottom: 100px;
-    min-height: 795px;
+    margin-bottom: 50px;
+    min-height: 500px;
     width: 100%;
 }
 
-table{
-  text-align: center;
-  width: 100%;
+.content-table{
+    border-collapse: collapse;
+    font-size: 1.0vw;
+    width: 100%;
+}
+
+.header-row{
+    background-color: orange;
 }
 
 tr:nth-child(even){background-color: #f2f2f2;}
-th:hover{background-color: inherit;}
-tr:hover{background-color: lightgrey;}
+
+.content-row:hover{background-color: lightgrey;}
 
 #contact{
     background: url(contactus-background-right.jpg) 50% 0 repeat-y fixed;

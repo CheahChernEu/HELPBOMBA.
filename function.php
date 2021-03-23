@@ -304,21 +304,34 @@ function applyForTrip(){
   $conn = new mysqli($servername, $username, $password, $dbname);
 
   if (isset($_POST['applyForTrip'])){
+    $sql1 = "SELECT * FROM Document WHERE userID_fk = '".$_SESSION['userID']."'";
+    $result = mysqli_query($conn, $sql1);
+    if ($result -> num_rows > 0){
+      while ($row = $result -> fetch_assoc()){
+        $documentID_fk = $row["documentID"];
+      }
+    }
+    else{
+      echo '<script type="text/javascript">alert("The volunteer does not have a document")</script>';
+    }
     $date = date('Y-m-d H:i:s');
-    $sql = "INSERT INTO `Application`(`applicationDate`, `applicationStatus`, `userID_fk`, `tripID_fk`) VALUES ('$date', 'NEW', '".$_SESSION['userID']."', '$_POST[hidden]')";
-    $sql_run = mysqli_query($conn, $sql);
+    $sql2 = "INSERT INTO `Application`(`applicationDate`, `applicationStatus`, `userID_fk`, `tripID_fk`, `documentID_fk`) VALUES ('$date', 'NEW', '".$_SESSION['userID']."', '$_POST[hidden]', '$documentID_fk')";
+    $sql2_run = mysqli_query($conn, $sql2);
 
-    if ($sql_run){
-      echo '<script type="text/javascript">alert("Successful")</script>';
+    if ($sql2_run){
+      echo '<script type="text/javascript">alert("Applied successfully")</script>';
+      echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
 
     }
     else{
-      echo '<script type="text/javascript">alert("Unsuccesful")</script>';
+      echo '<script type="text/javascript">alert("Applied unsuccesfully")</script>';
+      echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
 
     }
   }
   else{
-    echo '<script type="text/javascript">alert("Not Successful")</script>';
+    echo '<script type="text/javascript">alert("Error Occur")</script>';
+    echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
   }
 
 }

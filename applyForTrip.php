@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-        <link rel="stylesheet" type="text/css" href="applyForTripUpdated.css">
+        <link rel="stylesheet" type="text/css" href="applyForTrip.css">
     </head>
     <body>
         <header>
@@ -37,11 +37,11 @@
         </header>
 
         <div class="main">
-            <div class="main-content">
+            <div class="main-content container">
                 <h1>List of Crisis Trips</h1>
-                <div id = "tableMain" class="d-flex w-100 justify-content-between">
-                  <table align="center">
-                    <tr1>
+                <div id = "tableMain">
+                  <table class="content-table">
+                    <tr class="header-row">
                       <th>CTID</th>
                       <th>Type</th>
                       <th>Description</th>
@@ -52,7 +52,7 @@
                       <th>Skill Requirement(s)</th>
                       <th>Available Slots</th>
                       <th>Operation</th>
-                    </tr1>
+                    </tr>
                     <?php
                     $servername = "localhost";
                     $username   = "root";
@@ -65,12 +65,12 @@
                       die("Connection failed: " . $conn->connect_error);
                     }
                     $date = date('Y-m-d H:i:s');
-                    $sql = "SELECT * FROM Trip WHERE cTDate > '$date'";
+                    $sql = "SELECT * FROM crisistrip WHERE cTDate > '$date'";
                     $result = mysqli_query($conn, $sql);
 
                     if ($result -> num_rows > 0){
                       while ($row = $result -> fetch_assoc()){
-                        echo "<tr><form action = 'function.php' method = 'POST'>";
+                        echo "<tr class='content-row'><form action = 'function.php' method = 'POST'>";
                         echo "<td>".$row['cTID']."</td>";
                         echo "<td>".$row["cType"]."</td>";
                         echo "<td>".$row["description"]."</td>";
