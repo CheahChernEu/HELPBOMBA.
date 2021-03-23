@@ -300,7 +300,7 @@ function updateApp(){
     }
 }
 
-<<<<<<< HEAD
+
 function updateSlots(){
   $servername = "localhost";
   $username = "root";
@@ -324,7 +324,7 @@ function updateSlots(){
   }
 
 
-=======
+
 function applyForTrip(){
   $servername = "localhost";
   $username   = "root";
@@ -364,7 +364,6 @@ function applyForTrip(){
     echo '<script type="text/javascript">alert("Error Occur")</script>';
     echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
   }
->>>>>>> 9df266027b1f71153b703dff1d71e90f27223039
 
 }
 
