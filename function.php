@@ -237,28 +237,7 @@ if($select!=null){
 }
 
 
-function selectTrip(){
-  $conn = mysqli_connect("localhost","root","","helpbomba");
-  $userid =  $_SESSION['userID'];
-  $query = "SELECT * FROM crisistrip c inner join hbmember m WHERE c.userID = $userid and m.userID = $userid and c.availableSlots>0 and YEAR(c.cTDate)>=YEAR(CURDATE()) and MONTH(c.cTDate)>=MONTH(CURDATE()) and DAY(c.cTDate)>=DAY(CURDATE())";
-  return $query;
-}
 
-function selectApplication(){
-  $conn = mysqli_connect("localhost","root","","helpbomba");
-  $tripID = 14;
-  $query = "SELECT * FROM application a inner join crisistrip c WHERE a.cTID = $tripID and c.cTID = $tripID and YEAR(a.applicationDate)>=YEAR(c.cTDate) and MONTH(a.applicationDate)>=MONTH(c.cTDate) and DAY(a.applicationDate)>=DAY(c.cTDate)" ;
-  return $query;
-}
-
-function selectDocument(){
-  $conn = mysqli_connect("localhost","root","","helpbomba");
-  // Example:
-
-  $documentID = 4;
-  $query = "SELECT * FROM document d inner join application a  WHERE  d.documentID = $documentID and a.documentID = $documentID"  ;
-  return $query;
-}
 
 function updateApp(){
   $servername = "localhost";
@@ -301,27 +280,27 @@ function updateApp(){
 }
 
 
-function updateSlots(){
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "helpbomba";
-
-  // Create connection
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
-  // Check connection
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
-
-  $statusUpdate = $_POST['statusUpdate'];
-  if($statusUpdate == 'accepted'){
-    $sql = "UPDATE `crisistrip` SET `availableSlots`= 'availableSlots - 1' FROM crisistrip INNER JOIN application ON crisistrip.cTID = application.cTID";
-    mysqli_query($conn,  $sql);
-  } else {
-    echo '<script> alert("Available Slots are not updated!")</script>';
-    echo "<script> window.location.assign('Application.php'); </script>";
-  }
+// function updateSlots(){
+//   $servername = "localhost";
+//   $username = "root";
+//   $password = "";
+//   $dbname = "helpbomba";
+//
+//   // Create connection
+//   $conn = mysqli_connect($servername, $username, $password, $dbname);
+//   // Check connection
+//   if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+//   }
+//
+//   $statusUpdate = $_POST['statusUpdate'];
+//   if($statusUpdate == 'accepted'){
+//     $sql = "UPDATE `crisistrip` SET `availableSlots`= 'availableSlots - 1' FROM crisistrip INNER JOIN application ON crisistrip.cTID = application.cTID";
+//     mysqli_query($conn,  $sql);
+//   } else {
+//     echo '<script> alert("Available Slots are not updated!")</script>';
+//     echo "<script> window.location.assign('Application.php'); </script>";
+//   }
 
 
 
@@ -341,6 +320,7 @@ function applyForTrip(){
       while ($row = $result -> fetch_assoc()){
         $documentID_fk = $row["documentID"];
       }
+
     }
     else{
       echo '<script type="text/javascript">alert("The volunteer does not have a document")</script>';
@@ -348,6 +328,7 @@ function applyForTrip(){
     $date = date('Y-m-d H:i:s');
     $sql2 = "INSERT INTO `Application`(`applicationDate`, `applicationStatus`, `userID_fk`, `tripID_fk`, `documentID_fk`) VALUES ('$date', 'NEW', '".$_SESSION['userID']."', '$_POST[hidden]', '$documentID_fk')";
     $sql2_run = mysqli_query($conn, $sql2);
+
 
     if ($sql2_run){
       echo '<script type="text/javascript">alert("Applied successfully")</script>';
@@ -365,6 +346,27 @@ function applyForTrip(){
     echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
   }
 
+}
+
+function selectTrip(){
+  $conn = mysqli_connect("localhost","root","","helpbomba");
+  $userid =  $_SESSION['userID'];
+  $query = "SELECT * FROM crisistrip c inner join hbmember m WHERE c.userID = $userid and m.userID = $userid and c.availableSlots>0 and YEAR(c.cTDate)>=YEAR(CURDATE()) and MONTH(c.cTDate)>=MONTH(CURDATE()) and DAY(c.cTDate)>=DAY(CURDATE())";
+  return $query;
+}
+
+function selectApplication(){
+  $conn = mysqli_connect("localhost","root","","helpbomba");
+  $tripID = $_SESSION['tripID'] ;
+  $query = "SELECT * FROM application a inner join crisistrip c WHERE a.cTID = $tripID and c.cTID = $tripID and YEAR(a.applicationDate)>=YEAR(c.cTDate) and MONTH(a.applicationDate)>=MONTH(c.cTDate) and DAY(a.applicationDate)>=DAY(c.cTDate)" ;
+  return $query;
+}
+
+function selectDocument(){
+  $conn = mysqli_connect("localhost","root","","helpbomba");
+  $documentID = $_SESSION['documentID'];
+  $query = "SELECT * FROM document d inner join application a  WHERE  d.documentID = $documentID and a.documentID = $documentID"  ;
+  return $query;
 }
 
 
