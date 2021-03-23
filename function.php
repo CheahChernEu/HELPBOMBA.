@@ -31,15 +31,13 @@ if(isset($_POST['action'])) {
       updateApp();
       break;
 
-<<<<<<< HEAD
     case 'updateSlots':
       updateSlots();
         break;
-=======
     case 'applyForTrip':
       applyForTrip();
       break;
->>>>>>> 9df266027b1f71153b703dff1d71e90f27223039
+
   }
 }
 
