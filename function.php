@@ -30,6 +30,10 @@ if(isset($_POST['action'])) {
     case 'updateApp':
       updateApp();
       break;
+
+    case 'applyForTrip':
+      applyForTrip();
+      break;
   }
 }
 
@@ -288,6 +292,35 @@ function updateApp(){
         echo '<script> alert("This application does not exist!")</script>';
         echo "<script> window.location.assign('Application.php'); </script>";
     }
+}
+
+function applyForTrip(){
+  $servername = "localhost";
+  $username   = "root";
+  $password   = "";
+  $dbname     = "helpbomba";
+
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  if (isset($_POST['applyForTrip'])){
+    $date = date('Y-m-d H:i:s');
+    $sql = "INSERT INTO `Application`(`applicationDate`, `applicationStatus`, `userID_fk`, `tripID_fk`) VALUES ('$date', 'NEW', '".$_SESSION['userID']."', '$_POST[hidden]')";
+    $sql_run = mysqli_query($conn, $sql);
+
+    if ($sql_run){
+      echo '<script type="text/javascript">alert("Successful")</script>';
+
+    }
+    else{
+      echo '<script type="text/javascript">alert("Unsuccesful")</script>';
+
+    }
+  }
+  else{
+    echo '<script type="text/javascript">alert("Not Successful")</script>';
+  }
+
 }
 
 

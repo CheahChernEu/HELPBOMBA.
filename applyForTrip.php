@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-        <link rel="stylesheet" type="text/css" href="applyForTrip.css">
+        <link rel="stylesheet" type="text/css" href="applyForTripUpdated.css">
     </head>
     <body>
         <header>
@@ -39,101 +39,58 @@
         <div class="main">
             <div class="main-content">
                 <h1>List of Crisis Trips</h1>
-                <div class="listings container">
-                    <div class="list-group">
-                        <a href="#alertModal" class="list1 list-group-item list-group-item-action" data-toggle="modal">
-                          <div class="d-flex w-100 justify-content-between">
-                            <h2 class="mb-1">Flood Rescue</h2>
-                          </div>
-                          <p class="mb-1">
-                            ID: T001
-                          </p>
-                          <p class="mb-1">
-                            Description: Saving the flood victims and provides foods for them
-                          </p>
-                          <p class="mb-1">
-                            Crisis Type: Flood
-                          </p>
-                          <p class="mb-1">
-                            Date: 12/04/2021
-                          </p>
-                          <p class="mb-1">
-                            Location: Hong Kong
-                          </p>
-                          <p class="mb-1">
-                            No of Volunteer: 25
-                          </p>
-                        </a>
-                        <a href="#alertModal" class="list1 list-group-item list-group-item-action" data-toggle="modal">
-                          <div class="d-flex w-100 justify-content-between">
-                            <h2 class="mb-1">Earthquake Bomba</h2>
-                          </div>
-                          <p class="mb-1">
-                            ID: T002
-                          </p>
-                          <p class="mb-1">
-                            Description: Saving the earthquake victims and provides shelter for them
-                          </p>
-                          <p class="mb-1">
-                            Crisis Type: Earthquake
-                          </p>
-                          <p class="mb-1">
-                            Date: 03/05/2021
-                          </p>
-                          <p class="mb-1">
-                            Location: Japan
-                          </p>
-                          <p class="mb-1">
-                            No of Volunteer: 100
-                          </p>
-                        </a>
-                        <a href="#alertModal" class="list1 list-group-item list-group-item-action" data-toggle="modal">
-                          <div class="d-flex w-100 justify-content-between">
-                            <h2 class="mb-1">Fire Fighter</h2>
-                          </div>
-                          <p class="mb-1">
-                            ID: T003
-                          </p>
-                          <p class="mb-1">
-                            Description: Saving the wildfire victims and provides foods and shelter for them
-                          </p>
-                          <p class="mb-1">
-                            Crisis Type: Wildfire
-                          </p>
-                          <p class="mb-1">
-                            Date: 29/03/2021
-                          </p>
-                          <p class="mb-1">
-                            Location: Australia
-                          </p>
-                          <p class="mb-1">
-                            No of Volunteer: 100
-                          </p>
-                        </a>
-                    </div>
+                <div id = "tableMain" class="d-flex w-100 justify-content-between">
+                  <table align="center">
+                    <tr1>
+                      <th>CTID</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                      <th>Date</th>
+                      <th>Location</th>
+                      <th>Minimum Duration</th>
+                      <th>Number of Volunteers</th>
+                      <th>Skill Requirement(s)</th>
+                      <th>Available Slots</th>
+                      <th>Operation</th>
+                    </tr1>
+                    <?php
+                    $servername = "localhost";
+                    $username   = "root";
+                    $password   = "";
+                    $dbname     = "helpbomba";
+
+                    // Create connection
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) {
+                      die("Connection failed: " . $conn->connect_error);
+                    }
+                    $date = date('Y-m-d H:i:s');
+                    $sql = "SELECT * FROM Trip WHERE cTDate > '$date'";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result -> num_rows > 0){
+                      while ($row = $result -> fetch_assoc()){
+                        echo "<tr><form action = 'function.php' method = 'POST'>";
+                        echo "<td>".$row['cTID']."</td>";
+                        echo "<td>".$row["cType"]."</td>";
+                        echo "<td>".$row["description"]."</td>";
+                        echo "<td>".$row["cTDate"]."</td>";
+                        echo "<td>".$row["location"]."</td>";
+                        echo "<td>".$row["minDuration"]."</td>";
+                        echo "<td>".$row["numVolunteers"]."</td>";
+                        echo "<td>".$row["skillRequirement(s)"]."</td>";
+                        echo "<td>".$row["availableSlots"]."</td>";
+                        echo "<td>"."<input type='hidden' name='hidden' value=".$row['cTID'].">"."<input name='action' value='applyForTrip' hidden>"."<input type='submit' id='applyForTrip' name='applyForTrip' value='Apply'>"."</td>";
+                        echo "</form></tr>";
+                      }
+                    }
+                    else{
+                      echo "0 result";
+                    }
+                    ?>
+                  </table>
                 </div>
             </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModal" data-backdrop="static" data-keyboard="false" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Caution</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                Are you sure you want to apply for this trip?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="applyMessage()">Yes</button>
-              </div>
-            </div>
-          </div>
         </div>
 
         <section id="contact">
@@ -171,10 +128,22 @@
           </footer>
         </section>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
-          function applyMessage(){
-            alert("You have applied in the trip, please check your application status at manage profile section")
-          }
+
+          $(document).ready(function () {
+            //=================================================================
+            //click on table body
+        		$('#tableMain').on('click', 'tr', function() {
+        		    //get row contents into an array
+                var tableData = $(this).children("td").map(function() {
+                  return $(this).text();
+                }).get();
+                var td = "CTID: " + tableData[0] + "\nType: " + tableData[1] + "\nDescription: " + tableData[2] + "\nDate: " + tableData[3] + "\nLocation: " + tableData[4] + "\nMinimum Duration: " + tableData[5] + "\nNumber of Volunteers: " + tableData[6]
+                + "\nSkill Requirement(s): " + tableData[7] + "\nAvailable Slots: " + tableData[8];
+                alert(td);
+        		});
+      		});
         </script>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
