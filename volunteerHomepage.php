@@ -19,7 +19,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto float-right text-right">
                     <li class="nav-item">
-                        <a class="nav-link ml-5" href="TestManageVolunteerProfile.php">Manage Profile</a>
+                        <a class="nav-link ml-5" href="manageVolunteerProfile.php">Manage Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-5" href="applyForTrip.php">Apply For Trip</a>
