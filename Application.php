@@ -124,14 +124,16 @@
                                 <td align="center"><?php echo $row['applicationStatus'];?></td>
                                 <td align="center"><?php echo $row['remarks'];?></td>
                                 <td align="middle">
+
                                   <?php
-                                  if (mysqli_num_rows($result) == 0 ) { ?>
+                                  if (mysqli_num_rows($docRes ) == 0 ) { ?>
                                     <?php echo '<script> alert("There are no document currently!")</script>';?>
                                   <?php }
                                   else {
                                   ?>
                                  <!-- to view document !-->
                                 <button type="button" id="viewDoc<?php echo $row['applicationID'];?>" name="viewDoc" disabled data-toggle="modal"  data-target="#updateModal<?php echo $row['applicationID'];?>" class="btn btn-info">View Document</button>
+                                <?php } ?>
                                 </td>
                               </tr>
                               <script type="text/javascript">
@@ -141,18 +143,17 @@
                               }
 
                             </script>
-                              <?php } ?>
+
                              </form>
 
 
-
-
+														 <?php
+														// get each row of crisis trip into table
+														while($rows = mysqli_fetch_assoc($resultDoc)):
+														?>
                              <!--Update Application Modal !-->
-                                 <form action="function.php" method="POST" class="form-control">
-                                   <?php
-                               	  // get each row of crisis trip into table
-                               	  while($rows = mysqli_fetch_assoc($resultDoc)):
-                               	  ?>
+                                <form action="function.php" method="POST" class="form-control">
+
                                    <div class="modal fade" id="updateModal<?php echo $row['applicationID'];?>" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
                                      <div class="modal-dialog modal-dialog-centered" role="document">
                                        <div class="modal-content">
@@ -165,8 +166,6 @@
 
                                          <!-- input values !-->
                                          <div class="modal-body">
-
-
                                            <div class="form-group row">
                                             <label for="applicationID" class="col-sm-6 col-lg-4 col-form-label"> Application ID</label>
                                             <div class="col-sm-12 col-lg-8">
@@ -188,10 +187,15 @@
                                               <input type="text" class="form-control" name="docImages" value="<?php echo $rows['docImages'];?>"><br>
                                             </div>
 
-                                            <label for="status" class="col-sm-6 col-lg-4 col-form-label">Status </label>
+																						<label for="status" class="col-sm-6 col-lg-4 col-form-label">Status</label>
+                                            <div class="col-sm-12 col-lg-8">
+                                              <input type="text" class="form-control" name="statusUpdate" id="statusUpdate" placeholder="update application status" required ><br>
+                                            </div>
+
+                                            <label for="remarks" class="col-sm-6 col-lg-4 col-form-label">Remark(s)</label>
                                             <div class="col-sm-12 col-lg-8">
                                               <input type="text"
-                                              class="form-control" name="statusUpdate" id="statusUpdate" placeholder="update application status" required>
+                                              class="form-control" name="remarks" id="remarks" placeholder="remarks on documents" required>
                                             </div>
                                           </div>
                                          </div>
@@ -199,17 +203,15 @@
                                          <!-- Add button !-->
                                          <div class="modal-footer">
                                            <input name="action" value="updateApp" hidden>
-                                           <!-- <input type="submit" class="btn btn-primary" name="updateStatus" onclick="checkStatus();" value="Update Here!"> -->
-                                           <button type="submit" id="updateStatus" name="updateStatus" onclick="checkStatus();" class="btn btn-primary">Update Here!</button>
+                                           <input type="submit" class="btn btn-primary" name="updateStatus" onclick="checkStatus(),remarksBlankValidation();" value="Update Here!">
                                          </div>
                                        </div>
                                      </div>
                                    </div>
 
-                                   <?php endwhile;?>
                                  </form>
-
-                               <?php endwhile;?>
+																 <?php endwhile;?>
+	                               <?php endwhile;?>
                           </tbody>
                         </table>
                         <?php } ?>
@@ -274,11 +276,19 @@
           var reject = "rejected";
           var accept = "accepted";
           if(!(result === reject || result === accept)){
-            alert("Please only enter 'rejected' or 'accepted'")
+            alert("Please only enter 'rejected' or 'accepted (Required)'")
             document.getElementById('updateStatus').focus();
             throw new Error("This is not an error. This is just to abort javascript.")
           }
         }
+
+				function remarksBlankValidation(){
+	        if(document.getElementById('remarks').value == ''){
+	          alert("Remark(s) cannot be blank!")
+	          document.getElementById('remarks').focus();
+	          throw new Error("This is not an error. This is just to abort javascript.")
+	        }
+	      }
 
         </script>
 

@@ -245,15 +245,51 @@ function selectApplication(){
 
 function selectDocument(){
   $conn = mysqli_connect("localhost","root","","helpbomba");
-  $documentID = 3;
+  $documentID = 4;
   $query = "SELECT * FROM document d inner join application a  WHERE  d.documentID = $documentID and a.documentID = $documentID"  ;
   return $query;
 }
 
 function updateApp(){
-  
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "helpbomba";
 
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  // Check connection
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+    $applicationID = $_POST['applicationID'];
+    $documentID = $_POST['documentID'];
+    $statusUpdate = $_POST['statusUpdate'];
+    $remarks = $_POST['remarks'];
+
+    $sql = "SELECT * FROM `application` WHERE applicationID = $applicationID";
+    $check = mysqli_query($conn, $sql);
+
+
+    if(mysqli_num_rows($check)>0){
+      $sql1 = "UPDATE `application` SET `applicationStatus`= '$statusUpdate', `remarks`= '$remarks' WHERE documentID = $documentID and applicationID = $applicationID ";
+      $queryUpdate = mysqli_query($conn,  $sql1);
+      if($queryUpdate==null){
+         echo '<script> alert("Error occur! Please retry again!")</script>';
+         echo "<script> window.location.assign('Application.php'); </script>";
+
+      }else{
+       echo '<script> alert("Application status has been updated!")</script>';
+       echo "<script> window.location.assign('Application.php'); </script>";
+      }
+    }
+    else{
+        echo '<script> alert("This application does not exist!")</script>';
+        echo "<script> window.location.assign('Application.php'); </script>";
+    }
 }
+
 
 
 
