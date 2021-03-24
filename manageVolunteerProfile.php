@@ -90,7 +90,7 @@
                 <div class="btn">
                     <button type="reset" id="Reset" value="Reset">Reset</button>
                     <input name = "action" value="manageProfile" hidden>
-                    <button type="button" id="Submit" value="manageProfile" name="manageProfile" onclick="blankOldPwValidation(), blankNewPwValidation(), pwValidation(), nameValidation(), phoneValidation(), docTypeBlankValidation(), checkDate(), submitMessage()">Submit</button>
+                    <button type="button" id="Submit" value="manageProfile" name="manageProfile" onclick="blankOldPwValidation(), blankNewPwValidation(), pwValidation(), nameValidation(), phoneValidation(), docTypeBlankValidation(), blankDateValidation(), submitMessage()">Submit</button>
                 </div>
             </form>
             </div>
@@ -191,40 +191,10 @@
                 }
             }
 
-            // Validates that the input string is a valid date formatted as "dd/mm/yyyy"
-            function isValidDate(dateString)
-            {
-                // First check for the pattern
-                if(!/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(dateString))
-                    return false;
-
-                // Parse the date parts to integers
-                var parts = dateString.split("/");
-                var year = parseInt(parts[0], 10);
-                var month = parseInt(parts[1], 10);
-                var day = parseInt(parts[2], 10);
-
-                // Check the ranges of month and year
-                if(year < 1000 || year > 3000 || month == 0 || month > 12)
-                    return false;
-
-                var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-
-                // Adjust for leap years
-                if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
-                    monthLength[1] = 29;
-
-                // Check the range of the day
-                return day > 0 && day <= monthLength[month - 1];
-            };
-
-            function checkDate(){
-            // define date string to test
-            var ExpiryDate = document.getElementById('dateofexpiry').value;
-            // check date and print message
-                if (!isValidDate(ExpiryDate)) {
-                    alert('Invalid date format');
-                    document.getElementById('dateofexpiry').focus();
+            function blankDateValidation(){
+                if(document.getElementById('dateofexpiry').value == ''){
+                    alert("Date cannot be blank")
+                    document.getElementById('bdateofexpiry').focus();
                     throw new Error("This is not an error. This is just to abort javascript.")
                 }
             }
