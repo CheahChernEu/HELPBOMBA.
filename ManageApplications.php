@@ -73,7 +73,8 @@
                         //use table
                         $crisisTrip = "use crisistrip";
                         $conn->query($crisisTrip);
-                        $sql = selectTrip();
+
+                        $sql =selectTrip();
                         $result = mysqli_query($conn, $sql);
 
                         //fetch the data from database
@@ -90,7 +91,7 @@
                         <!-- All crisis trip that staff in-charge !-->
 
                         <table class="table table-bordered table-secondary table table-dark" id="cTripTable">
-                          <form action="DeleteTrip.php" method="POST" class="form-control">
+                          <form action="function.php" method="POST" class="form-control">
                             <thead>
                             <tr class=" table-warning" style="color:black;" >
                               <th class="text-center">Select Checkbox</th>
@@ -126,13 +127,23 @@
                               <td align="center"><?php echo $row['availableSlots'];?></td>
                               <td align="middle">
 
+																	<input name="action" value="viewApp" hidden>
                                 <!-- to view applications !-->
-                                <a href="Application.php"><button type="button" id="viewApp<?php echo $row['cTID'];?>" name="viewApp" disabled
-																	 class="btn btn-info" >View Application</button></a>
+
+                                <a href="Application.php"><input type="submit" id="viewApp<?php echo $row['cTID'];?>" name="viewApp" disabled value:"View Application"
+																	 class="btn btn-info"></a>
+
+																<!-- <button type="submit" id="viewApp" name="viewApp" disabled
+																	 class="btn btn-info" >View Application</button> -->
+
                               </td>
+															</form>
+
                               <td align="middle">
+																<input name="action" value="tripDel" hidden>
                                 <!-- to delete trip if neccessarily !-->
-                                <input type="submit" id="delete<?php echo $row['cTID'];?>" name="delete" value ="Delete" disabled class="btn btn-info">
+                                <input type="submit" id="delete<?php echo $row['cTID'];?>" name="delete<?php echo $row['cTID'];?>" value ="Delete" disabled class="btn btn-info">
+
                               </td>
 
 															<script type="text/javascript">

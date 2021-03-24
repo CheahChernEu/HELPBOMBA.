@@ -38,6 +38,18 @@ if(isset($_POST['action'])) {
       applyForTrip();
       break;
 
+    case 'viewApp':
+      selectApplication();
+      break;
+
+
+    case 'tripDel':
+      tripDel();
+      break;
+
+    case 'selectDoc':
+      selectDocument();
+      break;
   }
 }
 
@@ -294,6 +306,48 @@ function updateApp(){
     }
 }
 
+function tripDel(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "helpbomba";
+
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  // Check connection
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+  if(isset($_POST['delete'])){
+    $Checkbox = $_POST['checkbox'];
+
+    $sql = "SELECT * FROM `crisistrip` WHERE cTID = $Checkbox";
+    $check = mysqli_query($conn, $sql);
+
+
+    if(mysqli_num_rows($check)>0){
+      $sql1 = "DELETE FROM `crisistrip` WHERE cTID = $Checkbox";
+      $queryDelete = mysqli_query($conn,  $sql1);
+      if($queryDelete==null){
+         echo '<script> alert("Error occur! Please retry again!")</script>';
+         echo "<script> window.location.assign('ManageApplications.php'); </script>";
+      }else{
+       echo '<script> alert("Record deleted!")</script>';
+      echo "<script> window.location.assign('ManageApplications.php'); </script>";
+      }
+    }
+    else{
+        echo '<script> alert("Record does not exist!")</script>';
+        echo "<script> window.location.assign('ManageApplications.php'); </script>";
+    }
+
+  }else{
+     echo '<script> alert("Error in deleting!")</script>';
+     echo "<script> window.location.assign('ManageApplications.php'); </script>";
+  }
+}
+
 
 // function updateSlots(){
 //   $servername = "localhost";
@@ -369,22 +423,24 @@ function selectTrip(){
   $conn = mysqli_connect("localhost","root","","helpbomba");
   $userid =  $_SESSION['userID'];
   $query = "SELECT * FROM crisistrip c inner join hbmember m WHERE c.userID_fk = $userid and m.userID = $userid and c.cTDate>=CURDATE()";
+
   return $query;
 }
 
 function selectApplication(){
   $conn = mysqli_connect("localhost","root","","helpbomba");
-  $tripID = $_POST['hidden'];
+  $tripID = $_POST['viewApp'];
   $query = "SELECT * FROM application a inner join crisistrip c WHERE a.cTID = $tripID and c.cTID = $tripID and a.applicationDate>=CURDATE()" ;
+  echo "<script> window.location.assign('Application.php');</script>";
   return $query;
 }
 
-function selectDocument(){
-  $conn = mysqli_connect("localhost","root","","helpbomba");
-  $documentID = $_SESSION['documentID'];
-  $query = "SELECT * FROM document d inner join application a  WHERE  d.documentID = $documentID and a.documentID_fk = $documentID"  ;
-  return $query;
-}
+// function selectDocument(){
+//   $conn = mysqli_connect("localhost","root","","helpbomba");
+//   $documentID = $_POST['viewDoc'];
+//   $query = "SELECT * FROM document d inner join application a  WHERE  d.documentID = $documentID and a.documentID_fk = $documentID"  ;
+//   return $query;
+// }
 
 
 

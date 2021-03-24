@@ -71,12 +71,12 @@
                         }
 
                         // use table
-                        $document = "use document";
-                        $conn->query($document);
-                        $docSql = selectDocument();
-                        $docRes = mysqli_query($conn, $docSql);
-
-                        $resultDoc = mysqli_query($conn, $docSql) or die("Database error existed:". mysqli_error($conn));
+                        // $document = "use document";
+                        // $conn->query($document);
+                        // $docSql = selectDocument();
+                        // $docRes = mysqli_query($conn, $docSql);
+												//
+                        // $resultDoc = mysqli_query($conn, $docSql) or die("Database error existed:". mysqli_error($conn));
 
                         //use table
                         $application = "use application";
@@ -98,7 +98,7 @@
                         <!-- All crisis trip that staff in-charge !-->
 
                         <table id="table-row" class="table table-bordered table-secondary table table-dark col-md-12 col-sm-5 mt-5 " id="cTripTable" style="margin:auto;">
-                          <form action="" method="POST" class="form-control">
+                          <form action="function.php" method="POST" class="form-control">
                             <thead>
                             <tr class=" table-warning" style="color:black;" >
                               <th class="text-center">Select Checkbox</th>
@@ -131,8 +131,12 @@
                                   <?php }
                                   else {
                                   ?>
+
+
+																<input name="action" value="selectDoc" hidden>
                                  <!-- to view document !-->
-                                <button type="button" id="viewDoc<?php echo $row['applicationID'];?>" name="viewDoc" disabled data-toggle="modal"  data-target="#updateModal<?php echo $row['applicationID'];?>" class="btn btn-info">View Document</button>
+                                <button type="submit" id="viewDoc<?php echo $row['applicationID'];?>" name="viewDoc" disabled data-toggle="modal"  data-target="#updateModal<?php echo $row['applicationID'];?>" class="btn btn-info">View Document</button>
+
                                 <?php } ?>
                                 </td>
                               </tr>
