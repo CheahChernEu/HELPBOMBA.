@@ -1,3 +1,6 @@
+<?php
+  require_once("function.php");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,8 +67,9 @@
                     if ($conn->connect_error) {
                       die("Connection failed: " . $conn->connect_error);
                     }
+
                     $date = date('Y-m-d H:i:s');
-                    $sql = "SELECT * FROM crisistrip WHERE cTDate > '$date'";
+                    $sql = "SELECT * FROM crisistrip WHERE cTDate > '$date' AND cTID NOT IN (SELECT tripID_fk FROM Application WHERE userID_fk = '".$_SESSION['userID']."')";
                     $result = mysqli_query($conn, $sql);
 
                     if ($result -> num_rows > 0){
@@ -80,7 +84,7 @@
                         echo "<td>".$row["numVolunteers"]."</td>";
                         echo "<td>".$row["skillRequirement(s)"]."</td>";
                         echo "<td>".$row["availableSlots"]."</td>";
-                        echo "<td>"."<input type='hidden' name='hidden' value=".$row['cTID'].">"."<input name='action' value='applyForTrip' hidden>"."<input type='submit' id='applyForTrip' name='applyForTrip' value='Apply'>"."</td>";
+                        echo "<td>"."<input type='hidden' name='hidden' value=".$row['cTID'].">"."<input name='action' value='applyForTrip' hidden>"."<input type='submit' class='applyForTrip' id='applyForTrip' name='applyForTrip' value='Apply'>"."</td>";
                         echo "</form></tr>";
                       }
                     }
