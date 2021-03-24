@@ -337,7 +337,8 @@ function applyForTrip(){
       }
     }
     else{
-      echo '<script type="text/javascript">alert("The volunteer does not have a document")</script>';
+      echo '<script type="text/javascript">alert("You do not have a document, please proceed to manage profile section to update your document")</script>';
+      echo "<script> window.location.assign('applyForTrip.php'); </script>";
     }
 
     $date = date('Y-m-d H:i:s');

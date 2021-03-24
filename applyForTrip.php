@@ -1,3 +1,6 @@
+<?php
+  require_once("function.php");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,8 +67,17 @@
                     if ($conn->connect_error) {
                       die("Connection failed: " . $conn->connect_error);
                     }
+
+                    $sql2 = "SELECT * FROM Application WHERE userID_fk = '".$_SESSION['userID']."'";
+                    $result2 = mysqli_query($conn, $sql2);
+                    $cTID_fk_array = array();
+                    while ($row = $result2 -> fetch_assoc()){
+                      $cTID_fk_array[] = $row['tripID_fk'];
+                    }
+                    print_r($cTID_fk_array);
+
                     $date = date('Y-m-d H:i:s');
-                    $sql = "SELECT * FROM crisistrip WHERE cTDate > '$date'";
+                    $sql = "SELECT * FROM crisistrip WHERE cTDate > '$date' AND cTID NOT IN (SELECT tripID_fk FROM Application WHERE userID_fk = '".$_SESSION['userID']."')";
                     $result = mysqli_query($conn, $sql);
 
                     if ($result -> num_rows > 0){
