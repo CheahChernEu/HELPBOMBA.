@@ -161,15 +161,31 @@ function manageVolunteerProfile(){
 
     $file = $_FILES['fileupload']['name'];
 
-    $sql2 = "INSERT INTO `Document`(`documentType`, `expiryDate`, `docImage`, `userID_fk`) VALUES ('$documenttype', '$dateofexpiry', '$file', '".$_SESSION['userID']."')";
-    $sql2_run = mysqli_query($conn, $sql2);
-    if ($sql2_run){
-      echo '<script type="text/javascript">alert("All Data Updated")</script>';
-      echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+    $sql2 = "SELECT * FROM `Document` WHERE userID_fk = '".$_SESSION['userID']."'";
+    $result = db_search($sql2);
+    if ($result == null){
+      $sql3 = "INSERT INTO `Document`(`documentType`, `expiryDate`, `docImage`, `userID_fk`) VALUES ('$documenttype', '$dateofexpiry', '$file', '".$_SESSION['userID']."')";
+      $sql3_run = mysqli_query($conn, $sql3);
+      if ($sql3_run){
+        echo '<script type="text/javascript">alert("All Data Updated and New Document Inserted")</script>';
+        echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+      }
+      else{
+        echo '<script type="text/javascript">alert("Document Type, Date of Expiry and File Not Inserted")</script>';
+        echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+      }
     }
     else{
-      echo '<script type="text/javascript">alert("Document Type, Date of Expiry and File Not Updated")</script>';
-      echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+      $sql4 = "UPDATE Document SET documentType = '$documenttype', expiryDate = '$dateofexpiry', docImage = '$file' WHERE userID_fk = '".$_SESSION['userID']."'";
+      $sql4_run = mysqli_query($conn, $sql4);
+      if ($sql4_run){
+        echo '<script type="text/javascript">alert("All Data and Document Updated")</script>';
+        echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+      }
+      else{
+        echo '<script type="text/javascript">alert("Document Type, Date of Expiry and File Not Updated")</script>';
+        echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+      }
     }
   }
   else{
@@ -195,7 +211,6 @@ function registerStaff(){
   }else{
 
      $sql2 = "INSERT INTO `hbmember`(`username`, `password`, `name`, `contactNo`, `position`, `dateJoined` ) VALUES ('$username', '$password', '$name', '$phoneNo', 'staff', '$dateJoined' )";
-
      $insert = mysqli_query($conn,$sql2);
      if(!$insert){
        echo"ERROR";
