@@ -84,7 +84,7 @@
                         echo "<td>".$row["numVolunteers"]."</td>";
                         echo "<td>".$row["skillRequirement(s)"]."</td>";
                         echo "<td>".$row["availableSlots"]."</td>";
-                        echo "<td>"."<input type='hidden' name='hidden' value=".$row['cTID'].">"."<input name='action' value='applyForTrip' hidden>"."<input type='submit' id='applyForTrip' name='applyForTrip' value='Apply'>"."</td>";
+                        echo "<td>"."<input type='hidden' name='hidden' value=".$row['cTID'].">"."<input name='action' value='applyForTrip' hidden>"."<input type='submit' class='applyForTrip' id='applyForTrip' name='applyForTrip' value='Apply'>"."</td>";
                         echo "</form></tr>";
                       }
                     }
