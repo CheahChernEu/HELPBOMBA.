@@ -171,16 +171,22 @@ function manageVolunteerProfile(){
     $documenttype = $_POST['documenttype'];
     $dateofexpiry = $_POST['dateofexpiry'];
 
+    $target = "images/".basename($_FILES['fileupload']['name']);
     $file = $_FILES['fileupload']['name'];
 
     $sql2 = "SELECT * FROM `Document` WHERE userID_fk = '".$_SESSION['userID']."'";
     $result = db_search($sql2);
     if ($result == null){
+
       $sql3 = "INSERT INTO `Document`(`documentType`, `expiryDate`, `docImage`, `userID_fk`) VALUES ('$documenttype', '$dateofexpiry', '$file', '".$_SESSION['userID']."')";
       $sql3_run = mysqli_query($conn, $sql3);
+
       if ($sql3_run){
+        if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
+
         echo '<script type="text/javascript">alert("All Data Updated and New Document Inserted")</script>';
         echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+      }
       }
       else{
         echo '<script type="text/javascript">alert("Document Type, Date of Expiry and File Not Inserted")</script>';

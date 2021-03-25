@@ -110,8 +110,8 @@
 
                   <div class="inputbox">
                       <label for="docImages" class="col-sm-6 col-lg-4 col-form-label">Document Photos* </label>
-                        <input type="text" class="form-control" name="docImages" value="<?php echo "<a href=" . $target_path . basename($row['docImage']) . ">
-         $row['docImage']</a>"; ?>"
+                      <?php echo "<img src='images/".$row['docImage']."'>";?>
+
                   </div>
 
                   <div class="inputbox">
