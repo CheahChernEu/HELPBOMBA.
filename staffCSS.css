@@ -233,11 +233,7 @@ p{
 
 }
 
-/* tbody {
-    height: 100px;
-    overflow-y: auto;
-    overflow-x: hidden;
-} */
+
 .my-custom-scrollbar {
 position: relative;
 height: 200px;

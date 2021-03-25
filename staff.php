@@ -140,7 +140,15 @@
                 </div>
                 <div class="form-group">
                   <label for="cType" class="col-form-label">Crisis Type:</label>
-                  <input type="text" class="form-control" id="cType" name="cType" placeholder="crisis type" required>
+									<input list="cTypes" placeholder="crisis type" class="form-control" name="cType" id="cType" required>
+									  <datalist id="cTypes">
+											<option value="Flood">
+	    								<option value="Tsunami">
+	    								<option value="Earthquake">
+	    								<option value="Tornadoes">
+	    								<option value="Bushfire">
+											<option value="Landslides">
+									  </datalist>
                 </div>
                 <div class="form-group">
                   <label for="minDuration" class="col-form-label">Mininum Duration:</label>

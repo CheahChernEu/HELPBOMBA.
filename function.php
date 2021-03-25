@@ -31,6 +31,12 @@ if(isset($_POST['action'])) {
       updateApp();
       break;
 
+    case 'viewDoc':
+      viewDoc();
+        break;
+
+
+
     case 'updateSlots':
       updateSlots();
         break;
@@ -38,17 +44,11 @@ if(isset($_POST['action'])) {
       applyForTrip();
       break;
 
-    case 'viewApp':
-      selectApplication();
-      break;
 
 
-    case 'tripDel':
-      tripDel();
-      break;
 
-    case 'selectDoc':
-      selectDocument();
+    case 'manageApp':
+      manageApp();
       break;
   }
 }
@@ -289,7 +289,7 @@ function updateApp(){
 
 
     if(mysqli_num_rows($check)>0){
-      $sql1 = "UPDATE `application` SET `applicationStatus`= '$statusUpdate', `remarks`= '$remarks' WHERE documentID = $documentID and applicationID = $applicationID ";
+      $sql1 = "UPDATE `application` SET `applicationStatus`= '$statusUpdate', `remarks`= '$remarks' WHERE documentID_fk = $documentID and applicationID = $applicationID ";
       $queryUpdate = mysqli_query($conn,  $sql1);
       if($queryUpdate==null){
          echo '<script> alert("Error occur! Please retry again!")</script>';
@@ -306,7 +306,7 @@ function updateApp(){
     }
 }
 
-function tripDel(){
+function manageApp(){
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -321,6 +321,7 @@ function tripDel(){
 
   if(isset($_POST['delete'])){
     $Checkbox = $_POST['checkbox'];
+
 
     $sql = "SELECT * FROM `crisistrip` WHERE cTID = $Checkbox";
     $check = mysqli_query($conn, $sql);
@@ -343,9 +344,41 @@ function tripDel(){
     }
 
   }else{
-     echo '<script> alert("Error in deleting!")</script>';
-     echo "<script> window.location.assign('ManageApplications.php'); </script>";
+
+    if(isset($_POST['viewApp'])){
+      $Checkbox = $_POST['checkbox'];
+      $_SESSION["cTID"] = $Checkbox;
+      echo "<script> window.location.assign('Application.php'); </script>";
+    }
+
   }
+}
+
+function viewDoc(){
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "helpbomba";
+
+  // Create connection
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  // Check connection
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+  if(isset($_POST['viewDoc'])){
+    $checkbox = $_POST['checkboxApp'];
+    $_SESSION["applicationID"] = $checkbox;
+
+
+
+
+
+    echo "<script> window.location.assign('Document.php'); </script>";
+    }
+
+
 }
 
 
@@ -423,25 +456,20 @@ function applyForTrip(){
 function selectTrip(){
   $conn = mysqli_connect("localhost","root","","helpbomba");
   $userid =  $_SESSION['userID'];
-  $query = "SELECT * FROM crisistrip c inner join hbmember m WHERE c.userID_fk = $userid and m.userID = $userid and c.cTDate>=CURDATE()";
+  $query = "SELECT * FROM crisistrip c inner join hbmember m WHERE c.userID_fk = $userid and m.userID = $userid and c.availableSlots>0 and c.cTDate>=CURDATE()";
 
   return $query;
 }
 
-function selectApplication(){
-  $conn = mysqli_connect("localhost","root","","helpbomba");
-  $tripID = $_POST['viewApp'];
-  $query = "SELECT * FROM application a inner join crisistrip c WHERE a.cTID = $tripID and c.cTID = $tripID and a.applicationDate>=CURDATE()" ;
-  echo "<script> window.location.assign('Application.php');</script>";
-  return $query;
-}
 
-// function selectDocument(){
-//   $conn = mysqli_connect("localhost","root","","helpbomba");
-//   $documentID = $_POST['viewDoc'];
-//   $query = "SELECT * FROM document d inner join application a  WHERE  d.documentID = $documentID and a.documentID_fk = $documentID"  ;
-//   return $query;
-// }
+
+
+
+
+
+
+
+
 
 
 

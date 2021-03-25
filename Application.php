@@ -70,18 +70,19 @@
                           die("Connection failure: " . mysqli_connect_error());
                         }
 
-                        // use table
-                        // $document = "use document";
-                        // $conn->query($document);
-                        // $docSql = selectDocument();
-                        // $docRes = mysqli_query($conn, $docSql);
-												//
-                        // $resultDoc = mysqli_query($conn, $docSql) or die("Database error existed:". mysqli_error($conn));
 
-                        //use table
+
+
+
+
+                        // use table
                         $application = "use application";
+												$crisisTrip = "use crisistrip";
                         $conn->query($application);
-                        $sql = selectApplication();
+												$conn->query($crisisTrip);
+												$tripid = $_SESSION['cTID'];
+												$sql = "SELECT * FROM application inner join crisistrip WHERE application.cTID_fk = $tripid and crisistrip.cTID = $tripid and application.applicationDate>=CURDATE()";
+
                         $result = mysqli_query($conn, $sql);
 
                         //fetch the data from database
@@ -98,7 +99,7 @@
                         <!-- All crisis trip that staff in-charge !-->
 
                         <table id="table-row" class="table table-bordered table-secondary table table-dark col-md-12 col-sm-5 mt-5 " id="cTripTable" style="margin:auto;">
-                          <form action="function.php" method="POST" class="form-control">
+													 <form action="function.php" method="POST" class="form-control">
                             <thead>
                             <tr class=" table-warning" style="color:black;" >
                               <th class="text-center">Select Checkbox</th>
@@ -110,14 +111,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                              <?php
+															<?php
                               // get each row of crisis trip into table
                               while($row = mysqli_fetch_assoc($resultArray)):
                               ?>
                               <tr>
+																<form class="" action="" method="post">
                                 <td align="middle">
+
                                 <!-- to select trip that need to delete !-->
-                                <input type="checkbox" id="checkboxApp<?php echo $row['applicationID'];?>" onchange="isChecked(this, 'viewDoc<?php echo $row['applicationID'];?>')" name="checkboxApp" value="<?php echo $row['applicationID'];?>" required>
+																<input type="checkbox" id="checkboxApp<?php echo $row['applicationID'];?>" onchange="isChecked(this, 'viewDoc<?php echo $row['applicationID'];?>')" name="checkboxApp" value="<?php echo $row['applicationID'];?>" required>
+
+
                                 </td>
                                 <td align="center"><?php echo $row['applicationID'];?></td>
                                 <td align="center"><?php echo $row['applicationDate'];?></td>
@@ -125,100 +130,26 @@
                                 <td align="center"><?php echo $row['remarks'];?></td>
                                 <td align="middle">
 
-                                  <?php
-                                  if (mysqli_num_rows($docRes ) == 0 ) { ?>
-                                    <?php echo '<script> alert("There are no document currently!")</script>';?>
-                                  <?php }
-                                  else {
-                                  ?>
 
-
-																<input name="action" value="selectDoc" hidden>
+																	<input name="action" value="viewDoc" hidden>
                                  <!-- to view document !-->
-                                <button type="submit" id="viewDoc<?php echo $row['applicationID'];?>" name="viewDoc" disabled data-toggle="modal"  data-target="#updateModal<?php echo $row['applicationID'];?>" class="btn btn-info">View Document</button>
+                                <button type="submit" id="viewDoc<?php echo $row['applicationID'];?>" name="viewDoc" class="btn btn-info">View Document</button>
 
-                                <?php } ?>
+
                                 </td>
+
+																<script type="text/javascript">
+
+	                              function isChecked(checkbox, viewDoc) {
+	                                document.getElementById(viewDoc).disabled = !checkbox.checked;
+	                              }
+
+																</script>
+																</form>
                               </tr>
-                              <script type="text/javascript">
 
-                              function isChecked(checkbox, viewDoc) {
-                                document.getElementById(viewDoc).disabled = !checkbox.checked;
-                              }
-
-
-
-                            </script>
-
-                             </form>
-
-
-														 <?php
-														// get each row of crisis trip into table
-														while($rows = mysqli_fetch_assoc($resultDoc)):
-														?>
-                             <!--Update Application Modal !-->
-                                <form action="function.php" method="POST" class="form-control">
-
-                                   <div class="modal fade" id="updateModal<?php echo $row['applicationID'];?>" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-                                     <div class="modal-dialog modal-dialog-centered" role="document">
-                                       <div class="modal-content">
-                                         <div class="modal-header">
-                                           <h5 class="modal-title" id="updateModalLabel">Document Information:</h5>
-                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                             <span aria-hidden="true">&times;</span>
-                                           </button>
-                                         </div>
-
-                                         <!-- input values !-->
-                                         <div class="modal-body">
-                                           <div class="form-group row">
-                                            <label for="applicationID" class="col-sm-6 col-lg-4 col-form-label"> Application ID</label>
-                                            <div class="col-sm-12 col-lg-8">
-                                              <input type="text" class="form-control" name="applicationID" value="<?php echo $row['applicationID'];?>" readonly><br>
-                                            </div>
-
-                                            <label for="documentID" class="col-sm-6 col-lg-4 col-form-label"> Document ID </label>
-                                            <div class="col-sm-12 col-lg-8">
-                                              <input type="text" class="form-control" name="documentID" value="<?php echo $row['documentID'];?>" readonly><br>
-                                            </div>
-
-                                            <label for="expiryDate" class="col-sm-6 col-lg-4 col-form-label"> Expiry Date </label>
-                                            <div class="col-sm-12 col-lg-8">
-                                              <input type="text" class="form-control" name="expiryDate" value="<?php echo $rows['expiryDate'];?>" ><br>
-                                            </div>
-
-                                            <label for="docImages" class="col-sm-6 col-lg-4 col-form-label">Document Photos </label>
-                                            <div class="col-sm-12 col-lg-8">
-                                              <input type="text" class="form-control" name="docImages" value="<?php echo $rows['docImages'];?>"><br>
-                                            </div>
-
-																						<label for="status" class="col-sm-6 col-lg-4 col-form-label">Status</label>
-                                            <div class="col-sm-12 col-lg-8">
-                                              <input type="text" class="form-control" name="statusUpdate" id="statusUpdate" placeholder="update application status" required ><br>
-                                            </div>
-
-                                            <label for="remarks" class="col-sm-6 col-lg-4 col-form-label">Remark(s)</label>
-                                            <div class="col-sm-12 col-lg-8">
-                                              <input type="text"
-                                              class="form-control" name="remarks" id="remarks" placeholder="remarks on documents" required>
-                                            </div>
-                                          </div>
-                                         </div>
-
-                                         <!-- Add button !-->
-                                         <div class="modal-footer">
-																					 <input name="action" value="updateSlots" hidden>
-                                           <input name="action" value="updateApp" hidden>
-                                           <input type="submit" class="btn btn-primary" name="updateStatus" id="updateStatus" value="Update Here!">
-                                         </div>
-                                       </div>
-                                     </div>
-                                   </div>
-
-                                 </form>
-																 <?php endwhile;?>
-	                               <?php endwhile;?>
+															</form>
+	                           <?php endwhile;?>
                           </tbody>
                         </table>
                         <?php } ?>
@@ -277,25 +208,7 @@
 
         <script type="text/javascript">
 
-        function checkStatus(){
 
-          var result = document.getElementById('statusUpdate').value.toLowerCase();
-          var reject = "rejected";
-          var accept = "accepted";
-          if(!(result === reject || result === accept)){
-            alert("Please only enter 'rejected' or 'accepted (Required)'")
-            document.getElementById('statusUpdate').focus();
-            throw new Error("This is not an error. This is just to abort javascript.")
-          }
-        }
-
-				function remarksBlankValidation(){
-	        if(document.getElementById('remarks').value == ''){
-	          alert("Remark(s) cannot be blank!")
-	          document.getElementById('remarks').focus();
-	          throw new Error("This is not an error. This is just to abort javascript.")
-	        }
-	      }
 
         </script>
     </body>

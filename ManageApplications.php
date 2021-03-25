@@ -84,7 +84,9 @@
                           <h2>There are no crisis trip currently!</h2>
                         <?php //if have crisis trip
                         } else {
+													echo manageApp();
                         ?>
+
                         <h2>Manage Applications</h2>
                         <h3>Lists of Crisis Trips Table</h3>
 
@@ -111,7 +113,7 @@
                             while($row = mysqli_fetch_assoc($resultArray)):
                             ?>
                             <tr>
-                              <form class="" action="" method="post">
+                              <form  class="" action="" method="post">
 
 
                               <td align="middle">
@@ -127,22 +129,16 @@
                               <td align="center"><?php echo $row['availableSlots'];?></td>
                               <td align="middle">
 
-																	<input name="action" value="viewApp" hidden>
+
                                 <!-- to view applications !-->
-
-                                <a href="Application.php"><input type="submit" id="viewApp<?php echo $row['cTID'];?>" name="viewApp" disabled value:"View Application"
-																	 class="btn btn-info"></a>
-
-																<!-- <button type="submit" id="viewApp" name="viewApp" disabled
-																	 class="btn btn-info" >View Application</button> -->
-
+																<input name="action" value="viewApp" hidden>
+                                <a href="Application.php"><button type="submit" id="viewApp<?php echo $row['cTID'];?>" name="viewApp" disabled 	class="btn btn-info">View Application</button>
+															</a>
                               </td>
-															</form>
-
                               <td align="middle">
-																<input name="action" value="tripDel" hidden>
+																<input name="action" value="manageApp" hidden>
                                 <!-- to delete trip if neccessarily !-->
-                                <input type="submit" id="delete<?php echo $row['cTID'];?>" name="delete<?php echo $row['cTID'];?>" value ="Delete" disabled class="btn btn-info">
+                                <input type="submit" id="delete<?php echo $row['cTID'];?>" name="delete" value ="Delete" disabled class="btn btn-info">
 
                               </td>
 
@@ -155,8 +151,8 @@
 
                             </script>
 
-                              </form>
-                            </tr>
+                        	</form>
+                        </tr>
 
                            </form>
                           <?php endwhile;?>
