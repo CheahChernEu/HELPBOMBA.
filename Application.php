@@ -77,7 +77,7 @@
                         $conn->query($application);
 												$conn->query($crisisTrip);
 												$tripid = $_SESSION['cTID'];
-												$sql = "SELECT * FROM Application inner join crisistrip WHERE Application.cTID_fk = $tripid and crisistrip.cTID = $tripid and Application.applicationDate>=CURDATE()";
+												$sql = "SELECT * FROM Application inner join crisistrip WHERE Application.tripID_fk = $tripid and crisistrip.cTID = $tripid";
 
                         $result = mysqli_query($conn, $sql);
 
