@@ -110,7 +110,13 @@
 
                   <div class="inputbox">
                       <label for="docImages" class="col-sm-6 col-lg-4 col-form-label">Document Photos* </label>
-                      <?php echo "<img src='images/".$row['docImage']."'>";?>
+                      <div >
+                          <?php echo $row['docImage'];?>
+                          <div class="">
+                              <?php echo "<img src='images/".$row['docImage']."'>";?>
+                          </div>
+                      </div>
+
 
                   </div>
 

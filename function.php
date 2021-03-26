@@ -182,8 +182,7 @@ function manageVolunteerProfile(){
       $sql3_run = mysqli_query($conn, $sql3);
 
       if ($sql3_run){
-        if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
-
+         if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
         echo '<script type="text/javascript">alert("All Data Updated and New Document Inserted")</script>';
         echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
       }
@@ -197,8 +196,10 @@ function manageVolunteerProfile(){
       $sql4 = "UPDATE Document SET documentType = '$documenttype', expiryDate = '$dateofexpiry', docImage = '$file' WHERE userID_fk = '".$_SESSION['userID']."'";
       $sql4_run = mysqli_query($conn, $sql4);
       if ($sql4_run){
+        if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
         echo '<script type="text/javascript">alert("All Data and Document Updated")</script>';
         echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+      }
       }
       else{
         echo '<script type="text/javascript">alert("Document Type, Date of Expiry and File Not Updated")</script>';
@@ -294,6 +295,7 @@ function updateApp(){
     $check = mysqli_query($conn, $sql);
 
 
+
     if(mysqli_num_rows($check)>0){
       $sql1 = "UPDATE `application` SET `applicationStatus`= '$statusUpdate', `remarks`= '$remarks' WHERE documentID_fk = $documentID and applicationID = $applicationID ";
       $queryUpdate = mysqli_query($conn,  $sql1);
@@ -302,10 +304,29 @@ function updateApp(){
          echo "<script> window.location.assign('Application.php'); </script>";
 
       }else{
+        $accepted = 'accepted';
+        if(strcmp($statusUpdate, $accepted)== 0){
+          $sql2 = "UPDATE `crisistrip` SET `availableSlots`= availableSlots-1  WHERE cTID = (SELECT cTID_fk FROM application WHERE applicationID = $applicationID)";
+          $tripUpdate = mysqli_query($conn,  $sql2);
+          if($tripUpdate == null){
+            echo '<script> alert("Application status has been updated!")</script>';
+            echo '<script> alert("Error: Available slots is not deducted")</script>';
+          }else{
+            echo '<script> alert("Application status has been updated!")</script>';
+            echo '<script> alert("Available slots have been updated!")</script>';
+          }
+
+          echo "<script> window.location.assign('Application.php'); </script>";
+        } else {
        echo '<script> alert("Application status has been updated!")</script>';
+
+
        echo "<script> window.location.assign('Application.php'); </script>";
+
+
       }
     }
+  }
     else{
         echo '<script> alert("This application does not exist!")</script>';
         echo "<script> window.location.assign('Application.php'); </script>";

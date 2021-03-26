@@ -133,7 +133,7 @@
 
 																	<input name="action" value="viewDoc" hidden>
                                  <!-- to view document !-->
-                                <button type="submit" id="viewDoc<?php echo $row['applicationID'];?>" name="viewDoc" class="btn btn-info">View Document</button>
+                                <button type="submit" id="viewDoc<?php echo $row['applicationID'];?>" name="viewDoc" disabled class="btn btn-info">View Document</button>
 
 
                                 </td>
