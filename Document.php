@@ -90,8 +90,8 @@
           <section id="form">
           <div class="form col-6 col-md-6 col-sm-6 ">
               <div class="row">
-              <h2 style="color:white; justify-content:center; position:relative;">Document Information</h2>
-              <p style="color:white;">*Required fields</p>
+              <h2 style="color:black; justify-content:center; position:relative;">Document Information</h2>
+              <p style="color:black;">*Required fields</p>
               <form action="function.php" method="post" name="documentForm" >
                   <div class="inputbox">
                        <label for="applicationID" class="col-sm-6 col-lg-4 col-form-label"> Application ID*</label>
