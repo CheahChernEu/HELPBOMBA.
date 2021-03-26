@@ -31,24 +31,16 @@ if(isset($_POST['action'])) {
       updateApp();
       break;
 
+    case 'manageApp':
+      manageApp();
+      break;
+
     case 'viewDoc':
       viewDoc();
         break;
 
-
-
-    case 'updateSlots':
-      updateSlots();
-        break;
     case 'applyForTrip':
       applyForTrip();
-      break;
-
-
-
-
-    case 'manageApp':
-      manageApp();
       break;
   }
 }
@@ -403,30 +395,6 @@ function viewDoc(){
 
 
 }
-
-
-// function updateSlots(){
-//   $servername = "localhost";
-//   $username = "root";
-//   $password = "";
-//   $dbname = "helpbomba";
-//
-//   // Create connection
-//   $conn = mysqli_connect($servername, $username, $password, $dbname);
-//   // Check connection
-//   if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-//   }
-//
-//   $statusUpdate = $_POST['statusUpdate'];
-//   if($statusUpdate == 'accepted'){
-//     $sql = "UPDATE `crisistrip` SET `availableSlots`= 'availableSlots - 1' FROM crisistrip INNER JOIN application ON crisistrip.cTID = application.cTID";
-//     mysqli_query($conn,  $sql);
-//   } else {
-//     echo '<script> alert("Available Slots are not updated!")</script>';
-//     echo "<script> window.location.assign('Application.php'); </script>";
-//   }
-
 
 
 function applyForTrip(){
