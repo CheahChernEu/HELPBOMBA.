@@ -1,5 +1,6 @@
 <?php
 	require_once("function.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -70,11 +71,6 @@
                           die("Connection failure: " . mysqli_connect_error());
                         }
 
-
-
-
-
-
                         // use table
                         $application = "use application";
 												$crisisTrip = "use crisistrip";
@@ -143,6 +139,11 @@
 	                              function isChecked(checkbox, viewDoc) {
 	                                document.getElementById(viewDoc).disabled = !checkbox.checked;
 	                              }
+
+
+
+
+
 
 																</script>
 																</form>

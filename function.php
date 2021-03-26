@@ -397,11 +397,7 @@ function viewDoc(){
   if(isset($_POST['viewDoc'])){
     $checkbox = $_POST['checkboxApp'];
     $_SESSION["applicationID"] = $checkbox;
-
-
-
-
-
+    echo '<script> function </script>';
     echo "<script> window.location.assign('Document.php'); </script>";
     }
 

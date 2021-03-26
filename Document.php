@@ -141,7 +141,7 @@
                     <a href="Application.php"><button type="button" id="Back" value="Back">Back</button></a>
 
                       <input name = "action" value="updateApp" hidden>
-                      <button type="submit" id="Submit" value="Update" name="Update" onclick=" checkStatus(), remarksBlankValidation();">Update</button>
+                      <button type="submit" id="Submit" value="Update" name="Update"  onclick="checkStatus(), remarksBlankValidation();">Update</button>
                   </div>
               </form>
               </div>
@@ -214,7 +214,6 @@
     	          throw new Error("This is not an error. This is just to abort javascript.")
     	        }
     	      }
-
 
 
         </script>
