@@ -110,8 +110,9 @@ p{
     border-radius: 40px;
     border-style: solid;
     border-width: 5px;
-    background-image: linear-gradient(to bottom right, red , blue);
-     border-color: black;
+    background: rgb(213,204,194);
+    background: linear-gradient(120deg, rgba(213,204,194,0.9836309523809523) 20%, rgba(142,137,131,1) 49%, rgba(19,17,17,1) 81%);
+     border-color: orange;
 }
 
 .form h2 {
@@ -166,7 +167,8 @@ p{
 .form .btn #Submit:hover {
   background: transparent;
   color: black;
-  background-color: pink;
+  background-color: white;
+  border-color: red;
 }
 
 .form .btn #Submit:after {
@@ -175,7 +177,7 @@ p{
   width: 0;
   height: 2px;
   background: transparent;
-  transition: width 0.3s ease, background-color 0.3s ease;
+  transition: width 0.3s ease, background-color 0.6s ease;
 }
 
 
@@ -202,7 +204,8 @@ p{
 .form .btn #Back:hover {
   background: transparent;
   color: black;
-  background-color: pink;
+  background-color: white;
+  border-color: red;
 }
 
 .form .btn #Back:after {
