@@ -109,7 +109,7 @@
                   </div>
 
                   <div class="inputbox">
-                      <label for="docImages" class="col-sm-6 col-lg-4 col-form-label">Document Photos* </label>
+                      <label for="docImages" class="col-sm-6 col-lg-4 col-form-label">Document Picture* </label>
                       <div >
                           <?php echo $row['docImage'];?>
                           <div class="">
