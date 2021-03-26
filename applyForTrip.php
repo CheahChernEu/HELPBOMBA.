@@ -69,7 +69,7 @@
                     }
 
                     $date = date('Y-m-d H:i:s');
-                    $sql = "SELECT * FROM crisistrip WHERE cTDate > '$date' AND cTID NOT IN (SELECT tripID_fk FROM Application WHERE userID_fk = '".$_SESSION['userID']."')";
+                    $sql = "SELECT * FROM crisistrip WHERE cTDate > '$date' AND cTID NOT IN (SELECT cTID_fk FROM Application WHERE userID_fk = '".$_SESSION['userID']."')";
                     $result = mysqli_query($conn, $sql);
 
                     if ($result -> num_rows > 0){
