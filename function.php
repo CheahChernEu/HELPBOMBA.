@@ -175,8 +175,25 @@ function manageVolunteerProfile(){
 
       if ($sql3_run){
         if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
-          echo '<script type="text/javascript">alert("All Data Updated and New Document Inserted")</script>';
-          echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+          $sql5 = "SELECT * FROM `Application` WHERE userID_fk = '".$_SESSION['userID']."'";
+          $result2 = db_search($sql5);
+          if ($result2 == null){
+            echo '<script type="text/javascript">alert("All Data Updated and New Document Inserted but Application Status Not Updated because You Have Not Applied Any Trip Yet")</script>';
+            echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+          }
+          else{
+            $sql6 = "UPDATE Application SET applicationStatus = 'NEW', remarks = NULL WHERE applicationStatus = 'REJECTED' AND userID_fk = '".$_SESSION['userID']."'";
+            $sql6_run = mysqli_query($conn, $sql6);
+
+            if ($sql6_run){
+              echo '<script type="text/javascript">alert("All Data Updated and New Document Inserted and Application Status Updated")</script>';
+              echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+            }
+            else{
+              echo '<script type="text/javascript">alert("All Data Updated and New Document Inserted but Application Status Not Updated")</script>';
+              echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+            }
+          }
         }
         else{
           echo '<script type="text/javascript">alert("All Data Updated but Document File Not Uploaded ")</script>';
@@ -193,8 +210,25 @@ function manageVolunteerProfile(){
       $sql4_run = mysqli_query($conn, $sql4);
       if ($sql4_run){
         if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
-          echo '<script type="text/javascript">alert("All Data and Document Updated")</script>';
-          echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+          $sql5 = "SELECT * FROM `Application` WHERE userID_fk = '".$_SESSION['userID']."'";
+          $result2 = db_search($sql5);
+          if ($result2 == null){
+            echo '<script type="text/javascript">alert("All Data Updated and Document Updated but Application Status Not Updated because You Have Not Applied Any Trip Yet")</script>';
+            echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+          }
+          else{
+            $sql6 = "UPDATE Application SET applicationStatus = 'NEW', remarks = NULL WHERE applicationStatus = 'REJECTED' AND userID_fk = '".$_SESSION['userID']."'";
+            $sql6_run = mysqli_query($conn, $sql6);
+
+            if ($sql6_run){
+              echo '<script type="text/javascript">alert("All Data Updated and Document Updated and Application Status Updated")</script>';
+              echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+            }
+            else{
+              echo '<script type="text/javascript">alert("All Data Updated and Document Updated but Application Status Not Updated")</script>';
+              echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+            }
+          }
         }
         else{
           echo '<script type="text/javascript">alert("All Data Updated and Document File Not Updated")</script>';
