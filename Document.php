@@ -22,7 +22,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto float-right text-right">
-                    <li class="nav-item ml-4">
+										<li class="nav-item ml-4">
 
                       <!-- User profile icon !-->
                        <div class="dropdown" style="width:auto;height:auto;">
