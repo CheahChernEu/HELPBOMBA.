@@ -140,18 +140,17 @@
                 </div>
                 <div class="form-group">
                   <label for="cType" class="col-form-label">Crisis Type:</label>
-									<input list="cTypes" placeholder="crisis type" class="form-control" name="cType" id="cType" required>
-									  <datalist id="cTypes">
-											<option value="Flood">
-	    								<option value="Tsunami">
-	    								<option value="Earthquake">
-	    								<option value="Tornadoes">
-	    								<option value="Bushfire">
-											<option value="Landslides">
-									  </datalist>
+										<select name="cType" id="cType" style="margin-top:10px; width:22%;height: 45px;">
+					    				<option value="Flood">Flood</option>
+					    				<option value="Tsunami">Tsunami</option>
+											<option value="Earthquake">Earthquake</option>
+					    				<option value="Tornadoes">Tornadoes</option>
+											<option value="Bushfire">Bushfire</option>
+					    				<option value="Landslides">Landslides</option>
+					  				</select>
                 </div>
                 <div class="form-group">
-                  <label for="minDuration" class="col-form-label">Mininum Duration:</label>
+                  <label for="minDuration" class="col-form-label">Mininum Duration (Days):</label>
                   <input type="number" class="form-control" id="minDuration" name="minDuration" placeholder="min duration" required>
                 </div>
                 <div class="form-group">
