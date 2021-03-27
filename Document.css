@@ -93,65 +93,57 @@ p{
     color: #ffffff;
 }
 
+/* FORM */
 
-/*FORM*/
-.form {
-    margin-top: 700px;
-    margin-bottom: -400px;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1000px;
-    padding: 40px;
-    padding-bottom: 100px;
-    background: #ffffff;
-    box-sizing: border-box;
-    border-radius: 40px;
-    border-style: solid;
-    border-width: 5px;
-    background: rgb(213,204,194);
-    background: linear-gradient(120deg, rgba(213,204,194,0.9836309523809523) 20%, rgba(142,137,131,1) 49%, rgba(19,17,17,1) 81%);
-     border-color: orange;
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
 }
 
-.form h2 {
-    text-align: center;
-    margin: 0 0 20px 0;
-    padding: 0 16vw 0 16vw;
-    color: black;
+
+#form {
+  border-radius: 40px;
+  background: rgb(210,205,200);
+  background: linear-gradient(120deg, rgba(210,205,200,0.9836309523809523) 22%, rgba(142,137,131,1) 37%, rgba(19,17,17,1) 54%);
+  border-color: black;
+  padding: 40px;
+  margin-top: 25vh;
+  margin-bottom: 20vh;
+  position: relative;
 }
 
-.form .inputbox {
-    position: relative;
-    width: 43vw;
-    padding-right: 8px;
-
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
 }
 
-.form .inputbox input {
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, button[type=submit],button[type=button] {
     width: 100%;
-    padding: 10px 0;
-    padding-left: 10px;
-    font-size: 16px;
-    color: #000000;
-    margin-bottom: 30px;
-    border: 3px solid black;
-    outline: none;
-    background: white;
-
+    margin-top: 0;
+  }
 }
 
-.form .inputbox label {
-    padding-bottom: 10px;
-    font-weight: bold;
-    font-family: Raleway, sans-serif;
-    color:black;
-}
-
-
-.form .btn #Submit {
+/* Button */
+#form #btn #Submit {
     background: transparent;
+    justify-content:center;
     border: solid;
     outline: none;
     color: white;
@@ -159,19 +151,19 @@ p{
     padding: 8px 18px;
     border-radius: 5px;
     cursor: pointer;
-    position: absolute;
-    left: 50%;
+    position: relative;
+    left:auto;
     margin: 45px 0 0 0;
 }
 
-.form .btn #Submit:hover {
+#form #btn #Submit:hover {
   background: transparent;
   color: black;
   background-color: white;
   border-color: red;
 }
 
-.form .btn #Submit:after {
+#form #btn #Submit:after {
   content: "";
   display: block;
   width: 0;
@@ -182,33 +174,34 @@ p{
 
 
 
-.form .btn #Submit:hover::after {
+#form #btn #Submit:hover::after {
   width: 100%;
   background: red ;
 }
 
-.form .btn #Back {
-    background: transparent;
-    border: solid;
-    outline: none;
-    color:white;
-    background: black;
-    padding: 8px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    right: 50%;
-    margin: 45px 10px 0 0;
+#form #btn #Back {
+  background: transparent;
+  justify-content:center;
+  border: solid;
+  outline: none;
+  color: white;
+  background: black;
+  padding: 15px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  left:auto;
+  margin: 45px 30px 0 30px;
 }
 
-.form .btn #Back:hover {
+#form #btn #Back:hover {
   background: transparent;
   color: black;
   background-color: white;
   border-color: red;
 }
 
-.form .btn #Back:after {
+#form #btn #Back:after {
   content: "";
   display: block;
   width: 0;
@@ -217,11 +210,10 @@ p{
   transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-.form .btn #Back:hover::after {
+#form #btn #Back:hover::after {
   width: 100%;
   background: red ;
 }
-
 
 
 #contact{
