@@ -148,8 +148,8 @@
             }
 
             function blankNewPwValidation(){
-                if(document.getElementById('newpassword').value == ''){
-                    alert("New password cannot be blank")
+                if(document.getElementById('newpassword').value == '' || document.getElementById('newpassword').value.length < 8){
+                    alert("New password cannot be blank or less than 8 characters")
                     document.getElementById('newpassword').focus();
                     throw new Error("This is not an error. This is just to abort javascript.")
                 }

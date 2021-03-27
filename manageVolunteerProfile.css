@@ -95,8 +95,8 @@ p{
 
 /*FORM*/
 .form {
-    margin-top: 630px;
-    margin-bottom: -330px;
+    margin-top: 630vw;
+    margin-bottom: -330vw;
     position: relative;
     top: 50%;
     left: 50%;
