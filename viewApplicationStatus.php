@@ -1,3 +1,7 @@
+<?php
+  require_once("function.php");
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,45 +41,72 @@
         </header>
 
         <section class="main">
-            <div class="main-content">
+            <div class="main-content container">
                 <h1>List of Applications</h1>
-                <div class="listings container">
-                    <div class="list-group">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <h3 class="mb-1">Flood Rescue</h3>
-                                <p class="mb-1">Date: 12/04/2021</p>
-                                <p class="mb-1">Description: Saving the flood victims and provides foods for them</p>
-                                <p class="mb-1">Application: Accepted</p>
-                            </li>
-                            <li class="list-group-item">
-                                <h3 class="mb-1">Earthquake Bomba</h3>
-                                <p class="mb-1">Date: 03/05/2021</p>
-                                <p class="mb-1">Description: Saving the earthquake victims and provides shelter for them</p>
-                                <p class="mb-1">Application: Rejected</p>
-                                <p class="mb-1">Remarks: Please update your documents at the manage profile section</p>
-                            </li>
-                            <li class="list-group-item">
-                                <h3 class="mb-1">Fire Fighter</h3>
-                                <p class="mb-1">Date: 29/03/2021</p>
-                                <p class="mb-1">Description: Saving the wildfire victims and provides foods and shelter for them</p>
-                                <p class="mb-1">Application: Accepted</p>
-                            </li>
-                            <li class="list-group-item">
-                                <h3 class="mb-1">Earth Protectors</h3>
-                                <p class="mb-1">Date: 20/01/2021</p>
-                                <p class="mb-1">Description: Saving the earthquake victims and provides clothes for them</p>
-                                <p class="mb-1">Application: Accepted</p>
-                            </li>
-                            <li class="list-group-item">
-                                <h3 class="mb-1">Wildlife Rescue</h3>
-                                <p class="mb-1">Date: 06/07/2021</p>
-                                <p class="mb-1">Description: Saving the wildfire victims and provides a temporary shelter for the wild animals</p>
-                                <p class="mb-1">Application: Rejected</p>
-                                <p class="mb-1">Remarks: Please update your documents at the manage profile section</p>
-                            </li>
-                        </ul>
+                <div id = "searchfunction-main">
+                  <form name = "search-form" action = "viewApplicationStatus.php" method = "POST" >
+                    <div class="inputbox">
+                        <label for="searchbox">Search By ID</label>
+                        <input type="text" placeholder="Application ID" id="searchbox" name="searchbox" autofocus>
+                        <input type="submit" id="submit" name="search" value="Search">
                     </div>
+                  </form>
+                  <?php
+                  $servername = "localhost";
+                  $username   = "root";
+                  $password   = "";
+                  $dbname     = "helpbomba";
+
+                  // Create connection
+                  $conn = new mysqli($servername, $username, $password, $dbname);
+                  if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                  }
+                  $sql = "SELECT * FROM Application WHERE userID_fk = '".$_SESSION['userID']."'";
+
+                  if (isset($_POST['search'])){
+                    $search_term = $_POST['searchbox'];
+                    $sql = "SELECT * FROM Application WHERE userID_fk = '".$_SESSION['userID']."' AND applicationID = '$search_term'";
+                  }
+                  $sql_run = mysqli_query($conn, $sql);
+                  ?>
+                </div>
+                <div id = "table-main">
+                  <table class = "content-table">
+                    <tr class = "header-row">
+                      <th>Application ID</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Remarks</th>
+                    </tr>
+
+                    <?php
+                    $servername = "localhost";
+                    $username   = "root";
+                    $password   = "";
+                    $dbname     = "helpbomba";
+
+                    // Create connection
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) {
+                      die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    if ($sql_run -> num_rows > 0){
+                      while ($row = $sql_run -> fetch_assoc()){
+                        echo "<tr class='content-row'>";
+                        echo "<td>".$row['applicationID']."</td>";
+                        echo "<td>".$row['applicationDate']."</td>";
+                        echo "<td>".$row['applicationStatus']."</td>";
+                        echo "<td>".$row['remarks']."</td>";
+                        echo "</tr>";
+                      }
+                    }
+                    else{
+                      echo "0 result";
+                    }
+                    ?>
+                  </table>
                 </div>
             </div>
         </section>
