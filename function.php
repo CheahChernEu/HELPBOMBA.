@@ -210,7 +210,6 @@ function manageVolunteerProfile(){
   else{
     echo '<script type="text/javascript">alert("All Data Not Updated")</script>';
     echo "<script> window.location.assign('manageVolunteerProfile.php'); </script>";
-
   }
 }
 
@@ -304,7 +303,7 @@ function updateApp(){
          echo "<script> window.location.assign('Application.php'); </script>";
 
       }else{
-        $accepted = 'accepted';
+        $accepted = 'ACCEPTED';
         if(strcmp($statusUpdate, $accepted)== 0){
           $sql2 = "UPDATE `crisistrip` SET `availableSlots`= availableSlots-1  WHERE cTID = (SELECT cTID_fk FROM application WHERE applicationID = $applicationID)";
           $tripUpdate = mysqli_query($conn,  $sql2);

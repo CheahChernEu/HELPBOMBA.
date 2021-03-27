@@ -135,8 +135,8 @@
         <div class="col-75">
           <input list="status" class="form-control" name="statusUpdate" id="statusUpdate" placeholder="update application status" required>
           <datalist id="status">
-           <option value="accepted">
-           <option value="rejected">
+           <option value="ACCEPTED">
+           <option value="REJECTED">
          </datalist>
         </div>
       </div>
@@ -209,9 +209,9 @@
             /*function for validating the blank fields because submit button type is not submit so the required is not working*/
             function checkStatus(){
 
-              var result = document.getElementById('statusUpdate').value.toLowerCase();
-              var reject = "rejected";
-              var accept = "accepted";
+              var result = document.getElementById('statusUpdate').value.toUpperCase();
+              var reject = "REJECTED";
+              var accept = "ACCEPTED";
               if(!(result === reject || result === accept)){
                 alert("Please only choose 'rejected' or 'accepted (Required)'")
                 document.getElementById('statusUpdate').focus();
