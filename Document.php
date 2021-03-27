@@ -87,66 +87,78 @@
           <?php   // get each row of crisis trip into table
             while($row = mysqli_fetch_assoc($resultRes)):
           ?>
-          <section id="form">
-          <div class="form col-6 col-md-6 col-sm-6 ">
-              <div class="row">
-              <h2 style="color:black; justify-content:center; position:relative;">Document Information</h2>
-              <p style="color:black;">*Required fields</p>
-              <form action="function.php" method="post" name="documentForm" >
-                  <div class="inputbox">
-                       <label for="applicationID" class="col-sm-6 col-lg-4 col-form-label"> Application ID*</label>
-                      <input type="text" class="form-control" name="applicationID" value="<?php echo $_SESSION["applicationID"];?>" readonly>
-                  </div>
-
-                  <div class="inputbox">
-                      <label for="documentID" class="col-sm-6 col-lg-4 col-form-label"> Document ID* </label>
-                      <input type="text" class="form-control" name="documentID" value="<?php echo  $row['documentID'];?>" readonly>
-                  </div>
-
-                  <div class="inputbox">
-                      <label for="expiryDate" class="col-sm-6 col-lg-4 col-form-label"> Expiry Date* </label>
-                       <input type="text" class="form-control" name="expiryDate" value="<?php echo $row['expiryDate'];?>" >
-                  </div>
-
-                  <div class="inputbox">
-                      <label for="docImages" class="col-sm-6 col-lg-4 col-form-label">Document Photos* </label>
-                      <div >
-                          <?php echo $row['docImage'];?>
-                          <div class="">
-                              <?php echo "<img src='images/".$row['docImage']."'>";?>
-                          </div>
-                      </div>
-
-
-                  </div>
-
-                  <div class="inputbox">
-                      <label for="status" class="col-sm-6 col-lg-4 col-form-label">Status*</label>
-                      <input list="status" class="form-control" name="statusUpdate" id="statusUpdate" placeholder="update application status" required>
-                      <datalist id="status">
-                       <option value="accepted">
-                       <option value="rejected">
-                     </datalist>
-                  </div>
-
-                  <div class="inputbox">
-                       <label for="remarks" class="col-sm-6 col-lg-4 col-form-label">Remark(s)*</label>
-                       <input type="text"
-                       class="form-control" name="remarks" id="remarks" placeholder="remarks on documents" required>
-                  </div>
-
-
-
-                  <div class="btn">
-                    <a href="Application.php"><button type="button" id="Back" value="Back">Back</button></a>
-
-                      <input name = "action" value="updateApp" hidden>
-                      <button type="submit" id="Submit" value="Update" name="Update"  onclick="checkStatus(), remarksBlankValidation();">Update</button>
-                  </div>
-              </form>
+  <div class="container" id="form">
+    <form action="function.php" method="post">
+      <fieldset>
+        <legend style="font-weight:bold; text-center:center;">Document Information:</legend>
+      <div class="row">
+        <div class="col-25">
+           <label for="applicationID" class="col-sm-6 col-lg-4 col-form-label"> Application ID*</label>
+        </div>
+        <div class="col-75">
+          <input type="text" class="form-control" name="applicationID" value="<?php echo $_SESSION["applicationID"];?>" readonly>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="documentID" class="col-sm-6 col-lg-4 col-form-label"> Document ID* </label>
+        </div>
+        <div class="col-75">
+          <input type="text" class="form-control" name="documentID" value="<?php echo  $row['documentID'];?>" readonly>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="expiryDate" class="col-sm-6 col-lg-4 col-form-label"> Expiry Date* </label>
+        </div>
+        <div class="col-75">
+          <input type="text" class="form-control" name="expiryDate" value="<?php echo $row['expiryDate'];?>" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="docImages" class="col-sm-6 col-lg-4 col-form-label">Document Picture* </label>
+        </div>
+        <div class="col-75">
+          <div>
+              <?php echo $row['docImage'];?>
+              <div class="">
+                    <?php echo "<img src='images/".$row['docImage']."'>";?>
               </div>
           </div>
-          </section>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="status" class="col-sm-6 col-lg-4 col-form-label">Status*</label>
+        </div>
+        <div class="col-75">
+          <input list="status" class="form-control" name="statusUpdate" id="statusUpdate" placeholder="update application status" required>
+          <datalist id="status">
+           <option value="accepted">
+           <option value="rejected">
+         </datalist>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="remarks" class="col-sm-6 col-lg-4 col-form-label">Remark(s)*</label>
+        </div>
+        <div class="col-75">
+          <input type="text"
+          class="form-control" name="remarks" id="remarks" placeholder="remarks on documents" required>
+      </div>
+
+      <div class="row" id="btn" >
+        <a href="Application.php"><button type="button" id="Back" value="Back">Back</button></a>
+
+          <input name = "action" value="updateApp" hidden>
+          <button type="submit" id="Submit" value="Update" name="Update"  onclick="checkStatus(), remarksBlankValidation();">Update</button>
+       </datalist>
+      </div>
+      </fieldset>
+    </form>
+  </div>
           <?php endwhile;?>
           <?php } ?>
 
@@ -156,7 +168,7 @@
 
         <section id="contact">
         <footer class="py-5">
-            <div class="container" py-5>
+            <div class="container"  py-5>
                 <div class="row">
                     <div class="col-md-5 col-sm-6">
                         <h2>HELP BOMBA Sdn. Bhd.</h2>

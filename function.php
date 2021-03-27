@@ -361,12 +361,12 @@ function manageApp(){
          echo '<script> alert("Error occur! Please retry again!")</script>';
          echo "<script> window.location.assign('ManageApplications.php'); </script>";
       }else{
-       echo '<script> alert("Record deleted!")</script>';
+       echo '<script> alert("Record selected deleted!")</script>';
       echo "<script> window.location.assign('ManageApplications.php'); </script>";
       }
     }
     else{
-        echo '<script> alert("Record does not exist!")</script>';
+        echo '<script> alert("Record selected does not exist!")</script>';
         echo "<script> window.location.assign('ManageApplications.php'); </script>";
     }
 
