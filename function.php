@@ -174,13 +174,17 @@ function manageVolunteerProfile(){
       $sql3_run = mysqli_query($conn, $sql3);
 
       if ($sql3_run){
-         if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
-        echo '<script type="text/javascript">alert("All Data Updated and New Document Inserted")</script>';
-        echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
-      }
+        if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
+          echo '<script type="text/javascript">alert("All Data Updated and New Document Inserted")</script>';
+          echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+        }
+        else{
+          echo '<script type="text/javascript">alert("All Data Updated but Document File Not Uploaded ")</script>';
+          echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+        }
       }
       else{
-        echo '<script type="text/javascript">alert("Document Type, Date of Expiry and File Not Inserted")</script>';
+        echo '<script type="text/javascript">alert("Document Type, Date of Expiry and Document File Not Inserted")</script>';
         echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
       }
     }
@@ -189,9 +193,13 @@ function manageVolunteerProfile(){
       $sql4_run = mysqli_query($conn, $sql4);
       if ($sql4_run){
         if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
-        echo '<script type="text/javascript">alert("All Data and Document Updated")</script>';
-        echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
-      }
+          echo '<script type="text/javascript">alert("All Data and Document Updated")</script>';
+          echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+        }
+        else{
+          echo '<script type="text/javascript">alert("All Data Updated and Document File Not Updated")</script>';
+          echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
+        }
       }
       else{
         echo '<script type="text/javascript">alert("Document Type, Date of Expiry and File Not Updated")</script>';
