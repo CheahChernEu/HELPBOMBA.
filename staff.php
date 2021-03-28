@@ -154,7 +154,7 @@ Student ID: B1801196
 					  				</select>
                 </div>
                 <div class="form-group">
-                  <label for="minDuration" class="col-form-label">Mininum Duration (Days):</label>
+                  <label for="minDuration" class="col-form-label">Minimum Duration (Days):</label>
                   <input type="number" class="form-control" id="minDuration" name="minDuration" placeholder="min duration" required>
                 </div>
                 <div class="form-group">
