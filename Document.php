@@ -1,3 +1,7 @@
+<!--
+Student Name: CHEAH CHERN EU
+Student ID: B1801196
+-->
 <?php
 	require_once("function.php");
 ?>
@@ -133,11 +137,12 @@
             <label for="status" class="col-sm-6 col-lg-4 col-form-label">Status*</label>
         </div>
         <div class="col-75">
-          <input list="status" class="form-control" name="statusUpdate" id="statusUpdate" placeholder="update application status" required>
-          <datalist id="status">
-           <option value="ACCEPTED">
-           <option value="REJECTED">
-         </datalist>
+          <!-- <input list="status" class="form-control" name="statusUpdate" id="statusUpdate" placeholder="update application status" required> -->
+					<select name="statusUpdate" id="statusUpdate" style="margin-top:10px;margin-bottom: 10px; width:20%;height: 45px;">
+    				<option value="ACCEPTED">ACCEPTED</option>
+    				<option value="REJECTED">REJECTED</option>
+  				</select>
+
         </div>
       </div>
       <div class="row">
@@ -213,7 +218,7 @@
               var reject = "REJECTED";
               var accept = "ACCEPTED";
               if(!(result === reject || result === accept)){
-                alert("Please only choose 'rejected' or 'accepted (Required)'")
+                alert("Please only choose 'REJECTED' or 'ACCEPTED (Required)'")
                 document.getElementById('statusUpdate').focus();
                 throw new Error("This is not an error. This is just to abort javascript.")
               }
