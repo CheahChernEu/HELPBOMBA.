@@ -155,5 +155,22 @@ Student ID: B1801134
                 </div>
             </footer>
           </section>
+
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <script>
+
+            $(document).ready(function () {
+              //=================================================================
+              //click on table body
+          		$('#table-main').on('click', 'tr', function() {
+          		    //get row contents into an array
+                  var tableData = $(this).children("td").map(function() {
+                    return $(this).text();
+                  }).get();
+                  var td = "CTID: " + tableData[0] + "\nTrip Date: " + tableData[1] + "\nTrip Description: " + tableData[2] + "\nApplication ID: " + tableData[3] + "\nApplication Date: " + tableData[4] + "\nApplication Status: " + tableData[5] + "\nRemarks: " + tableData[6];
+                  alert(td);
+          		});
+        		});
+          </script>
     </body>
 </html>
