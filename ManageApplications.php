@@ -13,7 +13,11 @@ Student ID: B1801196
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+				<link href='https://fonts.googleapis.com/css?family=Bevan' rel='stylesheet'>
+				<link href='https://fonts.googleapis.com/css?family=Gugi' rel='stylesheet'>
+
         <link rel="stylesheet" type="text/css" href="staffCSS.css">
+
     </head>
     <body>
         <header>
@@ -91,12 +95,12 @@ Student ID: B1801196
 													echo manageApp();
                         ?>
 
-                        <h2>Manage Applications</h2>
-                        <h3>Lists of Crisis Trips Table</h3>
+                        <h2 style="font-family: 'Gugi'; font-size:40px; color:#E75480; font-weight:bolder;outline:black; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;margin-bottom:5vh;">Manage Applications</h2>
+                        <h3 style="font-family: 'Gugi'; font-size:25px;">Lists of Crisis Trips Table</h3>
 
                         <!-- All crisis trip that staff in-charge !-->
 
-                        <table class="table table-bordered table-secondary table table-dark" id="cTripTable">
+                        <table class="table table-bordered table-secondary table table-dark mt-4" id="cTripTable">
                           <form action="function.php" method="POST" class="form-control">
                             <thead>
                             <tr class=" table-warning" style="color:black;" >
@@ -118,8 +122,6 @@ Student ID: B1801196
                             ?>
                             <tr>
                               <form  class="" action="" method="post">
-
-
                               <td align="middle">
                               <!-- to select trip that need to delete !-->
                               <input type="checkbox" name="checkbox" onchange="isChecked(this, 'viewApp<?php echo $row['cTID'];?>', 'delete<?php echo $row['cTID'];?>')" value="<?php echo $row['cTID'];?>" required>
