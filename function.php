@@ -117,6 +117,7 @@ $sql = "SELECT * FROM hbmember where username = '" . $_POST['username'] . "' and
     $_SESSION['username'] = $member->username;
     $_SESSION['password'] = $member->password;
     $_SESSION['name'] = $member->name;
+    $_SESSION['contactNo'] = $member->contactNo;
     $_SESSION['position'] = $member->position;
 
     switch ($_SESSION['position']) {

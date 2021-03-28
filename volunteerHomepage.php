@@ -2,6 +2,9 @@
 Author: LEE WAI HOE
 Student ID: B1801134
 -->
+<?php
+  require_once("function.php");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,7 +46,7 @@ Student ID: B1801134
             <div class = "container">
                 <div class="row pt-5">
                     <div class="home-text col-mid-8 col-sm-12 mt-5">
-                        <h1>Welcome Volunteer</h1>
+                        <h1>Welcome <?php echo $_SESSION['name'];?></h1>
                         <p>You are the chosen one</p>
                         <ul class="section-btn">
                             <a href="applyForTrip.php"><span data-hover="Apply for a trip now">Apply for a trip now</span></a>

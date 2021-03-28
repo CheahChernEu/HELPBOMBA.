@@ -2,6 +2,9 @@
 Author: LEE WAI HOE
 Student ID: B1801134
 -->
+<?php
+  require_once("function.php");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,12 +61,12 @@ Student ID: B1801134
 
                 <div class="inputbox">
                     <label>Name*</label>
-                    <input type="text" placeholder="Name" id="name" name="name" required>
+                    <input type="text" placeholder="Name" id="name" name="name" value="<?php echo $_SESSION['name'];?>" required>
                 </div>
 
                 <div class="inputbox">
                     <label>Phone No.*</label>
-                        <input type="tel" placeholder="Phone number" id="phoneno" name="phoneno" required>
+                        <input type="tel" placeholder="Phone number" id="phoneno" name="phoneno" value="<?php echo $_SESSION['contactNo'];?>" required>
 
                 </div>
 
