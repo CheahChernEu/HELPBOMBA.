@@ -201,7 +201,7 @@ function manageVolunteerProfile(){
         }
       }
       else{
-        echo '<script type="text/javascript">alert("Document Type, Date of Expiry and Document File Not Inserted")</script>';
+        echo '<script type="text/javascript">alert("Data Updated but Document Type, Date of Expiry and Document File Not Inserted")</script>';
         echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
       }
     }
@@ -231,12 +231,12 @@ function manageVolunteerProfile(){
           }
         }
         else{
-          echo '<script type="text/javascript">alert("All Data Updated and Document File Not Updated")</script>';
+          echo '<script type="text/javascript">alert("All Data Updated but Document File Not Updated")</script>';
           echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
         }
       }
       else{
-        echo '<script type="text/javascript">alert("Document Type, Date of Expiry and File Not Updated")</script>';
+        echo '<script type="text/javascript">alert("Data Updated but Document Type, Date of Expiry and File Not Updated")</script>';
         echo "<script> window.location.assign('volunteerHomepage.php'); </script>";
       }
     }

@@ -1,3 +1,7 @@
+<!--
+Author: LEE WAI HOE
+Student ID: B1801134
+-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,7 +68,7 @@
                 </div>
 
                 <div class="docinputbox">
-                    <label>Document Type*</label>
+                    <label>Document Type</label>
                     <div>
                         <label for="visa">VISA</label>
                         <input type="radio" name="documenttype" id="visa" value="visa" required>
@@ -76,7 +80,7 @@
                 </div>
 
                 <div class="inputbox">
-                    <label>Date of Expiry*</label>
+                    <label>Date of Expiry</label>
                     <input type="date" name="dateofexpiry" id="dateofexpiry" placeholder="yyyy/mm/dd" required>
                 </div>
 
@@ -90,7 +94,7 @@
                 <div class="btn">
                     <button type="reset" id="Reset" value="Reset">Reset</button>
                     <input name = "action" value="manageProfile" hidden>
-                    <button type="button" id="Submit" value="manageProfile" name="manageProfile" onclick="blankOldPwValidation(), blankNewPwValidation(), pwValidation(), nameValidation(), phoneValidation(), docTypeBlankValidation(), blankDateValidation(), submitMessage()">Submit</button>
+                    <button type="button" id="Submit" value="manageProfile" name="manageProfile" onclick="blankOldPwValidation(), blankNewPwValidation(), pwValidation(), nameValidation(), phoneValidation(), submitMessage()">Submit</button>
                 </div>
             </form>
             </div>
@@ -137,6 +141,11 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <script>
+
+            var date = new Date().toISOString().slice(0,10);
+            //To restrict past date
+            $('#dateofexpiry').attr('min', date);
+
             /*function for validating the blank fields because submit button type is not submit so the required is not working*/
             function blankOldPwValidation(){
                 if(document.getElementById('oldpassword').value == ''){
@@ -178,23 +187,6 @@
                 if(document.getElementById('phoneno').value.match(letter) || document.getElementById('phoneno').value == '' || document.getElementById('phoneno').value.length > 13){
                     alert("Please fill in required field and input numbers only in the phone number section")
                     document.getElementById('phoneno').focus();
-                    throw new Error("This is not an error. This is just to abort javascript.")
-                }
-            }
-
-            function docTypeBlankValidation(){
-                var doctype = document.getElementsByName('documenttype');
-                if (doctype[0].checked == false && doctype[1].checked == false && doctype[2].checked == false){
-                    alert("Please select one document type")
-                    document.getElementById('visa').focus();
-                    throw new Error("This is not an error. This is just to abort javascript.")
-                }
-            }
-
-            function blankDateValidation(){
-                if(document.getElementById('dateofexpiry').value == ''){
-                    alert("Date cannot be blank")
-                    document.getElementById('bdateofexpiry').focus();
                     throw new Error("This is not an error. This is just to abort javascript.")
                 }
             }

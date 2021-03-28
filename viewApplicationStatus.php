@@ -1,3 +1,7 @@
+<!--
+Author: LEE WAI HOE
+Student ID: B1801134
+-->
 <?php
   require_once("function.php");
 ?>
@@ -47,7 +51,7 @@
                   <form name = "search-form" action = "viewApplicationStatus.php" method = "POST" >
                     <div class="inputbox">
                         <label for="searchbox">Search By ID</label>
-                        <input type="text" placeholder="Application ID" id="searchbox" name="searchbox" autofocus>
+                        <input type="text" placeholder="CTID" id="searchbox" name="searchbox" autofocus>
                         <input type="submit" id="submit" name="search" value="Search">
                     </div>
                   </form>
@@ -62,11 +66,11 @@
                   if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                   }
-                  $sql = "SELECT * FROM Application WHERE userID_fk = '".$_SESSION['userID']."'";
+                  $sql = "SELECT * FROM Application INNER JOIN crisistrip ON Application.cTID_fk = crisistrip.cTID WHERE Application.userID_fk = '".$_SESSION['userID']."'";
 
                   if (isset($_POST['search'])){
                     $search_term = $_POST['searchbox'];
-                    $sql = "SELECT * FROM Application WHERE userID_fk = '".$_SESSION['userID']."' AND applicationID = '$search_term'";
+                    $sql = "SELECT * FROM Application INNER JOIN crisistrip ON Application.cTID_fk = crisistrip.cTID WHERE Application.userID_fk = '".$_SESSION['userID']."' AND crisistrip.cTID = '$search_term'";
                   }
                   $sql_run = mysqli_query($conn, $sql);
                   ?>
@@ -74,8 +78,11 @@
                 <div id = "table-main">
                   <table class = "content-table">
                     <tr class = "header-row">
+                      <th>CTID</th>
+                      <th>Trip Date</th>
+                      <th>Trip Description</th>
                       <th>Application ID</th>
-                      <th>Date</th>
+                      <th>Application Date</th>
                       <th>Status</th>
                       <th>Remarks</th>
                     </tr>
@@ -95,6 +102,9 @@
                     if ($sql_run -> num_rows > 0){
                       while ($row = $sql_run -> fetch_assoc()){
                         echo "<tr class='content-row'>";
+                        echo "<td>".$row['cTID']."</td>";
+                        echo "<td>".$row['cTDate']."</td>";
+                        echo "<td>".$row['description']."</td>";
                         echo "<td>".$row['applicationID']."</td>";
                         echo "<td>".$row['applicationDate']."</td>";
                         echo "<td>".$row['applicationStatus']."</td>";
