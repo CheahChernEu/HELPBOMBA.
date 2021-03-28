@@ -162,7 +162,7 @@ Student ID: B1801196
                   <input type="text" class="form-control" id="skillReq" name="skillReq" placeholder="skill requirements" required>
                 </div>
                 <div class="form-group">
-                  <label for="numVolunteers" class="col-form-label">Amount Volunteer Required :</label>
+                  <label for="numVolunteers" class="col-form-label">Number of Volunteers Required :</label>
                   <input type="number" class="form-control" id="numVolunteers" name="numVolunteers" placeholder="num volunteers" min="1"  required>
                 </div>
             </div>
