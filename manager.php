@@ -91,12 +91,11 @@ Student ID: B1801196
                                 <p>HELP BOMBA is an NGO (Non-Government Organization) that aims to help people who are facing crises arising from natural disasters such as flood and earthquakes.</p>
                             </div>
                         </div>
-
                         <div class="col-md-12 col-12 text-center">
                             <div class="copyright-text">
                                 <p>Copyright @ 2021 <a href="#">HELP BOMBA Organization</a></p>
                             </div>
-                        </div>
+                      </div>
                     </div>
                 </div>
             </footer>

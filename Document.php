@@ -111,6 +111,14 @@ Student ID: B1801196
           <input type="text" class="form-control" name="documentID" value="<?php echo  $row['documentID'];?>" readonly>
         </div>
       </div>
+			<div class="row">
+        <div class="col-25">
+          <label for="documentID" class="col-sm-6 col-lg-4 col-form-label"> Document Type* </label>
+        </div>
+        <div class="col-75">
+          <input type="text" class="form-control" name="documentID" value="<?php echo  $row['documentType'];?>" readonly>
+        </div>
+      </div>
       <div class="row">
         <div class="col-25">
             <label for="expiryDate" class="col-sm-6 col-lg-4 col-form-label"> Expiry Date* </label>
