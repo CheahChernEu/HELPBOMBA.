@@ -70,7 +70,7 @@ Student ID: B1801196
             <div class = "container" style="overflow-x:auto;">
 
                 <div class="row pt-5">
-                    <div class="home-text col-md-8 col-sm-12 mt-5">
+                    <div class="home-text col-md-8 col-sm-12 mt-5 mb-1">
                       <?php
                       //connect to mysql
                         $conn = new mysqli("localhost","root","", "helpbomba");
@@ -95,8 +95,10 @@ Student ID: B1801196
 													echo manageApp();
                         ?>
 
-                        <h2 style="font-family: 'Gugi'; font-size:40px; color:#E75480; font-weight:bolder;outline:black; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;margin-bottom:5vh;">Manage Applications</h2>
-                        <h3 style="font-family: 'Gugi'; font-size:25px;">Lists of Crisis Trips Table</h3>
+                        <h2 style="font-family: 'Gugi'; font-size:40px; color:black; font-weight:bolder; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+												line-height: 40px;
+											 ">Manage Applications</h2>
+                        <h3 >Lists of Crisis Trips Table</h3>
 
                         <!-- All crisis trip that staff in-charge !-->
 

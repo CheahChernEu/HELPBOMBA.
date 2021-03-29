@@ -2,6 +2,7 @@
 Student Name: CHEAH CHERN EU
 Student ID: B1801196
 -->
+
 <?php
 	require_once("function.php");
 ?>
@@ -58,7 +59,7 @@ Student ID: B1801196
             <div class = "container">
                 <div class="row pt-5">
                     <div class="home-text col-mid-8 col-sm-12 mt-5">
-                        <h1>Welcome Back! HELP Bomba Manager</h1>
+                        <h1>Welcome Back!  <?php echo $_SESSION["name"]; ?></h1>
                         <p>Start your day with your happy smile!</p>
                         <ul class="section-btn">
                           <button type="button" data-toggle="modal" data-target="#recordModal"><span data-hover="Record New Staff">Record New Staff Here!</span></button>

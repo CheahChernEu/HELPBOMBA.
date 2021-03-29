@@ -27,7 +27,6 @@ h2{
     font-size: 30px;
     line-height: 40px;
     margin-top: 0;
-
 }
 
 h3{
@@ -96,9 +95,11 @@ p{
 }
 
 .main{
+    margin-top:1vh;
+    margin-bottom:5vh;
     display: flex;
     align-items: center;
-    height: 100vh;
+    height: 105vh;
     position: relative;
     background: white;
 }
