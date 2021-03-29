@@ -43,6 +43,28 @@ Student ID: B1801134
               </nav>
         </header>
 
+        <?php
+        $servername = "localhost";
+        $username   = "root";
+        $password   = "";
+        $dbname     = "helpbomba";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        $sql = "SELECT * FROM Document INNER JOIN hbmember ON Document.userID_fk = hbmember.userID WHERE Document.userID_fk = '".$_SESSION['userID']."'";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result -> num_rows > 0){
+          while ($row = $result -> fetch_assoc()){
+            $name = $row["name"];
+            $contactNo = $row["contactNo"];
+            $documentType = $row["documentType"];
+            $dateOfExpiry = $row["expiryDate"];
+            $docImage = $row["docImage"];
+          }
+        }
+        ?>
+
         <section id="form">
         <div class="form col-6 col-md-6 col-sm-6">
             <div class="row">
@@ -50,23 +72,23 @@ Student ID: B1801134
             <p>*Required fields</p>
             <form action="function.php" method="post" name="volunteerform" enctype="multipart/form-data">
                 <div class="inputbox">
-                    <label for="oldpassword">Old Password*</label>
+                    <label for="oldpassword">Please Enter Old Password To Make Changes*</label>
                     <input type="password" placeholder="Old password" id="oldpassword" name="oldpassword" required autofocus>
                 </div>
 
                 <div class="inputbox">
-                    <label for="newpassword">New Password*</label>
+                    <label for="newpassword">New Password</label>
                     <input type="password" placeholder="New password" id="newpassword" name="newpassword" required>
                 </div>
 
                 <div class="inputbox">
                     <label>Name*</label>
-                    <input type="text" placeholder="Name" id="name" name="name" value="<?php echo $_SESSION['name'];?>" required>
+                    <input type="text" placeholder="Name" id="name" name="name" value="<?php echo $name;?>" required>
                 </div>
 
                 <div class="inputbox">
                     <label>Phone No.*</label>
-                        <input type="tel" placeholder="Phone number" id="phoneno" name="phoneno" value="<?php echo $_SESSION['contactNo'];?>" required>
+                        <input type="tel" placeholder="Phone number" id="phoneno" name="phoneno" value="<?php echo $contactNo;?>" required>
 
                 </div>
 
@@ -74,21 +96,27 @@ Student ID: B1801134
                     <label>Document Type</label>
                     <div>
                         <label for="visa">VISA</label>
-                        <input type="radio" name="documenttype" id="visa" value="visa" required>
+                        <input type="radio" name="documenttype" id="visa" value="visa"<?php echo ($documentType=='visa'?' checked=checked':''); ?> required>
                         <label for="passport">PASSPORT</label>
-                        <input type="radio" name="documenttype" id="passport" value="passport" required>
+                        <input type="radio" name="documenttype" id="passport" value="passport"<?php echo ($documentType=='passport'?' checked=checked':''); ?> required>
                         <label for="certificate">CERTIFICATE</label>
-                        <input type="radio" name="documenttype" id="certificate" value="certificate" required>
+                        <input type="radio" name="documenttype" id="certificate" value="certificate"<?php echo ($documentType=='certificate'?' checked=checked':''); ?> required>
                     </div>
                 </div>
 
                 <div class="inputbox">
                     <label>Date of Expiry</label>
-                    <input type="date" name="dateofexpiry" id="dateofexpiry" placeholder="yyyy/mm/dd" required>
+                    <input type="date" name="dateofexpiry" id="dateofexpiry" placeholder="yyyy/mm/dd" value="<?php echo $dateOfExpiry;?>" required>
                 </div>
 
                 <div class="fileuploadinputbox">
                     <label for="fileupload">Document Upload</label>
+                    <div>
+                        <div class="">
+                              <?php echo "<img src='images/".$docImage."'>";?>
+                        </div>
+                        <?php echo $docImage;?>
+                    </div>
                     <div>
                         <input type="file" name="fileupload" id="fileupload">
                     </div>
@@ -97,7 +125,7 @@ Student ID: B1801134
                 <div class="btn">
                     <button type="reset" id="Reset" value="Reset">Reset</button>
                     <input name = "action" value="manageProfile" hidden>
-                    <button type="button" id="Submit" value="manageProfile" name="manageProfile" onclick="blankOldPwValidation(), blankNewPwValidation(), pwValidation(), nameValidation(), phoneValidation(), submitMessage()">Submit</button>
+                    <button type="button" id="Submit" value="manageProfile" name="manageProfile" onclick="blankOldPwValidation(), newPwValidation(), pwValidation(), nameValidation(), phoneValidation(), submit()">Submit</button>
                 </div>
             </form>
             </div>
@@ -159,9 +187,9 @@ Student ID: B1801134
                 }
             }
 
-            function blankNewPwValidation(){
-                if(document.getElementById('newpassword').value == '' || document.getElementById('newpassword').value.length < 8){
-                    alert("New password cannot be blank or less than 8 characters")
+            function newPwValidation(){
+                if(document.getElementById('newpassword').value.length > 0 && document.getElementById('newpassword').value.length < 8){
+                    alert("New password cannot be less than 8 characters")
                     document.getElementById('newpassword').focus();
                     throw new Error("This is not an error. This is just to abort javascript.")
                 }
@@ -194,9 +222,8 @@ Student ID: B1801134
                 }
             }
 
-            function submitMessage(){
+            function submit(){
                 document.volunteerform.submit();
-                alert("Thank you for using our service!");
             }
 
         </script>

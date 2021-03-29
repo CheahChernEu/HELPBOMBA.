@@ -42,11 +42,30 @@ Student ID: B1801134
                 </div>
               </nav>
         </header>
+
+        <?php
+        $servername = "localhost";
+        $username   = "root";
+        $password   = "";
+        $dbname     = "helpbomba";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        $sql = "SELECT * FROM hbmember WHERE userID = '".$_SESSION['userID']."'";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result -> num_rows > 0){
+          while ($row = $result -> fetch_assoc()){
+            $name = $row["name"];
+          }
+        }
+        ?>
+
         <div class="main">
             <div class = "container">
                 <div class="row pt-5">
                     <div class="home-text col-mid-8 col-sm-12 mt-5">
-                        <h1>Welcome <?php echo $_SESSION['name'];?></h1>
+                        <h1>Welcome <?php echo $name;?></h1>
                         <p>You are the chosen one</p>
                         <ul class="section-btn">
                             <a href="applyForTrip.php"><span data-hover="Apply for a trip now">Apply for a trip now</span></a>

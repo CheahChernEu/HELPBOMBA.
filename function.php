@@ -156,9 +156,30 @@ function manageVolunteerProfile(){
   // Create connection
   $conn = new mysqli($servername, $username, $password, $dbname);
 
+  $sql7 = "SELECT password FROM hbmember WHERE userID = '".$_SESSION['userID']."'";
+  $result3 = mysqli_query($conn, $sql7);
+  if ($result3 -> num_rows > 0){
+    while ($row = $result3 -> fetch_assoc()){
+      $curPassword = $row["password"];
+    }
+  }
+
   $oldpassword = $_POST['oldpassword'];
-  $sql = "UPDATE hbmember SET password = '$_POST[newpassword]', name = '$_POST[name]', contactNo = '$_POST[phoneno]' WHERE password = '$oldpassword' AND userID = '".$_SESSION['userID']."'";
-  $sql_run = mysqli_query($conn, $sql);
+  $newpassword = $_POST['newpassword'];
+
+  if ($oldpassword == $curPassword){
+    if (!empty($newpassword)){
+      $sql = "UPDATE hbmember SET password = '$_POST[newpassword]', name = '$_POST[name]', contactNo = '$_POST[phoneno]' WHERE password = '$oldpassword' AND userID = '".$_SESSION['userID']."'";
+    }
+    else{
+      $sql = "UPDATE hbmember SET password = '$_POST[oldpassword]', name = '$_POST[name]', contactNo = '$_POST[phoneno]' WHERE password = '$oldpassword' AND userID = '".$_SESSION['userID']."'";
+    }
+    $sql_run = mysqli_query($conn, $sql);
+  }
+  else{
+    echo '<script type="text/javascript">alert("Old Password Incorrect")</script>';
+    echo "<script> window.location.assign('manageVolunteerProfile.php'); </script>";
+  }
 
   if ($sql_run){
     $documenttype = $_POST['documenttype'];
@@ -170,10 +191,13 @@ function manageVolunteerProfile(){
     $sql2 = "SELECT * FROM `Document` WHERE userID_fk = '".$_SESSION['userID']."'";
     $result = db_search($sql2);
     if ($result == null){
-
-      $sql3 = "INSERT INTO `Document`(`documentType`, `expiryDate`, `docImage`, `userID_fk`) VALUES ('$documenttype', '$dateofexpiry', '$file', '".$_SESSION['userID']."')";
+      if ($_FILES['fileupload']['size'] == 0){
+        $sql3 = "INSERT INTO `Document`(`documentType`, `expiryDate`, `userID_fk`) VALUES ('$documenttype', '$dateofexpiry', '".$_SESSION['userID']."')";
+      }
+      else{
+        $sql3 = "INSERT INTO `Document`(`documentType`, `expiryDate`, `docImage`, `userID_fk`) VALUES ('$documenttype', '$dateofexpiry', '$file', '".$_SESSION['userID']."')";
+      }
       $sql3_run = mysqli_query($conn, $sql3);
-
       if ($sql3_run){
         if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
           $sql5 = "SELECT * FROM `Application` WHERE userID_fk = '".$_SESSION['userID']."'";
@@ -207,7 +231,12 @@ function manageVolunteerProfile(){
       }
     }
     else{
-      $sql4 = "UPDATE Document SET documentType = '$documenttype', expiryDate = '$dateofexpiry', docImage = '$file' WHERE userID_fk = '".$_SESSION['userID']."'";
+      if ($_FILES['fileupload']['size'] == 0){
+        $sql4 = "UPDATE Document SET documentType = '$documenttype', expiryDate = '$dateofexpiry' WHERE userID_fk = '".$_SESSION['userID']."'";
+      }
+      else{
+        $sql4 = "UPDATE Document SET documentType = '$documenttype', expiryDate = '$dateofexpiry', docImage = '$file' WHERE userID_fk = '".$_SESSION['userID']."'";
+      }
       $sql4_run = mysqli_query($conn, $sql4);
       if ($sql4_run){
         if(move_uploaded_file($_FILES['fileupload']['tmp_name'], $target)){
