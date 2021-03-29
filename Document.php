@@ -119,14 +119,6 @@ Student ID: B1801196
           <input type="text" class="form-control" name="documentType" value="<?php echo  $row['documentType'];?>" readonly>
         </div>
       </div>
-			<div class="row">
-        <div class="col-25">
-            <label for="expiryDate" class="col-sm-6 col-lg-4 col-form-label"> Trip Date* </label>
-        </div>
-        <div class="col-75">
-          <input type="text" class="form-control" name="expiryDate" value="<?php echo $_SESSION['tDate'];?>" >
-        </div>
-      </div>
       <div class="row">
         <div class="col-25">
             <label for="expiryDate" class="col-sm-6 col-lg-4 col-form-label"> Expiry Date* </label>

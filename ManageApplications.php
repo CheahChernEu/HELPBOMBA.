@@ -129,7 +129,7 @@ Student ID: B1801196
                               <input type="checkbox" name="checkbox" onchange="isChecked(this, 'viewApp<?php echo $row['cTID'];?>', 'delete<?php echo $row['cTID'];?>')" value="<?php echo $row['cTID'];?>" required>
                               </td>
                               <td align="center"><?php echo $row['cTID'];?></td>
-                              <td align="center" name="tripDate"><?php echo $row['cTDate'];?></td>
+                              <td align="center"><?php echo $row['cTDate'];?></td>
                               <td align="center"><?php echo $row['cType'];?></td>
                               <td align="center"><?php echo $row['location'];?></td>
                               <td align="center"><?php echo
