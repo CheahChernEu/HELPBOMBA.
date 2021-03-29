@@ -331,12 +331,11 @@ function updateApp(){
 
 
     if(mysqli_num_rows($check)>0){
-      $sql1 = "UPDATE `application` SET `applicationStatus`= '$statusUpdate' and `remarks`= '$remarks' WHERE documentID_fk = '$documentID' and applicationID = '$applicationID' ";
+        $sql1 = "UPDATE Application SET applicationStatus = '$statusUpdate', remarks = '$remarks' WHERE applicationID = '$applicationID' AND documentID_fk = '$documentID'";
       $queryUpdate = mysqli_query($conn,  $sql1);
       if($queryUpdate==null){
          echo '<script> alert("Error occur! Please retry again!")</script>';
          echo "<script> window.location.assign('Application.php'); </script>";
-
       }else{
         $accepted = 'ACCEPTED';
         if(strcmp($statusUpdate, $accepted)== 0){

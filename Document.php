@@ -116,7 +116,7 @@ Student ID: B1801196
           <label for="documentID" class="col-sm-6 col-lg-4 col-form-label"> Document Type* </label>
         </div>
         <div class="col-75">
-          <input type="text" class="form-control" name="documentID" value="<?php echo  $row['documentType'];?>" readonly>
+          <input type="text" class="form-control" name="documentType" value="<?php echo  $row['documentType'];?>" readonly>
         </div>
       </div>
       <div class="row">
