@@ -119,6 +119,14 @@ Student ID: B1801196
           <input type="text" class="form-control" name="documentType" value="<?php echo  $row['documentType'];?>" readonly>
         </div>
       </div>
+			<div class="row">
+        <div class="col-25">
+            <label for="expiryDate" class="col-sm-6 col-lg-4 col-form-label"> Trip Date* </label>
+        </div>
+        <div class="col-75">
+          <input type="text" class="form-control" name="expiryDate" value="<?php echo $_SESSION['tDate'];?>" >
+        </div>
+      </div>
       <div class="row">
         <div class="col-25">
             <label for="expiryDate" class="col-sm-6 col-lg-4 col-form-label"> Expiry Date* </label>
@@ -145,7 +153,6 @@ Student ID: B1801196
             <label for="status" class="col-sm-6 col-lg-4 col-form-label">Status*</label>
         </div>
         <div class="col-75">
-          <!-- <input list="status" class="form-control" name="statusUpdate" id="statusUpdate" placeholder="update application status" required> -->
 					<select name="statusUpdate" id="statusUpdate" style="margin-top:10px;margin-bottom: 10px; width:20%;height: 45px;">
     				<option value="ACCEPTED">ACCEPTED</option>
     				<option value="REJECTED">REJECTED</option>
