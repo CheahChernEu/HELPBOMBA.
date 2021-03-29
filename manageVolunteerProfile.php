@@ -172,11 +172,11 @@ Student ID: B1801134
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <script>
-
+          <?php  ?>
             var date = new Date().toISOString().slice(0,10);
             //To restrict past date
             $('#dateofexpiry').attr('min', date);
-
+            
             /*function for validating the blank fields because submit button type is not submit so the required is not working*/
             function blankOldPwValidation(){
                 if(document.getElementById('oldpassword').value == ''){

@@ -312,6 +312,7 @@ function createTrip(){
   $minDuration = $_POST['minDuration'];
   $skillReq = $_POST['skillReq'];
   $numVolunteers = $_POST['numVolunteers'];
+
   $userID = $_SESSION['userID'];
 
   $sql1="SELECT * FROM `crisistrip` WHERE cTDate = '$tripDate'";

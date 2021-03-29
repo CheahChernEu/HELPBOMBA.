@@ -186,7 +186,6 @@ Student ID: B1801196
       <script type="text/javascript">
         // Only allow today as the min date can be pick, and dsiable past date to be pick from.
       var date = new Date().toISOString().slice(0,10);
-
       //To restrict past date
         $('#tripDate').attr('min', date);
 
