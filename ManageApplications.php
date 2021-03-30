@@ -146,7 +146,7 @@ Student ID: B1801196
                               <td align="middle">
 																<input name="action" value="manageApp" hidden>
                                 <!-- to delete trip if neccessarily !-->
-                                <input type="submit" id="delete<?php echo $row['cTID'];?>" name="delete" value ="Delete" disabled class="btn btn-info">
+                                <input type="submit" id="delete<?php echo $row['cTID'];?>" name="delete" value ="Delete" disabled class="btn btn-info" style="background:red;">
 
                               </td>
 
